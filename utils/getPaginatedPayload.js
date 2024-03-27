@@ -91,6 +91,20 @@ export const listingsSearchConditions = (query) => {
 	return conditions;
 };
 // businessSearchConditions
+export const BlogsSearchConditions = (query) => {
+	const conditions = {};
+
+	// Define your search query conditions
+	if (query.description) {
+		conditions.description = new RegExp(query.description, 'i');
+	}
+
+	if (query.name) {
+		conditions.name = new RegExp(query.name, 'i');
+	}
+	return conditions;
+};
+// businessSearchConditions
 export const businessSearchConditions = (query) => {
 	const conditions = {};
 
