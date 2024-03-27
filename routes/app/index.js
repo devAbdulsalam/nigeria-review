@@ -15,6 +15,7 @@ import {
 import authRoutes from './auth.js';
 import businessRoutes from './business.js';
 import listingRoutes from './listings.js';
+import reviewRoutes from './reviews.js';
 import {
 	requiredAuth,
 	requiredAuthPage,
@@ -36,4 +37,5 @@ router.get('/my-profile', requiredAuthPage, getProfile);
 router.get('/update-password', requiredAuthPage, getUpdatePassword);
 router.use('/', businessRoutes);
 router.use('/', listingRoutes);
+router.use('/', reviewRoutes);
 export default router;

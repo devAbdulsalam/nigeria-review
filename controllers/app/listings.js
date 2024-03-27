@@ -16,6 +16,7 @@ export const getListing = async (req, res, next) => {
 		pageTitle: 'Listing',
 	});
 };
+// http://localhost:8000/listings?query=ooo
 export const getListings = async (req, res, next) => {
 	const user = await req.session.user;
 	const listings = await Listing.find({ userId: user._id });

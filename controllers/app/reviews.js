@@ -4,7 +4,7 @@ export const getReviews = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
 		const reviews = await Review.find({ userId: user._id });
-		res.render('my-reviws', {
+		res.render('reviews', {
 			path: '/my-reviews',
 			pageTitle: 'Reviews',
 			reviews,
