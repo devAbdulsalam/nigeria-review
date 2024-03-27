@@ -10,7 +10,7 @@ export const getIndex = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
 		// const site = await Site.findOne().select('description');
-		const getIndexInfo = await getIndexPageInfo(user._id);
+		const getIndexInfo = await getIndexPageInfo(user?._id);
 		res.render('index', {
 			user,
 			...getIndexInfo,
@@ -30,7 +30,7 @@ export function getRegister(req, res) {
 	});
 }
 export function getRegisterAdvertizer(req, res, next) {
-	res.render('register', {
+	res.render('registerAdvertizer', {
 		path: '/register',
 		pageTitle: 'Register As Advertizer',
 	});
