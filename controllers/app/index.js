@@ -10,7 +10,7 @@ export const getIndex = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
 		// const site = await Site.findOne().select('description');
-		const getIndexInfo = await getIndexPageInfo();
+		const getIndexInfo = await getIndexPageInfo(user._id);
 		res.render('index', {
 			user,
 			...getIndexInfo,
@@ -77,7 +77,7 @@ export const getDashboard = async (req, res, next) => {
 };
 export const getProfile = async (req, res) => {
 	const user = req.session.user;
-	const getIndexInfo = await getIndexPageInfo();
+	const getIndexInfo = await getDashboardInfo(user._id);
 	res.render('profile', {
 		path: '/profile',
 		pageTitle: 'User profile',
@@ -87,7 +87,7 @@ export const getProfile = async (req, res) => {
 };
 export const getUpdatePassword = async (req, res) => {
 	const user = req.session.user;
-	const getIndexInfo = await getIndexPageInfo();
+	const getIndexInfo = await getDashboardInfo(user._id);
 	res.render('changePassword', {
 		path: '/change-password',
 		pageTitle: 'User profile',
