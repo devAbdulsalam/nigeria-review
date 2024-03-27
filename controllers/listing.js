@@ -1,6 +1,7 @@
 // import User from '../models/User.js';
 import Listing from '../models/Listing.js';
 import Business from '../models/Business.js';
+import SavedListing from '../models/SavedListing.js';
 import mongoose from 'mongoose';
 import fs from 'fs';
 import { uploader } from '../utils/cloudinary.js';
@@ -221,6 +222,33 @@ export const getUserListings = async (req, res) => {
 export const getListings = async (req, res) => {
 	try {
 		const listing = await Listing.find();
+		res.status(200).json(listing);
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: error.message });
+	}
+};
+export const getUserSavedListings = async (req, res) => {
+	try {
+		const listing = await SavedListing.find({ userId: req.user._id });
+		res.status(200).json(listing);
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: error.message });
+	}
+};
+export const getSavedListings = async (req, res) => {
+	try {
+		const listing = await SavedListing.find();
+		res.status(200).json(listing);
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: error.message });
+	}
+};
+export const getSavedListing = async (req, res) => {
+	try {
+		const listing = await SavedListing.find();
 		res.status(200).json(listing);
 	} catch (error) {
 		console.log(error);
