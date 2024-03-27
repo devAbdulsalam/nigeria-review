@@ -1,0 +1,1468 @@
+
+<!DOCTYPE html>
+<html lang="en" id="html" x-data="global()" class="h-full js-focus-visible">
+	<head>
+		<meta charset="utf-8">
+		
+        <!--             
+                    *******,******,            
+                .,,,.******,**********.        
+              ,,,,,,,,*****,************,      
+            .,,,,,,,,,,****,**************.    
+           ,,,,,,,,,,,,****,***************.   
+          ,.,,,,,,,,,,,,,**,****************,        ____    __                                ____        ___    ___    
+         */////,.,,,,,,,,**,*****************       /\  _`\ /\ \__                            /\  _`\     /\_ \  /\_ \    
+         //////////*,,,,,.*,*****************.      \ \,\L\_\ \ ,_\  _ __    __     __  __  __\ \ \L\ \___\//\ \ \//\ \    
+         ///////////////*..,*****************,       \/_\__ \\ \ \/ /\`'__\/'__`\  /\ \/\ \/\ \\ \ ,__/ __`\\ \ \  \ \ \   
+         /////////////////,*,,***************,         /\ \L\ \ \ \_\ \ \//\ \L\.\_\ \ \_/ \_/ \\ \ \/\ \L\ \\_\ \_ \_\ \_ 
+         ///////////////,******,,************.         \ `\____\ \__\\ \_\\ \__/.\_\\ \___x___/' \ \_\ \____//\____\/\____\ 
+         *///////////*,***********,**********           \/_____/\/__/ \/_/ \/__/\/_/ \/__//__/    \/_/\/___/ \/____/\/____/
+          *////////*,****************,******,  
+           //////*,********************,,**.   
+            ,//***************************.    
+              ,*************************,      
+                .*********************.        
+                   .,***********/*, 
+        -->
+
+		<title>Live Demo - Sample Polls for Our Poll Types - StrawPoll</title>
+
+		<meta name="description" content="Learn more about StrawPoll and it&#39;s different poll types by checking our live demo page. Try voting on sample polls and see the results immediately." />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="robots" content="max-image-preview:large">	
+
+			<link rel="canonical" href="https://strawpoll.com/demo/" />
+
+		<link rel="alternate" hreflang="x-default" href="https://strawpoll.com/demo/" />
+		<link rel="alternate" hreflang="en" href="https://strawpoll.com/demo/" />
+		<link rel="alternate" hreflang="de" href="https://strawpoll.com/de/demo/" />
+		<link rel="alternate" hreflang="fr" href="https://strawpoll.com/fr/demo/" />
+		<link rel="alternate" hreflang="es" href="https://strawpoll.com/es/demo/" />
+		<link rel="alternate" hreflang="pt" href="https://strawpoll.com/pt/demo/" />
+
+
+		<link rel="stylesheet" href="https://cdn.strawpoll.com/dist/main.css?v=231">
+
+		<script defer src="https://cdn.strawpoll.com/dist/app.js?v=231"></script>
+		
+
+
+			<meta name="twitter:card" content="summary_large_image" />
+<meta property="fb:app_id" content="567582844767504" />
+
+<meta property="og:site_name" content="StrawPoll" />
+<meta property="og:title" content="Live Demo - Sample Polls for Our Poll Types - StrawPoll" />
+<meta property="og:description" content="Learn more about StrawPoll and it&#39;s different poll types by checking our live demo page. Try voting on sample polls and see the results immediately." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://strawpoll.com/demo/" />
+<meta property="og:image" content="https://cdn.strawpoll.com/images/logos/strawpoll-logo-title-splash.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en" />
+
+
+
+		<meta name="apple-mobile-web-app-title" content="StrawPoll" />
+<meta name="application-name" content="StrawPoll" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+
+		<style>
+			[x-cloak] {
+			  display: none;
+			}
+		</style>
+
+		<script>
+	const TIMESTAMP = new Date().getTime()
+	const WEBSOCKET_URL = 'wss://ws.strawpoll.com'
+	const API_ENDPOINT = 'https://api.strawpoll.com/v3'
+	const STATIC_URL = 'https://cdn.strawpoll.com'
+	const DEVICE_TYPE = 'desktop'
+	const APP_VERSION = '231'
+
+	const L = {
+		'error_retry': 'An error occurred. Please reload the page and try again.',
+		'timeout_retry': 'Timeout, please try again.',
+		'already_voted': 'You already voted on this poll.',
+		'incognito_vote': 'Voting in incognito mode is not allowed. Please disable incognito mode and try again.',
+		'backend_error': 'Backend error.',
+		'request_failed': 'Request failed.',
+		'request_help': 'Please contact support@strawpoll.com for help.',
+		'day': 'day',
+		'days': 'days',
+		'hour': 'hour',
+		'hours': 'hours',
+		'minute': 'minute',
+		'minutes': 'minutes',
+		'second': 'second',
+		'seconds': 'seconds',
+	}
+
+	const APPEARANCE = 'auto'
+</script>
+
+
+		
+
+<script>
+	let defaultThemeLight = { 'id': null, 'name': 'Default', colors: { 'pageBg': '#f9fafb', 'boxBg': '#ffffff', 'boxBorder': '#e5e8eb', 'boxBorderTop': '#fbbf24', 'title': '#111827', 'text': '#6b7280', 'highlight': '#4f46e5', 'buttonBg': '#4f46e5', 'buttonText': '#ffffff', 'border': '#e5e7eb', 'titleColor': '#000', 'textColor': '#444', 'primaryColor': '#00f', 'answerColor': '#000', }, 'hideShareButton': false }
+	let defaultThemeDark = { 'id': null, 'name': 'Default', colors: { 'pageBg': '#111827', 'boxBg': '#1f2937', 'boxBorder': '#374151', 'boxBorderTop': '#818cf8', 'title': '#e5e7eb', 'text': '#94a3b8', 'highlight': '#6366f1', 'buttonBg': '#6366f1', 'buttonText': '#ffffff', 'border': '#374151' }, 'hideShareButton': false }
+
+		let customTheme = { id: null }
+
+	let currentTheme = defaultThemeLight
+
+	if (APPEARANCE === 'dark' || APPEARANCE === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		document.getElementById('html').classList.add('dark')
+		currentTheme = defaultThemeDark
+	}
+
+	if (customTheme.id) {
+		currentTheme = customTheme
+
+		if (isDarkBg(hexToRGBA(customTheme.colors.pageBg, 1, 0, 1))) {
+			if (!document.getElementById('html').classList.contains('dark')) {
+				document.getElementById('html').classList.add('dark')
+			}
+		} else {
+			if (document.getElementById('html').classList.contains('dark')) {
+				document.getElementById('html').classList.remove('dark')
+			}
+		}
+	}
+
+		let pollOptionColors = ['#3EB991', '#FF7563', '#AA66CC', '#FFBB33', '#FF8800', '#33B5E5', '#AA66CC']
+
+	setCustomTheme(currentTheme)
+
+	function setCustomTheme(theme) {
+		for (const [key, value] of Object.entries(theme.colors)) {
+			document.documentElement.style.setProperty('--'+key, hexToRGBA(value, 1, 0, 1))
+		}
+
+		document.documentElement.style.setProperty('--buttonBgLight', hexToRGBA(theme.colors['buttonBg'],  1, 1, 1.16))
+		document.documentElement.style.setProperty('--borderDark', hexToRGBA(theme.colors['border'], 1, 1, 0.84))
+		document.documentElement.style.setProperty('--highlightDark', hexToRGBA(theme.colors['highlight'], 1, 1, 0.84))
+		document.documentElement.style.setProperty('--textShadow', hexToRGBA(theme.colors['text'], 1, 5, 0.954))
+		document.documentElement.style.setProperty('--textLight', hexToRGBA(theme.colors['text'], 0.8, 0, 1)) // 1, 113, 0.5568)
+		document.documentElement.style.setProperty('--textLighter', hexToRGBA(theme.colors['text'], 1, 168, 0.3431))
+		document.documentElement.style.setProperty('--highlightShadow', hexToRGBA(theme.colors['highlight'], 1, 58, 0.772))
+
+		// new
+		if (theme.colors['titleColor']) {
+			// document.documentElement.style.setProperty('--titleColorLight', hexToRGBA(theme.colors['titleColor'], 1, 113, 0.5568))
+			document.documentElement.style.setProperty('--titleColorLight', hexToRGBA(theme.colors['titleColor'], 0.2, 0, 1))
+			document.documentElement.style.setProperty('--textColorLight', hexToRGBA(theme.colors['textColor'], 1, 113, 0.5568))
+			document.documentElement.style.setProperty('--primaryColorLight', hexToRGBA(theme.colors['primaryColor'], 1, 113, 0.5568))
+			document.documentElement.style.setProperty('--answerColorLight', hexToRGBA(theme.colors['answerColor'], 0.6, 0, 1))
+			document.documentElement.style.setProperty('--answerColorLighter', hexToRGBA(theme.colors['answerColor'], 0.3, 0, 1))
+			document.documentElement.style.setProperty('--answerColorLightest', hexToRGBA(theme.colors['answerColor'], 0.1, 0, 1))
+		}
+	}
+
+	function hexToRGBA(hex, opacity, modifierAdd, modifierMulti) {
+		if (!hex) {
+			return 'rgba(0, 0, 0, 0)'
+		}
+		let c;
+		if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+			c = hex.substring(1).split('')
+			if (c.length === 3) {
+				c= [c[0], c[0], c[1], c[1], c[2], c[2]]
+			}
+			c= '0x'+c.join('')
+			return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].map(x => parseInt(modifierAdd + modifierMulti * x)).join(',')+', '+opacity+')'
+		}
+	}
+
+	function isDarkBg(color) {
+		let colors = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/)
+
+		let r = colors[1]
+		let g = colors[2]
+		let b = colors[3]
+		let a = parseInt(colors[4])
+
+		if (a === 0) return 0
+
+		let hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) +	0.114 * (b * b))
+
+		if (hsp <= 127.5) {
+			return 1
+		}
+	}
+</script>
+
+<style>
+	/* THEME */
+	:root {
+		--backgroundColor: rgba(240, 240, 240, 1);
+		--sectionBackgroundColor: rgba(255, 255, 255, 1);
+		--titleColor: rgba(0, 0, 0, 1);
+		--titleColorLight: rgba(150, 150, 150, 1);
+		--textColor: rgba(100, 100, 100, 1);
+		--textColorLight: rgba(200, 200, 200, 1);
+		--answerColor: rgba(255, 0, 255, 1);
+		--primaryColor: rgba(0, 0, 255, 1);
+		--brandBorderColor: rgba(251, 191, 36, 1);
+	}
+	.form-background {
+		background-color: var(--backgroundColor);
+	}
+	.form-section-wrapper {
+		background-color: var(--sectionBackgroundColor);
+	}
+	.form-section {
+		background-color: var(--sectionBackgroundColor);
+	}
+	.section-title, .section-title::placeholder {
+		color: var(--titleColor);
+	}
+	/* .section-title::placeholder {
+		color: var(--titleColorLight);
+	} */
+	.section-text, .section-text::placeholder {
+		color: var(--textColor);
+	}
+	/* .section-text::placeholder {
+		color: var(--textColorLight);
+	} */
+	.field-choice-input, .field-choice-input::placeholder {
+		color: var(--answerColor);
+	}
+	/* .field-choice-input::placeholder {
+		color: var(--answerColorLight);
+	} */
+	.section-title:hover, .section-text:hover, .field-choice-input:hover {
+		border-color: var(--textColorLight);
+	}
+	.section-title:focus, .section-text:focus, .field-choice-input:focus {
+		border-color: var(--primaryColor);
+	}
+	.field-choice-card {
+		color: var(--answerColor);
+		border-color: var(--answerColorLight);
+		background-color: var(--answerColorLightest);
+	}
+	.form .field-choice-card:hover {
+		background-color: var(--answerColorLighter);
+	}
+	.choice-symbol {
+		border-color: var(--answerColorLight);
+		background-color: var(--sectionBackgroundColor);
+	}
+
+	.primary-link {
+		color: var(--primaryColor);
+	}
+
+	.brand-border-top {
+		border-top: 4px solid var(--brandBorderColor);
+	}
+	.border-text {
+		border-color: var(--textColor);
+	}
+
+	/* layout: plain, card, image_top, image_left, image_right, transparent */
+	/* background_image */
+	/* logo_image */
+	/* colors: page_bg, question_bg, title, questions, answers, primary (highlight), secondary */
+	/* font */
+	/* text size */
+	/* align: left, center, right */
+	/* ltr? */
+</style>
+
+
+
+
+
+
+		<style>
+			/* THEME */
+			:root {
+				/* --backgroundColor: rgba(240, 240, 240, 1);
+				--questionBackgroundColor: rgba(255, 255, 255, 1);
+				--titleColor: rgba(0, 0, 0, 1);
+				--titleColorLight: rgba(150, 150, 150, 1);
+				--textColor: rgba(100, 100, 100, 1);
+				--textColorLight: rgba(200, 200, 200, 1);
+				--answerColor: rgba(255, 0, 255, 1);
+				--primaryColor: rgba(0, 0, 255, 1); */
+		
+				/* dark mode */
+				--formBackgroundColor: rgba(17, 24, 39);
+				--questionBackgroundColor: rgba(31, 41, 55, 1);
+				--questionTitleColor: rgba(255, 255, 255, 1);
+				--questionTitleColorLight: rgba(150, 150, 150, 1);
+				--questionTextColor: rgba(100, 100, 100, 1);
+				--questionTextColorLight: rgba(200, 200, 200, 1);
+				--questionChoiceColor: rgba(255, 0, 255, 1);
+				--questionChoiceColorLight: rgba(255, 0, 255, 1);
+				--questionChoiceColorLightest: rgba(255, 0, 255, 1);
+				--formPrimaryColor: rgba(0, 0, 255, 1);
+		
+				--formBorderColor: rgba(55, 65, 81, 1);
+				--formBorderTopColor: rgba(129, 140, 248, 1);
+			}
+			.form-background {
+				background-color: var(--formBackgroundColor);
+			}
+			.form-question-wrapper {
+				background-color: var(--questionBackgroundColor);
+			}
+			.form-question {
+				background-color: var(--questionBackgroundColor);
+			}
+			.question-top-border {
+				border-top-color: var(--formBorderTopColor);
+			}
+			.question-title, .question-title::placeholder, .question-title input {
+				color: var(--questionTitleColor);
+			}
+			/* .question-title::placeholder {
+				color: var(--titleColorLight);
+			} */
+			.question-text, .question-text::placeholder {
+				color: var(--questionTextColor);
+			}
+			/* .question-text::placeholder {
+				color: var(--textColorLight);
+			} */
+			.field-choice-input, .field-choice-input::placeholder {
+				color: var(--questionChoiceColor);
+			}
+			/* .field-choice-input::placeholder {
+				color: var(--answerColorLight);
+			} */
+			.question-title:hover, .question-text:hover, .field-choice-input:hover {
+				border-color: var(--questionTextColorLight);
+			}
+			.question-title:focus, .question-text:focus, .field-choice-input:focus {
+				border-color: var(--formPrimaryColor);
+			}
+			.field-choice-card {
+				color: var(--questionChoiceColor);
+				border-color: var(--questionChoiceColorLight);
+				background-color: var(--questionChoiceColorLightest);
+			}
+			.form .field-choice-card:hover {
+				background-color: var(--questionChoiceColorLighter);
+			}
+			.choice-symbol {
+				border-color: var(--questionChoiceColorLight);
+				background-color: var(--questionBackgroundColor);
+			}
+		
+			.primary-link {
+				color: var(--formPrimaryColor);
+			}
+		
+			/* layout: plain, card, image_top, image_left, image_right, transparent */
+			/* background_image */
+			/* logo_image */
+			/* colors: page_bg, question_bg, title, questions, answers, primary (highlight), secondary */
+			/* font */
+			/* text size */
+			/* align: left, center, right */
+			/* ltr? */
+		</style>
+	</head>
+	<body class="font-sans antialiased min-h-full flex flex-col text-default bg-gray-50 dark:bg-gray-900">		
+		
+		<header class="sticky top-0 z-40 bg-white dark:bg-gray-800  ring-1 ring-gray-300 dark:ring-gray-700 shadow-sm" x-data="Components.popover({ open: false, focus: true })" x-init="init()"
+	@keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
+	<div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+		  <div class="flex justify-between h-16">
+			<div class="flex px-2 lg:px-0 truncate">
+				<a href="https://strawpoll.com/" class="flex-shrink-0 flex items-center text-gray-900 dark:text-gray-200">	
+					<img style="width: 100px;" src="/assets/img/logo.png" class="logo" alt="" />
+				</a>
+				<div class="hidden lg:ml-6 lg:flex lg:space-x-8">
+					<a href="index.html"
+						class="border-transparent text-gray-700 dark:text-gray-200 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">
+						Create Poll
+					</a>
+					<a href="/poll/strawpoll.com/meetings/index.html"
+						class="border-transparent text-gray-700 dark:text-gray-200 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">
+						Schedule Meeting
+					</a>
+					<a href="https://strawpoll.com/demo/"
+						class="border-transparent text-gray-700 dark:text-gray-200 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">
+						Demo
+					</a>
+					<a href="https://strawpoll.com/pricing/"
+						class="border-transparent text-gray-700 dark:text-gray-200 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-300 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap">
+						Pricing
+					</a>
+				</div>
+			</div>
+			<div class="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
+				<form method="GET" action="/search/" class="max-w-lg w-full lg:max-w-xs">
+					<label for="q" class="sr-only">Search</label>
+					<div class="relative">
+						<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+							<svg class="h-5 w-5 text-gray-400" x-description="Heroicon name: solid/search"
+								xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+								<path fill-rule="evenodd"
+									d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</div>
+						<input id="search" name="q"
+							class="input pl-10"
+							placeholder="Search" type="search">
+					</div>
+				</form>
+			</div>
+			<div class="flex items-center lg:hidden">
+			  <!-- Mobile menu button -->
+			  <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:text-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
+				<span class="sr-only">Open main menu</span>
+				<svg x-description="" x-state:on="Menu open" x-state:off="Menu closed" class="block h-6 w-6" :class="{ 'hidden': open, 'block': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+				</svg>
+				<svg x-description="" x-state:on="Menu open" x-state:off="Menu closed" class="hidden h-6 w-6" :class="{ 'block': open, 'hidden': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				</svg>
+			  </button>
+			</div>
+			<div class="hidden lg:ml-4 lg:flex lg:items-center">
+			  
+	
+	
+			  <!-- Profile dropdown -->
+			  <div x-data="Components.menu({ open: false })" x-init="init()" @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)" class="ml-4 relative flex-shrink-0">
+				<div>
+					<button type="button" class="pr-2 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="user-menu-button" x-ref="button" @click="onButtonClick()" @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()" aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+						<span class="sr-only">Open main menu</span>
+						<img class="h-8 w-8 rounded-full mr-2" loading="lazy" :src="STATIC_URL + $store.user.avatarPath" alt="">
+						<span class="mr-2" x-text="$store.user.displayname"></span>
+							
+
+	<span class="inline-flex items-center rounded-full font-medium bg-green-100 text-green-800 dark-bg-opacity-green dark:text-green-400 px-2 py-0.5 text-xs">
+		Free
+	</span>
+
+					</button>
+				</div>
+	
+				
+	
+				<div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="z-40 origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-gray-300 dark:ring-gray-700 focus:outline-none" x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state." x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false" @keydown.enter.prevent="open = false; focusButton()" @keyup.space.prevent="open = false; focusButton()" style="display: none;">
+					
+	<div class="py-1 border-b custom-border" role="none">
+			<a :href="`/account/`" x-show="true" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 custom-border custom-text" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-gray-300': activeIndex === 0, 'text-gray-700 dark:text-gray-300': !(activeIndex === 0) }" role="menuitem" tabindex="-1" @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1" @click="open = false; focusButton()">
+				
+
+<svg 
+	
+	class="h-5 w-5 text-gray-400 custom-text mr-3" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+
+</svg>
+
+				<span class="">Dashboard</span>
+			</a>
+			
+			<a :href="`/account/themes/`" x-show="true" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 custom-border custom-text" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-gray-300': activeIndex === 1, 'text-gray-700 dark:text-gray-300': !(activeIndex === 1) }" role="menuitem" tabindex="-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1" @click="open = false; focusButton()">
+				
+
+<svg 
+	
+	class="h-5 w-5 text-gray-400 custom-text mr-3" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z" clip-rule="evenodd"/>
+
+</svg>
+
+				<span class="">Themes</span>
+			</a>
+			
+			<a :href="`/account/workspaces/`" x-show="true" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 custom-border custom-text" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-gray-300': activeIndex === 2, 'text-gray-700 dark:text-gray-300': !(activeIndex === 2) }" role="menuitem" tabindex="-1" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1" @click="open = false; focusButton()">
+				
+
+<svg 
+	
+	class="h-5 w-5 text-gray-400 custom-text mr-3" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M15.988 3.012A2.25 2.25 0 0118 5.25v6.5A2.25 2.25 0 0115.75 14H13.5V7A2.5 2.5 0 0011 4.5H8.128a2.252 2.252 0 011.884-1.488A2.25 2.25 0 0112.25 1h1.5a2.25 2.25 0 012.238 2.012zM11.5 3.25a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v.25h-3v-.25z" clip-rule="evenodd" />
+<path fill-rule="evenodd" d="M2 7a1 1 0 011-1h8a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V7zm2 3.25a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75zm0 3.5a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+  
+
+</svg>
+
+				<span class="">Workspaces</span>
+			</a>
+			
+			<a :href="`/account/limits-and-usage/`" x-show="true" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 custom-border custom-text" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-gray-300': activeIndex === 3, 'text-gray-700 dark:text-gray-300': !(activeIndex === 3) }" role="menuitem" tabindex="-1" @mouseenter="activeIndex = 3" @mouseleave="activeIndex = -1" @click="open = false; focusButton()">
+				
+
+<svg 
+	
+	class="h-5 w-5 text-gray-400 custom-text mr-3" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm9 4a1 1 0 10-2 0v6a1 1 0 102 0V7zm-3 2a1 1 0 10-2 0v4a1 1 0 102 0V9zm-3 3a1 1 0 10-2 0v1a1 1 0 102 0v-1z" clip-rule="evenodd"/>
+
+</svg>
+
+				<span class="">Limits &amp; Usage</span>
+			</a>
+			
+			<a :href="`/account/billing/`" x-show="true" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 custom-border custom-text" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-gray-300': activeIndex === 4, 'text-gray-700 dark:text-gray-300': !(activeIndex === 4) }" role="menuitem" tabindex="-1" @mouseenter="activeIndex = 4" @mouseleave="activeIndex = -1" @click="open = false; focusButton()">
+				
+
+<svg 
+	
+	class="h-5 w-5 text-gray-400 custom-text mr-3" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
+
+</svg>
+
+				<span class="">Billing</span>
+			</a>
+			
+			<a :href="`/account/settings/`" x-show="true" class="flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 custom-border custom-text" x-state:on="Active" x-state:off="Not Active" :class="{ 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-gray-300': activeIndex === 5, 'text-gray-700 dark:text-gray-300': !(activeIndex === 5) }" role="menuitem" tabindex="-1" @mouseenter="activeIndex = 5" @mouseleave="activeIndex = -1" @click="open = false; focusButton()">
+				
+
+<svg 
+	
+	class="h-5 w-5 text-gray-400 custom-text mr-3" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+
+</svg>
+
+				<span class="">Settings</span>
+			</a>
+			
+	</div>
+	
+	<div class="py-1 border-b custom-border" role="none">
+			<span @click="$store.user.logout()" x-show="true" class="cursor-pointer flex px-4 py-2 text-sm text-gray-700 dark:text-gray-300 custom-border custom-text" :class="{ 'bg-gray-100 text-gray-900 dark:bg-gray-600 dark:text-gray-300': activeIndex === 6, 'text-gray-700 dark:text-gray-300': !(activeIndex === 6) }" role="menuitem" tabindex="-1"  @mouseenter="activeIndex = 6" @mouseleave="activeIndex = -1">
+				
+
+<svg 
+	
+	class="h-5 w-5 text-gray-400 custom-text mr-3" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/>
+
+</svg>
+
+				<span class="">Sign out</span>
+			</span>
+			
+	</div>
+	
+
+				</div>
+				
+			</div>
+			  <!--div class="ml-6 flex-shrink-0">
+				<a href="/create/" class="button is-primary">
+					
+
+<svg 
+	
+	class="h-5 w-5 -ml-1 mr-2 " 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+
+</svg>
+
+					<span>New Poll</span>
+				</a>
+				</div-->
+			</div>
+		  </div>
+		</div>
+
+
+	<div x-show="open" x-transition:enter="duration-200 ease-out" x-transition:enter-start="opacity-0 scale-95"
+		x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in"
+		x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+		x-description="Mobile menu, show/hide based on mobile menu state."
+		class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right" x-ref="panel"
+		@click.away="open = false" style="display: none;">
+		<div class="rounded-lg shadow-lg ring-1 ring-gray-300 dark:ring-gray-700 dark:ring-gray-700 bg-white dark:bg-gray-800 divide-y-2 divide-gray-50 dark:divide-gray-700">
+			<div class="pt-5 pb-6 px-5">
+				<div class="flex items-center justify-between flex-row-reverse">
+					<div class="-mr-2">
+						<button type="button"
+							class="bg-white dark:bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+							@click="toggle">
+							<span class="sr-only">Close menu</span>
+							<svg class="h-6 w-6" x-description="Heroicon name: outline/x"
+								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+								stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M6 18L18 6M6 6l12 12"></path>
+							</svg>
+						</button>
+					</div>
+					<div>
+						<a href="/account/" class="flex-shrink-0 flex items-center text-gray-900 dark:text-white">
+							<a href="https://strawpoll.com/" class="flex-shrink-0 flex items-center text-gray-900 dark:text-gray-200">	
+					<img style="width: 100px;" src="/assets/img/logo.png" class="logo" alt="" />
+				</a>
+						</a>	
+					</div>
+				</div>
+				<div class="mt-6">
+					<nav class="grid gap-y-6">
+						<a href="/poll/strawpoll.com/create/index.html" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-6 w-6" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Create Poll
+							</span>
+						</a>
+
+						<a href="/poll/strawpoll.com/meetings/index.html" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-6 w-6" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Schedule Meeting
+							</span>
+						</a>
+
+						<a href="/poll/strawpoll.com/demo/index.html" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-6 w-6" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Demo
+							</span>
+						</a>
+
+						<a href="/poll/strawpoll.com/pricing/index.html" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-6 w-6" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Pricing
+							</span>
+						</a>
+					</nav>
+				</div>
+			</div>
+			<div class="py-6 px-5 space-y-6">
+					<div class="flex items-center justify-between">
+						<div class="flex items-center">
+							<div class="flex-shrink-0">
+								<img class="h-10 w-10 rounded-full" :src="STATIC_URL + $store.user.avatarPath" alt="">
+							</div>
+							<div class="ml-3">
+								<div class="text-base font-medium text-gray-800 dark:text-gray-200">
+									adeagbo josiah
+								</div>
+								<div class="text-sm font-medium text-gray-500">
+									adeagbojosiah1@gmail.com
+								</div>
+							</div>
+						</div>
+						<div>
+								
+
+	<span class="inline-flex items-center rounded-full font-medium bg-green-100 text-green-800 dark-bg-opacity-green dark:text-green-400 px-3 py-0.5 text-sm">
+		Free
+	</span>
+
+						</div>
+					</div>
+					<div class="grid grid-cols-2 gap-y-3">
+						<a href="/poll/strawpoll.com/strawpoll.com/account/index.html" class="-m-2 p-2 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-5 w-5" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Dashboard
+							</span>
+						</a>
+						<a href="/account/themes/" class="-m-2 p-2 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-5 w-5" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Themes
+							</span>
+						</a>
+						<a href="/account/workspaces/" class="-m-2 p-2 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-5 w-5" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+
+  
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Workspaces
+							</span>
+						</a>
+						<a href="/account/limits-and-usage/" class="-m-2 p-2 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-5 w-5" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Limits &amp; Usage
+							</span>
+						</a>
+						<a href="/account/billing/" class="-m-2 p-2 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-5 w-5" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Billing
+							</span>
+						</a>
+						<a href="/account/settings/" class="-m-2 p-2 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-5 w-5" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Settings
+							</span>
+						</a>
+						<button type="button" @click="$store.user.logout()"
+							class="-m-2 p-2 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50">
+							
+
+<svg 
+	
+	class="h-5 w-5 text-indigo-400 flex-shrink h-5 w-5" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+
+</svg>
+
+							<span class="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">
+								Sign out
+							</span>
+						</button>
+					</div>
+			</div>
+		</div>
+	</div>
+
+</header>
+
+
+		<div class="flex-auto  ">
+			
+<header class="py-16 sm:text-center max-w-[52rem] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 lg:max-w-6xl">
+	<h1 class="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">
+		Experience Live Voting
+	</h1>
+	<p class="text-lg text-slate-700 dark:text-slate-400">
+		See how easy it is to conduct a poll with live results using StrawPoll.
+	</p>
+</header>
+
+	
+<div class="px-4 sm:px-6 md:px-8 xl:px-12 divide-y divide-gray-200 dark:divide-gray-700">
+	<div class="mb-8">
+		<div class="strawpoll-embed" id="strawpoll_eNg6RNDvjgA" style="height: 708px; max-width: 720px; width: 100%; margin: 0 auto; display: flex; flex-direction: column;"><iframe title="StrawPoll Embed" src="https://strawpoll.com/embed/polls/eNg6RNDvjgA" style="position: static; visibility: visible; display: block; width: 100%; flex-grow: 1;" frameborder="0" allowfullscreen allowtransparency>Loading...</iframe><script async src="https://cdn.strawpoll.com/dist/widgets.js" charset="utf-8"></script></div>	
+	</div>
+
+	<div class="max-w-4xl mx-auto pt-8 mb-16">
+		<div class="mb-10">
+			<h2 class="text-2xl font-extrabold text-slate-900 dark:text-slate-200 tracking-tight sm:text-3xl">
+				Anonymous Polls
+			</h2>
+
+			<div class="mt-4 text-slate-700 dark:text-slate-400">
+				<p>Anonymous polls are mainly used to find out the majority opinion of a medium to large group. StrawPoll offers the setting options whether participants can submit one or more choices, or whether participants can add their own answers.</p>
+			</div>
+		</div>
+
+		<h3 class="text-slate-900 text-xl tracking-tight font-bold mb-3 dark:text-slate-200">
+			Examples
+		</h3>
+
+		<ul class="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/NPgxkzPqrn2" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Poll your own followers</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">A creator asking his/her followers about their preferences.</p>
+				</a>
+			</li>
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/w4nWDPYrxgA" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Monthly awards</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">A company that wants to give back to its employees.</p>
+				</a>
+			</li>
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/GJn4GLA7qyz" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Club elections</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">A sports club wants to elect a new position for the board of directors.</p>
+				</a>
+			</li>
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/mpnba8d1Py5" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Collective decision making</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">A discussion on a message board needs the opinion of the members.</p>
+				</a>
+			</li>
+		</ul>
+
+		<div>
+			<a class="link" href="/help/voting-types/#anonymous_polls">Learn more about anonymous polls&nbsp;→</a>
+		</div>
+	</div>
+
+	<div class="max-w-4xl mx-auto pt-8 mb-16">
+		<div class="mb-10">
+			<h2 class="text-2xl font-extrabold text-gray-900 dark:text-gray-200 tracking-tight sm:text-3xl">
+				<span>Group Polls</span>
+			</h2>
+
+			<div class="mt-4 text-slate-700 dark:text-slate-400">
+				<p>Group polls are just the thing when the opinion of the individual is important. It is activated by enabling the &quot;Require participants&#39; names&quot; option.We offer a number of different voting types, which are recommended depending on the number of participants in the poll. While the &quot;participant grid&quot; has proven itself with small groups, the &quot;poll (default)&quot; setting is clearer for larger groups.Great for sharing in your messenger like WhatsApp.</p>
+			</div>
+		</div>
+
+		<h3 class="text-slate-900 text-xl tracking-tight font-bold mb-3 dark:text-slate-200">
+			Examples
+		</h3>
+
+		<ul class="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/XOgOJjEQon3" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Small group decision</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">A group of friends vote on weekend plans.</p>
+				</a>
+			</li>
+
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/wAg3jLPlWn8" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Large group decision</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">A school class votes on their graduation lunch.</p>
+				</a>
+			</li>
+		</ul>
+
+		<div>
+			<a class="link" href="/help/voting-types/#group_polls">Learn more about group polls&nbsp;→</a>
+		</div>
+	</div>
+
+	<div class="max-w-4xl mx-auto pt-8 mb-16">
+		<div class="mb-10">
+			<h2 class="text-2xl font-extrabold text-gray-900 dark:text-gray-200 tracking-tight sm:text-3xl">
+				<span>Meeting Polls</span>
+			</h2>
+
+			<div class="mt-4 text-slate-700 dark:text-slate-400">
+				<p>Meeting polls (or scheduling polls) are basically group polls with the peculiarity that the answer options consist of dates or times. These are great for planning meetings or finding a common date with friends. The &quot;participant grid&quot; is always used, where custom limits can be set for individual options.</p>
+			</div>
+		</div>
+			
+		<h3 class="text-slate-900 text-xl tracking-tight font-bold mb-3 dark:text-slate-200">
+			Examples
+		</h3>
+
+		<ul class="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/kogjvr2m2g6" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Meeting poll</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">Find a date that suits everyone best.</p>
+				</a>
+			</li>
+
+			<li class="p-4 rounded-md relative bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-700">
+				<a href="https://strawpoll.com/polls/mpnba8P4vy5" class="focus:outline-none">
+					<span class="absolute inset-0" aria-hidden="true"></span>
+					<p class="text-lg font-medium text-slate-900 dark:text-slate-200">Custom option limits</p>
+					<p class="mt-1 text-sm text-slate-700 dark:text-slate-400">An online course at various times, each with a limited number of slots.</p>
+				</a>
+			</li>
+		</ul>
+
+		<div>
+			<a class="link" href="/help/voting-types/#meetings">Learn more about meeting polls&nbsp;→</a>
+		</div>
+	</div>
+</div>
+
+		</div>
+
+		<footer class="bg-base-200  border-t border-default" aria-labelledby="footer-heading" x-data="footer()">
+	<h2 id="footer-heading" class="sr-only">Footer</h2>
+	<div class="max-w-md mx-auto pt-12 px-4 sm:max-w-7xl sm:px-6 lg:pt-16 lg:px-8">
+		<div class="lg:grid lg:grid-cols-3 lg:gap-8">
+			<div class="space-y-8 lg:col-span-1">
+				<div class="flex items-center space-x-3">
+					<img style="width: 150px;" src="/assets/img/logo.png" class="logo" alt="" />
+				</div>
+				<p>
+					Making it easy to create instant, real-time polls and surveys for free.
+				</p>
+				<div class="flex space-x-3">
+
+					<a href="https://discord.gg/x7pfswu" target="_blank" class="btn btn-ghost">
+						<span class="sr-only">Discord</span>
+						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 71 55" aria-hidden="true">
+							<path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" />
+						</svg>
+					</a>
+
+					<a href="https://twitter.com/StrawPollcom" target="_blank" class="btn btn-ghost">
+						<span class="sr-only">Twitter</span>
+						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+						</svg>
+					</a>
+
+					<a href="https://www.instagram.com/strawpollcom/" target="_blank" class="btn btn-ghost">
+						<span class="sr-only">Instagram</span>
+						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path fill-rule="evenodd"
+								d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+								clip-rule="evenodd" />
+						</svg>
+					</a>
+
+					<a href="https://www.facebook.com/strawpollcom/" target="_blank" class="btn btn-ghost">
+						<span class="sr-only">Facebook</span>
+						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path fill-rule="evenodd"
+								d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+								clip-rule="evenodd" />
+						</svg>
+					</a>
+
+					<a href="https://github.com/strawpoll-com" target="_blank" class="btn btn-ghost">
+						<span class="sr-only">GitHub</span>
+						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path fill-rule="evenodd"
+								d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+								clip-rule="evenodd" />
+						</svg>
+					</a>
+
+					<a href="https://www.reddit.com/r/strawpoll/" target="_blank" class="btn btn-ghost">
+						<span class="sr-only">Reddit</span>
+						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+								<path d="M24 11.779c0-1.459-1.192-2.645-2.657-2.645-.715 0-1.363.286-1.84.746-1.81-1.191-4.259-1.949-6.971-2.046l1.483-4.669 4.016.941-.006.058c0 1.193.975 2.163 2.174 2.163 1.198 0 2.172-.97 2.172-2.163s-.975-2.164-2.172-2.164c-.92 0-1.704.574-2.021 1.379l-4.329-1.015c-.189-.046-.381.063-.44.249l-1.654 5.207c-2.838.034-5.409.798-7.3 2.025-.474-.438-1.103-.712-1.799-.712-1.465 0-2.656 1.187-2.656 2.646 0 .97.533 1.811 1.317 2.271-.052.282-.086.567-.086.857 0 3.911 4.808 7.093 10.719 7.093s10.72-3.182 10.72-7.093c0-.274-.029-.544-.075-.81.832-.447 1.405-1.312 1.405-2.318zm-17.224 1.816c0-.868.71-1.575 1.582-1.575.872 0 1.581.707 1.581 1.575s-.709 1.574-1.581 1.574-1.582-.706-1.582-1.574zm9.061 4.669c-.797.793-2.048 1.179-3.824 1.179l-.013-.003-.013.003c-1.777 0-3.028-.386-3.824-1.179-.145-.144-.145-.379 0-.523.145-.145.381-.145.526 0 .65.647 1.729.961 3.298.961l.013.003.013-.003c1.569 0 2.648-.315 3.298-.962.145-.145.381-.144.526 0 .145.145.145.379 0 .524zm-.189-3.095c-.872 0-1.581-.706-1.581-1.574 0-.868.709-1.575 1.581-1.575s1.581.707 1.581 1.575-.709 1.574-1.581 1.574z"/>
+							</svg>
+						</svg>
+					</a>
+				</div>
+
+					<div class="flex space-x-3 items-center">
+						
+
+<svg 
+	id="languageSelectorIcon"
+	class="h-8 w-8 " 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24">
+	<path d="M12 21C16.1926 21 19.7156 18.1332 20.7157 14.2529M12 21C7.80742 21 4.28442 18.1332 3.2843 14.2529M12 21C14.4853 21 16.5 16.9706 16.5 12C16.5 7.02944 14.4853 3 12 3M12 21C9.51472 21 7.5 16.9706 7.5 12C7.5 7.02944 9.51472 3 12 3M12 3C15.3652 3 18.299 4.84694 19.8431 7.58245M12 3C8.63481 3 5.70099 4.84694 4.15692 7.58245M19.8431 7.58245C17.7397 9.40039 14.9983 10.5 12 10.5C9.00172 10.5 6.26027 9.40039 4.15692 7.58245M19.8431 7.58245C20.5797 8.88743 21 10.3946 21 12C21 12.778 20.9013 13.5329 20.7157 14.2529M20.7157 14.2529C18.1334 15.6847 15.1619 16.5 12 16.5C8.8381 16.5 5.86662 15.6847 3.2843 14.2529M3.2843 14.2529C3.09871 13.5329 3 12.778 3 12C3 10.3946 3.42032 8.88743 4.15692 7.58245" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>
+
+						<div x-data x-menu class="relative">
+							<button x-menu:button class="button is-light">
+								<span>Choose Language</span>
+								
+
+<svg 
+	
+	class="h-5 w-5 ml-2 " 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24">
+	<path d="M19.5 8.25L12 15.75L4.5 8.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>
+
+							</button>
+						
+							<div
+								x-menu:items
+								x-transition.origin.top.right
+								class="absolute right-0 w-48 mt-2 z-10 origin-top-right bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-700 divide-y divide-gray-100 dark:divide-gray-800 rounded-md shadow-md py-1 outline-none"
+								x-cloak
+							>
+								<a
+									x-menu:item
+									href="/demo/"
+									:class="{
+										'bg-indigo-500/10 text-gray-900 dark:bg-indigo-500/50 dark:text-white': $menuItem.isActive,
+										'text-gray-600 dark:text-gray-400': ! $menuItem.isActive,
+										'opacity-50 cursor-not-allowed': $menuItem.isDisabled,
+									}"
+									class="block w-full px-4 py-2 text-sm transition-colors"
+								>
+									English
+								</a>
+								<a
+									x-menu:item
+									href="/de/demo/"
+									:class="{
+										'bg-indigo-500/10 text-gray-900 dark:bg-indigo-500/50 dark:text-white': $menuItem.isActive,
+										'text-gray-600 dark:text-gray-400': ! $menuItem.isActive,
+										'opacity-50 cursor-not-allowed': $menuItem.isDisabled,
+									}"
+									class="block w-full px-4 py-2 text-sm transition-colors"
+								>
+									German
+								</a>
+								<a
+									x-menu:item
+									href="/fr/demo/"
+									:class="{
+										'bg-indigo-500/10 text-gray-900 dark:bg-indigo-500/50 dark:text-white': $menuItem.isActive,
+										'text-gray-600 dark:text-gray-400': ! $menuItem.isActive,
+										'opacity-50 cursor-not-allowed': $menuItem.isDisabled,
+									}"
+									class="block w-full px-4 py-2 text-sm transition-colors"
+								>
+									French
+								</a>
+								<a
+									x-menu:item
+									href="/es/demo/"
+									:class="{
+										'bg-indigo-500/10 text-gray-900 dark:bg-indigo-500/50 dark:text-white': $menuItem.isActive,
+										'text-gray-600 dark:text-gray-400': ! $menuItem.isActive,
+										'opacity-50 cursor-not-allowed': $menuItem.isDisabled,
+									}"
+									class="block w-full px-4 py-2 text-sm transition-colors"
+								>
+									Spanish
+								</a>
+								<a
+									x-menu:item
+									href="/pt/demo/"
+									:class="{
+										'bg-indigo-500/10 text-gray-900 dark:bg-indigo-500/50 dark:text-white': $menuItem.isActive,
+										'text-gray-600 dark:text-gray-400': ! $menuItem.isActive,
+										'opacity-50 cursor-not-allowed': $menuItem.isDisabled,
+									}"
+									class="block w-full px-4 py-2 text-sm transition-colors"
+								>
+									Portuguese
+								</a>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="mt-12 grid grid-cols-2 gap-8 lg:mt-0 lg:col-span-2">
+				<div class="md:grid md:grid-cols-2 md:gap-8">
+					<div>
+						<h3 class="text-sm font-semibold text-accent tracking-wider uppercase">
+							Solutions
+						</h3>
+						<ul role="list" class="mt-4 space-y-4">
+							<li>
+								<a href="/poll/strawpoll.com/create/index.html" class="link link-hover">
+									Poll Maker
+								</a>
+							</li>
+
+							<li>
+								<a href="/poll/strawpoll.com/meetings/index.html" class="link link-hover">
+									Meeting Scheduler
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.bot/" target="_blank" class="link link-hover">
+									Discord Bot
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/docs/api/" class="link link-hover">
+									Poll API
+								</a>
+							</li>
+
+								<li>
+									<a href="https://strawpoll.com/rankings/" class="link link-hover">
+										Rankings
+									</a>
+								</li>
+						</ul>
+					</div>
+					<div class="mt-12 md:mt-0">
+						<h3 class="text-sm font-semibold text-accent tracking-wider uppercase">
+							Support
+						</h3>
+						<ul role="list" class="mt-4 space-y-4">
+							<li>
+								<a href="https://strawpoll.com/pricing/" class="link link-hover">
+									Pricing
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/help/" class="link link-hover">
+									Help Center
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/help/guides/" class="link link-hover">
+									Guides
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/help/faq/" class="link link-hover">
+									F.A.Q.
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/docs/integrations/" class="link link-hover">
+									Integrations
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="md:grid md:grid-cols-2 md:gap-8">
+					<div>
+						<h3 class="text-sm font-semibold text-accent tracking-wider uppercase">
+							Company
+						</h3>
+						<ul role="list" class="mt-4 space-y-4">
+							<li>
+								<a href="https://strawpoll.com/about/" class="link link-hover">
+									About
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/imprint/" class="link link-hover">
+									Imprint
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/contact/" class="link link-hover">
+									Contact
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="mt-12 md:mt-0">
+						<h3 class="text-sm font-semibold text-accent tracking-wider uppercase">
+							Legal
+						</h3>
+						<ul role="list" class="mt-4 space-y-4">
+							<li>
+								<a href="https://strawpoll.com/privacy/" class="link link-hover">
+									Privacy
+								</a>
+							</li>
+
+							<li>
+								<a href="https://strawpoll.com/terms/" class="link link-hover">
+									Terms
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mt-12 bordered-t py-8">
+			<p class="text-base text-gray-600 dark:text-gray-400 lg:text-center">
+				&copy; <a style="color: blue;" href="https://foramfera.com/"> 2024  Foraminifera Market Research LTD.</a> All rights reserved.</p>
+		</div>
+	</div>
+
+</footer>
+
+<script>
+	function footer() {
+		return {
+			language: 'en',
+			urls: {
+				'en': 'https://strawpoll.com/demo/',
+				'de': 'https://strawpoll.com/de/demo/',
+				'fr': 'https://strawpoll.com/fr/demo/',
+				'es': 'https://strawpoll.com/es/demo/',
+				'pt': 'https://strawpoll.com/pt/demo/',
+			},
+			async changeLanguage() {
+				const response = await strawpoll.fetchAPI('/language', {
+					method: 'POST',
+					body: JSON.stringify({
+						path: '/demo/',
+						language: this.language 
+					})
+				})
+
+				if (!response.error) {
+					window.location.href = this.urls[this.language]
+				}
+			}
+		}
+	}
+</script>
+
+
+		<div x-data aria-live="assertive" class="fixed z-50 top-16 inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+    <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
+        <div x-show="$store.notification.open" x-transition:enter="transform ease-out duration-300 transition" x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-gray-300 dark:ring-gray-700 overflow-hidden" aria-hidden="true" x-cloak>
+        	<div class="p-4">
+        		<div class="flex items-start">
+            		<div class="flex-shrink-0" x-show="$store.notification.type === 'success'">
+						
+
+<svg 
+	
+	class="h-6 w-6 text-green-400" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+
+</svg>
+
+             		</div>
+					<div class="flex-shrink-0" x-show="$store.notification.type === 'error'">
+						
+
+<svg 
+	
+	class="h-6 w-6 text-red-400" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+
+</svg>
+
+             		</div>
+					<div class="ml-3 w-0 flex-1 pt-0.5">
+						<p class="text-sm font-medium text-gray-900" x-text="$store.notification.title"></p>
+						<p class="mt-1 text-sm text-gray-500" x-text="$store.notification.description" x-cloak></p>
+					</div>
+					<div class="ml-4 flex-shrink-0 flex">
+						<button @click="$store.notification.hide()" class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+							<span class="sr-only">Close</span>
+							
+
+<svg 
+	
+	class="h-5 w-5 " 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+
+</svg>
+
+						</button>
+					</div>
+				</div>
+          	</div>
+        </div>
+    </div>
+</div>
+
+
+		<script>
+	function global() {
+		return {
+			isMobileView: false,
+			expandBox: false,
+			init() {
+				let width = (window.innerWidth > 0) ? window.innerWidth : screen.width
+				if (width < 769) {
+					this.isMobileView = true
+				}
+
+				this.$store.meta.update({
+					availableLanguages: ['en', 'de', 'fr', 'es', 'pt'],
+					displayLang: "en",
+					csrfToken: "8d381018e072bce1c58ae09886daaf14cb77b79c",
+				})
+					this.$store.user.update(strawpoll.toCamelCaseKeys({"api_key":null,"avatar_path":"\/images\/users\/avatars\/adeagbo-josiah-xVg7a6oRyrR.png","created_at":1708942507,"displayname":"adeagbo josiah","email":"adeagbojosiah1@gmail.com","email_canonical":"adeagbojosiah1@gmail.com","id":"e7ZJdKPvn3K","status":"active","subscription":"free","trusted":0,"user_config":{"active_poll_slug":null,"appearance":"auto","clock_type":"12h","default_theme_id":null,"default_workspace_id":null,"first_day_of_week":0,"language":"en","locale":"en-US","notification_delay":30,"notify_deadline":false,"notify_meeting_vote":true,"notify_poll_vote":false,"timezone":"America\/Los_Angeles"},"user_meta":{"about":null,"adfree_participants_quota":0,"adfree_participants_remaining":0,"adfree_participants_used":0,"allow_active_vanity_url":false,"allow_clickable_links":false,"allow_custom_email_subject":false,"allow_custom_poll_links":false,"allow_custom_themes":false,"allow_image_upload":true,"allow_priority_support":false,"allow_remove_ads":false,"allow_remove_branding":false,"allow_theme_logo":false,"country_code":"ng","embed_views_quota":1000,"embed_views_used":0,"has_webhooks":false,"has_workspaces":false,"invites_quota":50,"invites_remaining":50,"invites_used":0,"monthly_points":0,"pending_email":null,"total_points":0,"website":null,"workspace_members_quota":0,"workspace_members_used":0,"workspaces_quota":0,"workspaces_used":0},"username":"adeagbo-josiah"}))
+
+
+
+				dayjs.locale(strawpoll.getLanguage())
+			}
+		}
+	}
+
+		localStorage.setItem('settings/last_keepalive', (new Date()).getTime())
+
+		setInterval(keepAlive, 300000)
+
+		async function keepAlive() {
+			let setting = localStorage.getItem('settings/last_keepalive')
+			let now = new Date().getTime()
+			if (!setting || setting < now - 290000) {
+				await fetch('https://strawpoll.com' + '/api/refresh')
+				localStorage.setItem('settings/last_keepalive', (new Date()).getTime())
+			}
+		}
+
+		document.addEventListener("visibilitychange", () => {
+  			if (document.visibilityState === 'visible') {
+				keepAlive()
+			}
+		})
+</script>
+
+	</body>
+</html>

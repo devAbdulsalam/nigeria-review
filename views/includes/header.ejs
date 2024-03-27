@@ -1,0 +1,116 @@
+<div class="header header-transparent change-logo">
+	<div class="container">
+		<nav id="navigation" class="navigation navigation-landscape">
+			<div class="nav-header">
+				<a class="nav-brand static-logo" href="/"
+					><img src="assets/img/logo-light.png" class="logo" alt=""
+				/></a>
+				<a class="nav-brand fixed-logo" href="/"
+					><img src="assets/img/logo.png" class="logo" alt=""
+				/></a>
+				<div class="nav-toggle"></div>
+				<div class="mobile_nav">
+					<ul>
+						<% if (!user) { %>
+						<li class="authHref">
+							<a href="login" class="theme-cl fs-lg">
+								<i class="lni lni-user"></i>
+							</a>
+						</li>
+						<% } %> <% if (user) { %>
+						<li class="addListingHref">
+							<a
+								href="add-listing"
+								class="crs_yuo12 w-auto text-white theme-bg"
+							>
+								<span class="embos_45"
+									><i class="fas fa-plus me-2"></i>Add Listing</span
+								>
+							</a>
+						</li>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+			<div class="nav-menus-wrapper" style="transition-property: none">
+				<% if (!user) { %>
+				<ul class="nav-menu">
+					<li class="active"><a href="index">Home</a></li>
+
+					<li>
+						<a href="javascript:void(0);">For Business</a>
+						<ul class="nav-dropdown nav-submenu">
+							<li>
+								<a href="register"
+									><i class="lni lni-briefcase me-2"></i>Submit Business</a
+								>
+							</li>
+							<li>
+								<a href="login"
+									><i class="lni lni-handshake me-2"></i>Claim Business</a
+								>
+							</li>
+							<li>
+								<a href="login"
+									><i class="lni lni-user me-2"></i>Log in to Business</a
+								>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="javascript:void(0);">Reviewers</a>
+						<ul class="nav-dropdown nav-submenu">
+							<li>
+								<a href="login"><i class="lni lni-user me-2"></i>Sign in </a>
+							</li>
+							<li>
+								<a href="signup"
+									><i class="lni lni-lock-alt me-2"></i>Register as a
+									Reviewer</a
+								>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<a href="javascript:void(0);">Advertisers</a>
+						<ul class="nav-dropdown nav-submenu">
+							<li>
+								<a href="register-advertizer"
+									><i class="lni lni-user me-2"></i>Sign In</a
+								>
+							</li>
+							<li>
+								<a href="login"
+									><i class="lni lni-link me-2"></i>Advertise with us</a
+								>
+							</li>
+						</ul>
+					</li>
+					<% if (user?.role === 'REVIEWER') { %>
+					<li><a href="index">Write Reviews</a></li>
+					<% } %>
+				</ul>
+				<% } %>
+
+				<ul class="nav-menu nav-menu-social align-to-right">
+					<% if (!user) { %>
+
+					<li class="authHref">
+						<a href="/login" class="ft-bold">
+							<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
+						</a>
+					</li>
+					<% } %> <% if (user) { %>
+					<li class="add-listing addListingHref">
+						<a href="/add-listing">
+							<i class="fas fa-plus me-2"></i>Add Listing
+						</a>
+					</li>
+					<% } %>
+				</ul>
+			</div>
+		</nav>
+	</div>
+</div>

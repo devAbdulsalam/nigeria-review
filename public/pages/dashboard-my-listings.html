@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:05 GMT -->
+	<head>
+		<!-- Meta Data -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Goodup - Business Directory & Reviews</title>
+
+		<!-- Favicon -->
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="assets/img/favicon.png"
+		/>
+
+		<!-- Morris Charts CSS -->
+		<link href="assets/js/plugins/morris.js/morris.css" rel="stylesheet" />
+
+		<!-- Custom CSS -->
+		<link href="assets/css/styles.css" rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+		/>
+	</head>
+
+	<body>
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+		<div class="preloader"></div>
+
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<div id="main-wrapper">
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<!-- Start Navigation -->
+			<div class="header header-transparent change-logo">
+				<div class="container">
+					<nav id="navigation" class="navigation navigation-landscape">
+						<div class="nav-header">
+							<a class="nav-brand static-logo" href="#"
+								><img src="assets/img/logo-light.png" class="logo" alt=""
+							/></a>
+							<a class="nav-brand fixed-logo" href="#"
+								><img src="assets/img/logo.png" class="logo" alt=""
+							/></a>
+							<div class="nav-toggle"></div>
+							<div class="mobile_nav">
+								<ul>
+									<li>
+										<a
+											href="#"
+											data-bs-toggle="modal"
+											data-bs-target="#login"
+											class="theme-cl fs-lg"
+										>
+											<i class="lni lni-user"></i>
+										</a>
+									</li>
+									<li>
+										<a
+											href="add-listing.html"
+											class="crs_yuo12 w-auto text-white theme-bg"
+										>
+											<span class="embos_45"
+												><i class="fas fa-plus me-2"></i>Add Listing</span
+											>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="nav-menus-wrapper" style="transition-property: none">
+							<ul class="nav-menu">
+								<li class="active"><a href="index.html">Home</a></li>
+
+								<li>
+									<a href="javascript:void(0);">For Business</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li>
+											<a href="author-detail.html"
+												><i class="lni lni-briefcase me-2"></i>Submit
+												Business</a
+											>
+										</li>
+										<li>
+											<a href="claim-business/companies-landing.html"
+												><i class="lni lni-handshake me-2"></i>Claim Business</a
+											>
+										</li>
+										<li>
+											<a href="business-login.html"
+												><i class="lni lni-user me-2"></i>Log in to Business</a
+											>
+										</li>
+									</ul>
+								</li>
+
+								<li>
+									<a href="javascript:void(0);">Reviewers</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li class="authHref">
+											<a href="dashboard-my-profile.html"
+												><i class="lni lni-user me-2"></i>Sign in
+											</a>
+										</li>
+										<li>
+											<a href="dashboard-change-password.html"
+												><i class="lni lni-lock-alt me-2"></i>Register as a
+												Reviewer</a
+											>
+										</li>
+									</ul>
+								</li>
+
+								<li>
+									<a href="javascript:void(0);">Advertisers</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li class="authHref">
+											<a href="signup.html"
+												><i class="lni lni-user me-2"></i>Sign In</a
+											>
+										</li>
+										<li>
+											<a href="login.html"
+												><i class="lni lni-link me-2"></i>Advertise with us</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li><a href="index.html">Write Reviews</a></li>
+							</ul>
+
+							<ul class="nav-menu nav-menu-social align-to-right">
+								<li>
+									<a
+										href="#"
+										data-bs-toggle="modal"
+										data-bs-target="#login"
+										class="ft-bold"
+									>
+										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
+									</a>
+								</li>
+								<li class="add-listing">
+									<a href="add-listing.html">
+										<i class="fas fa-plus me-2"></i>Add Listing
+									</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<style>
+				/* Your existing styles here */
+
+				@media (max-width: 768px) {
+					.add-list-btn {
+						width: 46%;
+						font-size: 13px;
+						margin: 5px; /* Make the buttons take full width on smaller screens */
+					}
+
+					.dashboard-head-author-clicl {
+						max-width: 100%; /* Adjust the maximum width for smaller screens */
+					}
+					.flex-container {
+						margin-left: 0px;
+					}
+					.add-list-btn.hidden {
+						display: none;
+					}
+					.abs-list-sec {
+						margin-left: 30px;
+					}
+
+					/* Add any additional styles for smaller screens here */
+				}
+			</style>
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<section
+				class="bg-cover position-relative"
+				style="background: red url(assets/img/banner-6.jpg) no-repeat"
+				data-overlay="3"
+			>
+				<div class="abs-list-sec">
+					<div class="flex-container">
+						<a href="/survey/index.html" class="add-list-btn hidden"
+							><i class="fas fa-plus me-2"></i>Create Survey</a
+						>
+						<a href="/poll/strawpoll.com/create/index.html" class="add-list-btn"
+							><i class="fas fa-poll me-2"></i>Create Poll</a
+						>
+						<a href="/Bulk sms/index.html" class="add-list-btn"
+							><i class="fas fa-sms me-2"></i>Send SMS</a
+						>
+						<a href="dashboard-add-listing.html" class="add-list-btn"
+							><i class="fas fa-list me-2"></i>Create Marketting List</a
+						>
+						<a href="dashboard-add-listing.html" class="add-list-btn"
+							><i class="fas fa-shopping-bag me-2"></i>Mystery Shopping Task</a
+						>
+						<a href="add-listing.html" class="add-list-btn hidden"
+							><i class="fas fa-plus me-2"></i>Add Listing</a
+						>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+							<div class="dashboard-head-author-clicl">
+								<div
+									style="border-radius: 20px"
+									class="dashboard-head-author-thumb"
+								>
+									<img
+										id="businessImage"
+										style="border-radius: 20px"
+										src="assets/img/t-5.png"
+										class="img-fluid"
+										alt=""
+									/>
+								</div>
+								<div class="dashboard-head-author-caption">
+									<div class="dashploio">
+										<h4 id="businessName">Sablak Hotel</h4>
+									</div>
+									<div class="dashploio">
+										<p class="agd-location"></p>
+											<i class="lni lni-map-marker me-1"></i>
+											<span id="businessLocation"> Ibadan, Oyo Nigeria</span>
+										</p>
+									</div>
+									<div class="listing-rating high">
+										<i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i>
+									</div>
+
+									<div class="Goodup-price-range">
+										<span class="ft-medium text-light">34 Reviews</span>
+									</div>
+									<div class="d-block mt-3">
+										<div class="list-lioe">
+											<div class="list-lioe-single">
+												<span class="ft-medium text-info"
+													><i class="fas fa-check-circle me-1"></i>Claimed</span
+												>
+											</div>
+											<div class="list-lioe-single ms-2 ps-3 seperate">
+												<a
+													href="javascript:void(0);"
+													class="text-light ft-medium"
+													>Chicken | Wings</a
+												>|<a
+													href="javascript:void(0);"
+													class="text-light ft-medium ms-1"
+													>| Sports</a
+												>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br /><br /><br /><br /><br />
+			</section>
+			<!-- =============================== Dashboard Header ========================== -->
+
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a
+					class="mobNavigation"
+					data-bs-toggle="collapse"
+					href="#MobNav"
+					role="button"
+					aria-expanded="false"
+					aria-controls="MobNav"
+				>
+					<i class="fas fa-bars me-2"></i>Dashboard
+				</a>
+				<div class="collapse" id="MobNav">
+					<div class="goodup-dashboard-nav sticky-top">
+						<div class="goodup-dashboard-inner">
+							<ul data-submenu-title="Dashboard">
+								<li>
+									<a href="dashboard.html"
+										><i class="lni lni-dashboard me-2"></i>Dashboard</a
+									>
+								</li>
+								<li class="active">
+									<a href="dashboard-my-listings.html"
+										><i class="lni lni-files me-2"></i>My Listings</a
+									>
+								</li>
+								<li>
+									<a href="add-listing.html"
+										><i class="lni lni-add-files me-2"></i>Add Listing</a
+									>
+								</li>
+								<li>
+									<a href="dashboard-saved-listings.html"
+										><i class="lni lni-bookmark me-2"></i>Saved Listing</a
+									>
+								</li>
+							</ul>
+							<ul data-submenu-title="Business & Marketing Tools">
+								<li>
+									<a href="reviews.html"
+										><i class="lni lni-pencil-alt me-2"></i>Write A Review</a
+									>
+								</li>
+								<li>
+									<a href="/reviews.html"
+										><i class="lni lni-grow me-2"></i>Surveys & Polls</a
+									>
+								</li>
+								<li>
+									<a href="reviews.html"
+										><i class="fas fa-sms me-2"></i>Send SMS & Invite</a
+									>
+								</li>
+								<li>
+									<a href="reviews.html"
+										><i class="lni lni-shopping-basket me-2"></i>Mystery
+										Shopping</a
+									>
+								</li>
+								<li>
+									<a href=""
+										><i class="lni lni-happy me-2"></i>Advertise With Us</a
+									>
+								</li>
+								
+							</ul>
+							<ul data-submenu-title="Blog, Questions & Answers">
+								<li>
+									<a href="dashboard-change-password.html"
+										><i class="lni lni-list me-2"></i>My Articles</a
+									>
+								</li>
+								<li>
+									<a href="javascript:void(0);"
+										><i class="fas fa-plus-circle me-2"></i>List An Article</a
+									>
+								</li>
+								<li>
+									<a href="login.html"
+										><i class="lni lni-question-circle me-2"></i> Ask A
+										Question</a
+									>
+								</li>
+								<li>
+									<a href=""
+										><i class="lni lni-bookmark me-2"></i>My Questions</a
+									>
+								</li>
+								<li>
+									<a href=""
+										><i class="lni lni-checkmark-circle me-2"></i>My Answers</a
+									>
+								</li>
+							</ul>
+							<ul data-submenu-title="Other Listing Options">
+								<li>
+									<a href="dashboard-change-password.html"
+										><i class="lni lni-plus me-2"></i>List A Product</a
+									>
+								</li>
+								<li>
+									<a href="javascript:void(0);"
+										><i class="lni lni-money-location me-2"></i> List Places &
+										Tourist Destin...</a
+									>
+								</li>
+								<li>
+									<a href="login.html"
+										><i class="lni lni-music me-2"></i>List Movies, Music &
+										Awards</a
+									>
+								</li>
+							</ul>
+							<ul data-submenu-title="My Accounts">
+								<li>
+									<a href="dashboard-my-profile.html"
+										><i class="lni lni-user me-2"></i>My Profile
+									</a>
+								</li>
+								<li>
+									<a href="dashboard-change-password.html"
+										><i class="lni lni-lock-alt me-2"></i>Change Password</a
+									>
+								</li>
+								<li>
+									<a href="javascript:void(0);"
+										><i class="lni lni-trash-can me-2"></i>Delete Account</a
+									>
+								</li>
+								<li>
+									<a href="login.html"
+										><i class="lni lni-power-switch me-2"></i>Log Out</a
+									>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">Manage Listings</h1>
+								<nav aria-label="breadcrumb">
+									<ol style="gap: 5px" class="breadcrumb">
+										<li class="text-muted"><a href="#">Home</a></li>
+										<li class="text-muted"><a href="#">Dashboard</a></li>
+										<li class="breadcrumb-item">
+											<a href="#" class="theme-cl">Manage Listings</a>
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-12 col-lg-12">
+								<div class="dashboard-list-wraps bg-white rounded mb-4">
+									<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+										<div class="dashboard-list-wraps-flx">
+											<h4 class="mb-0 ft-medium fs-md">
+												<i class="fa fa-file-alt me-2 theme-cl fs-sm"></i>My
+												Listings
+											</h4>
+										</div>
+									</div>
+
+									<div class="dashboard-list-wraps-body py-3 px-3">
+										<div class="dashboard-listing-wraps" id="listings">
+											<!-- Single Listing Item -->
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="assets/img/listing/l-1.jpg"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>Rajwara Marriage Home</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>San
+														Francisco, USA</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">34 Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<a
+															href="javascript:void(0);"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</a
+														>
+														<button
+															type="button"
+															id="deleteBtn"
+															class="btn btn-delete"
+														>
+															<i class="fas fa-trash me-1"></i>Delete
+														</button>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<a
+															href="reviews.html/112"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews</a
+														>
+													</div>
+												</div>
+											</div>
+
+											<!-- Single Listing Item -->
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="assets/img/listing/l-2.jpg"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>Decathlon Sport House</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>San
+														Francisco, USA</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">34 Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<a
+															href="javascript:void(0);"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</a
+														>
+														<a href="javascript:void(0);" class="btn btn-delete"
+															><i class="fas fa-trash me-1"></i>Delete</a
+														>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<a
+															href="reviews.html"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews</a
+														>
+													</div>
+												</div>
+											</div>
+
+											<!-- Single Listing Item -->
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="assets/img/listing/l-3.jpg"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>The Gold Hotel Lalit</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>San
+														Francisco, USA</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">34 Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<a
+															href="javascript:void(0);"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</a
+														>
+														<a href="javascript:void(0);" class="btn btn-delete"
+															><i class="fas fa-trash me-1"></i>Delete</a
+														>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<a
+															href="reviews.html"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews</a
+														>
+													</div>
+												</div>
+											</div>
+
+											<!-- Single Listing Item -->
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="assets/img/listing/l-4.jpg"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>Fitness Revolution Gym</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>San
+														Francisco, USA</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">34 Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<a
+															href="javascript:void(0);"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</a
+														>
+														<a href="javascript:void(0);" class="btn btn-delete"
+															><i class="fas fa-trash me-1"></i>Delete</a
+														>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<a
+															href="reviews.html"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews</a
+														>
+													</div>
+												</div>
+											</div>
+
+											<!-- Single Listing Item -->
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="assets/img/listing/l-5.jpg"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>Pretty Woman Smart Batra</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>San
+														Francisco, USA</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">34 Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<a
+															href="javascript:void(0);"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</a
+														>
+														<a href="javascript:void(0);" class="btn btn-delete"
+															><i class="fas fa-trash me-1"></i>Delete</a
+														>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<a
+															href="reviews.html"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews</a
+														>
+													</div>
+												</div>
+											</div>
+
+											<!-- Single Listing Item -->
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="assets/img/listing/l-6.jpg"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>The Sartaj Blue Night</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>San
+														Francisco, USA</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">34 Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<a
+															href="javascript:void(0);"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</a
+														>
+														<a href="javascript:void(0);" class="btn btn-delete"
+															><i class="fas fa-trash me-1"></i>Delete</a
+														>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<a
+															href="reviews.html"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews</a
+														>
+													</div>
+												</div>
+											</div>
+
+											<!-- Single Listing Item -->
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="assets/img/listing/l-8.jpg"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>The Great Allante Shop</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>San
+														Francisco, USA</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">34 Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<a
+															href="javascript:void(0);"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</a
+														>
+														<a href="javascript:void(0);" class="btn btn-delete"
+															><i class="fas fa-trash me-1"></i>Delete</a
+														>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<a
+															href="reviews.html"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews</a
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">
+								<p class="mb-0">
+									<a style="color: blue" href="https://foramfera.com/"
+										>© 2024 Foraminifera Market Research LTD.</a
+									>
+									All rights reserved.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
+				><i class="ti-arrow-up"></i
+			></a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			// import swal from 'sweetalert';
+			const preloader = document.querySelector('.preloader');
+			const businessName = document.querySelectorAll('.businessName');
+			const authHref = document.querySelectorAll('.authHref');
+			const businessImage = document.querySelectorAll('#businessImage');
+			const businessLocation = document.querySelectorAll('#businessLocation');
+			const listings = document.querySelector('#listings');
+			const checkUser = sessionStorage.getItem('myapp-user');
+			const accessToken = sessionStorage.getItem('myapp-accessToken');
+			const checkBusiness = sessionStorage.getItem('myapp-business');
+			const business = JSON.parse(checkBusiness);
+			document.addEventListener('DOMContentLoaded', function () {
+				if (checkUser) {
+					console.log('user');
+					console.log(business);
+					authHref.forEach(function (element) {
+						element.style.display = 'none';
+					});
+					user = JSON.parse(checkUser);
+					// console.log(user.firstName);
+					businessName.forEach(function (element) {
+						element.innerHTML = user.firstName;
+					});
+					let endpoint;
+					if (business) {
+						businessName.forEach(function (element) {
+							element.innerHTML = business.name;
+						});
+						console.log(business.location);
+						businessLocation.innerHTML = business.location;
+						businessImage.src = business.logo.url;
+						endpoint = `listings/${business._id}`;
+					} else {
+						endpoint = `listings/user/${user._id}`;
+					}
+					preloader.style.display = 'block';
+					getData(user, endpoint, listingSuccess);
+				} else {
+					window.location.href = '/index.html';
+				}
+			});
+
+			const apiurl = 'http://localhost:8080/api/v1';			
+			let listingsData
+			//process the login and the register
+
+			const errorText = document.querySelector('#errorText');
+			function handleDetails(id) {
+				const item = listingsData.find((item) => item._id === id)
+				Swal.fire({
+					title: `${item.productName}`,
+					text: "Modal with a custom image.",
+					imageUrl: `${item?.featuredImage?.url}`,
+					imageWidth: 400,
+					imageHeight: 200,
+					imageAlt: `${item.productName}`,
+				});
+			}
+			
+			function handleDelete(id) {
+				if(!id){
+					return Swal.fire('Oh Oops!', 'Item Id is required', 'error');
+				}
+				Swal.fire({
+					title: 'Delete Item',
+					text: `Listing will be Deleted`,
+					icon: 'question',
+					showCancelButton: true,
+					confirmButtonText: 'Delete',
+					confirmButtonColor: '#d33',
+					cancelButtonColor: '#3085d6',
+				}).then((result) => {
+					if (result.isConfirmed) {
+						let endpoint = 'listings';
+						preloader.style.display = 'block';
+						deleteData(id, endpoint, deleteSuccess);
+					}
+				});
+				
+			}
+			
+			function sendData(user, endpoint, callback) {
+				let url = `${apiurl}/${endpoint}`;
+				let h = new Headers();
+				h.append('Content-Type', 'application/json');
+				let req = new Request(url, {
+					method: 'POST',
+					headers: h,
+					body: JSON.stringify(user),
+				});
+				fetch(req)
+					.then((res) => {
+						if (!res.ok) {
+							// Handle non-successful responses
+							failure(`Request failed with status ${res.status}`);
+						}
+						return res.json();
+					})
+					.then((data) => {
+						console.log(data);
+						// Check for errors in the response
+						if (data && data.errors) {
+							// Handle errors
+							return failure(
+								data.errors[0] ||
+									data.message ||
+									error ||
+									'Received data is not valid'
+							);
+						}
+						// Successful response, pass data to the callback function
+						callback(data);
+					})
+					.catch((error) => {
+						failure(
+							error.message || error || 'An error occurred during the fetch'
+						);
+					});
+			}
+			
+			function deleteData(id, endpoint, callback) {
+				let url = `${apiurl}/${endpoint}/${id}`;
+				let req = new Request(url, {
+					method: 'Delete',
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					}
+				});
+				fetch(req)
+					.then((res) => {
+						if (!res.ok) {
+							// Handle non-successful responses
+							failure(`Request failed with status ${res.status}`);
+						}
+						return res.json();
+					})
+					.then((data) => {
+						console.log(data);
+						// Check for errors in the response
+						if (data && data.errors) {
+							// Handle errors
+							return failure(
+								data.errors[0] ||
+									data.message ||
+									error ||
+									'Received data is not valid'
+							);
+						}
+						// Successful response, pass data to the callback function
+						callback(data);
+					})
+					.catch((error) => {
+						failure(
+							error.message || error || 'An error occurred during the fetch'
+						);
+					});
+			}
+
+			function getData(user, endpoint, callback) {
+				let url = `${apiurl}/${endpoint}`;
+				let req = new Request(url, {
+					method: 'Get',
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
+				});
+				fetch(req)
+					.then((res) => {
+						if (!res.ok) {
+							// Handle non-successful responses
+							failure(`Request failed with status ${res.status}`);
+						}
+						return res.json();
+					})
+					.then((data) => {
+						console.log(data);
+						// Check for errors in the response
+						if (data && data.errors) {
+							// Handle errors
+							return failure(
+								data.errors[0] ||
+									data.message ||
+									error ||
+									'Received data is not valid'
+							);
+						}
+						// Successful response, pass data to the callback function
+						callback(data);
+					})
+					.catch((error) => {
+						failure(
+							error.message || error || 'An error occurred during the fetch'
+						);
+					});
+			}
+			
+			function deleteSuccess(data) {	
+				// const listing = document.getElementById(`${data._id}`);
+				const newData = listingsData.filter((item) => item._id !== data._id)
+				// listing.style.display = 'none';
+				console.log(newData)
+				updateListing(newData);
+				preloader.style.display = 'none';
+				Swal.fire('Deleted', 'Listing deleted successfully', 'success');
+			}
+			
+			function listingSuccess(data) {
+				preloader.style.display = 'none';	
+				updateListing(data);
+			}
+		
+			function updateListing(data) {
+				listingsData = data
+				let displayListings = data?.map((item) =>
+				`<div class="dsd-single-listing-wraps" id='${item._id}'>
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="${item?.featuredImage?.url}"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>${item?.productName}</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i>${item?.address}</span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																	<i class="fas fa-star"></i>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium">${item?.totalReviews || '34'} Reviews</span>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<a
+															href="javascript:void(0);"
+															class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<button type="button"
+															onclick="handleDetails('${item._id}')"
+															class="btn btn-view mr-1"
+															><i class="fas fa-eye me-1"></i>View</button
+														>
+														<button
+															type="button"
+															id="deleteBtn"
+															onclick="handleDelete('${item._id}')"
+															class="btn btn-delete"
+														>
+															<i class="fas fa-trash me-1"></i>Delete
+														</button>
+														<a
+															href="pricing.html"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<button
+														type="button"
+														onclick="handleDelete('${item._id}')"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Reviews
+														</button>
+													</div>
+												</div>
+											</div>`)
+				displayListings = displayListings.join('');
+				listings.innerHTML = displayListings;
+			}
+
+			function failure(err) {
+				console.warn(err);
+				if (preloader.style.display === 'block') {
+					preloader.style.display = 'none';
+				}
+				Swal.fire('Oh Oops!', `${err}`, 'error');
+			}
+			document
+				.querySelector('#deleteBtn')
+				.addEventListener('click', handleDelete);
+		</script>
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/slick.js"></script>
+		<script src="assets/js/jquery.magnific-popup.min.js"></script>
+		<script src="assets/js/dropzone.js"></script>
+		<script src="assets/js/counterup.js"></script>
+		<script src="assets/js/lightbox.js"></script>
+		<script src="assets/js/moment.min.js"></script>
+		<script src="assets/js/daterangepicker.js"></script>
+		<script src="assets/js/lightbox.js"></script>
+		<script src="assets/js/jQuery.style.switcher.js"></script>
+		<script src="assets/js/custom.js"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->
+	</body>
+
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard-my-listings.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:07 GMT -->
+</html>

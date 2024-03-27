@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('includes/head.ejs') %>
+	</head>
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:05 GMT -->
+
+	<body>
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+		<div class="preloader"></div>
+
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<div id="main-wrapper">
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<!-- Start Navigation -->
+			<%- include('includes/header.ejs') %>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<style>
+				/* Your existing styles here */
+
+				@media (max-width: 768px) {
+					.add-list-btn {
+						width: 60%;
+						font-size: 13px;
+						margin: 5px; /* Make the buttons take full width on smaller screens */
+					}
+
+					.dashboard-head-author-clicl {
+						max-width: 100%; /* Adjust the maximum width for smaller screens */
+					}
+					.flex-container {
+						margin-left: 0px;
+					}
+					.add-list-btn.hidden {
+						display: none;
+					}
+					.abs-list-sec {
+						margin-left: 30px;
+					}
+
+					/* Add any additional styles for smaller screens here */
+				}
+			</style>
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<%- include('includes/dashboardHeader.ejs') %>
+
+			<!-- =============================== Dashboard Header ========================== -->
+
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a
+					class="mobNavigation"
+					data-bs-toggle="collapse"
+					href="#MobNav"
+					role="button"
+					aria-expanded="false"
+					aria-controls="MobNav"
+				>
+					<i class="fas fa-bars me-2"></i>Dashboard
+				</a>
+				<!-- =============================== Dashboard Nav ========================== -->
+				<%- include('includes/dashboardNav.ejs') %>
+				<!-- ======================= dashboard mobileNav ======================== -->
+
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">
+									Hello, <span class="businessName"><%= business?.name || user.firstName %></span>
+								</h1>
+								<nav aria-label="breadcrumb">
+									<ol style="gap: 10px" class="breadcrumb">
+										<li class="text-muted"><a href="#">Home</a></li>
+										<li class="breadcrumb-item">
+											<a href="#" class="theme-cl">Dashboard</a>
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-12 col-lg-12 col-md-12 mb-3">
+								<div
+									class="alert bg-inverse text-light d-flex align-items-center"
+									role="alert"
+								>
+									<p class="p-0 m-0 ft-medium full-width">
+										Your listing
+										<a href="#" class="text-success">Wedding Willa Resort</a>
+										has been approved!
+									</p>
+									<button
+										type="button"
+										class="btn-close text-light"
+										data-bs-dismiss="alert"
+										aria-label="Close"
+									></button>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+								<div class="dsd-boxed-widget py-5 px-4 bg-danger rounded">
+									<h2
+										class="ft-medium mb-1 fs-xl text-light count"
+										id="activeListings"
+									>
+										<%= totalListing %>
+									</h2>
+									<p class="p-0 m-0 text-light fs-md">Active Listings</p>
+									<i class="lni lni-empty-file"></i>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+								<div class="dsd-boxed-widget py-5 px-4 bg-success rounded">
+									<h2 class="ft-medium mb-1 fs-xl text-light count">
+										<%= totalListing %>
+									</h2>
+									<p class="p-0 m-0 text-light fs-md">Views Listing</p>
+									<i class="lni lni-eye"></i>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+								<div class="dsd-boxed-widget py-5 px-4 bg-warning rounded">
+									<h2
+										id="totalReviews"
+										class="ft-medium mb-1 fs-xl text-light count"
+									>
+										<%= totalReviews %>
+									</h2>
+									<p class="p-0 m-0 text-light fs-md">Total Reviews</p>
+									<i class="lni lni-comments"></i>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+								<div class="dsd-boxed-widget py-5 px-4 bg-purple rounded">
+									<h2 class="ft-medium mb-1 fs-xl text-light count">
+										<%= totalBooking %>
+									</h2>
+									<p class="p-0 m-0 text-light fs-md">Total Bookings</p>
+									<i class="lni lni-wallet"></i>
+								</div>
+							</div>
+						</div>
+
+						<!-- row -->
+						<div class="row">
+							<!-- Area Chart -->
+							<div class="col-md-8 col-sm-12">
+								<div class="dash-card">
+									<div class="dash-card-header">
+										<h4 class="mb-0">View Chart</h4>
+									</div>
+									<div class="dash-card-body">
+										<div
+											class="chart"
+											id="revenue-chart"
+											style="height: 365px"
+										></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Donut Chart -->
+							<div class="col-md-4 col-sm-12">
+								<div class="dash-card">
+									<div class="dash-card-header">
+										<h4>Followers</h4>
+									</div>
+									<div id="followers" class="ground-list ground-hover-list">
+										<% if (followers.length> 0) { %> <% for (let item of
+										followers) { %>
+										<div class="ground ground-list-single">
+											<a href="#">
+												<img
+													class="ground-avatar"
+													src="assets/img/t-2.png"
+													alt="..."
+												/>
+												<span
+													class="profile-status bg-offline pull-right"
+												></span>
+											</a>
+
+											<div class="ground-content">
+												<h6>
+													<a href="<%= item._id %>"
+														><%= item.firstName || item.lastName%></a
+													>
+												</h6>
+												<small class="text-fade"
+													><i class="fas fa-map-marker-alt me-1"></i><%=
+													item?.address %></small
+												>
+											</div>
+										</div>
+										<% } %> <% } %>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /.row -->
+
+						<div class="row">
+							<div class="col-lg-6 col-md-12">
+								<div class="goodup-dashboard-grouping-list with-icons">
+									<h4>Recent Activities</h4>
+									<ul id="activities">
+										<% if (activities.length> 0) { %> <% for (let item of
+										activities) { %>
+										<li>
+											<i
+												class="dsd-icon-uiyo ti-layers text-purple bg-light-purple"
+											></i>
+											Your listing
+											<strong
+												><a href="<%= item._id %>"><%= item.name %></a></strong
+											>
+											has been approved!
+											<a href="#" class="close-list-item"
+												><i class="fa fa-close"></i
+											></a>
+										</li>
+										<% } %> <% } %>
+									</ul>
+								</div>
+							</div>
+
+							<div class="col-lg-6 col-md-12">
+								<div class="goodup-dashboard-grouping-list invoices with-icons">
+									<h4>Invoices</h4>
+									<ul id="invoices">
+										<% if (invoices.length> 0) { %> <% for (let item of
+										invoices) { %>
+										<li>
+											<i
+												class="dsd-icon-uiyo ti-files text-success bg-light-success"
+											></i>
+											<strong><%= item.name %></strong>
+											<ul>
+												<% if (item.status === 'paid') { %>
+												<li class="paid">Paid</li>
+												<% } else if (item.status === 'pending') { %>
+												<li class="pending">Pending</li>
+												<% } else if (item.status === 'cancel') { %>
+												<li class="cancel">Cancel</li>
+												<% } else { %>
+												<li class="unpaid">Unpaid</li>
+												<% } %>
+												<li>Order: #<%= item._id %></li>
+												<li>Date: <%= item.createdAt %></li>
+											</ul>
+											<div class="buttons-to-right">
+												<a href="<%= item._id %>" class="button gray"
+													>View Invoice</a
+												>
+											</div>
+										</li>
+										<% } %> <% } %>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">
+								<p class="mb-0">
+									<a style="color: blue" href="https://foramfera.com/"
+										>© 2024 Foraminifera Market Research LTD.</a
+									>
+									All rights reserved.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
+				><i class="ti-arrow-up"></i
+			></a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		<input
+			type="text"
+			id="userToken"
+			style="display: none"
+			value="<%= user.token %>"
+		/>
+		<input
+			type="text"
+			style="display: none"
+			id="userId"
+			value="<%= user._id %>"
+		/>
+		<%- include('includes/end.ejs') %>
+		<script src="assets/js/dashboard.js"></script>
+
+		<!-- Morris.js charts -->
+		<script src="assets/js/plugins/raphael/raphael.min.js"></script>
+		<script src="assets/js/plugins/morris.js/morris.min.js"></script>
+
+		<!-- Custom Chart JavaScript -->
+		<script src="assets/js/plugins/dashboard-2.js"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->
+	</body>
+
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:07 GMT -->
+</html>

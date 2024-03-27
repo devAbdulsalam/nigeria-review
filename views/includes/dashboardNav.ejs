@@ -1,0 +1,135 @@
+<div class="collapse" id="MobNav">
+	<div class="goodup-dashboard-nav sticky-top">
+		<div class="goodup-dashboard-inner">
+			<ul data-submenu-title="Dashboard">
+				<li class="<%= path === '/dashboard' ? 'active' : '' %>">
+					<a href="dashboard"
+						><i class="lni lni-dashboard me-2"></i>Dashboard</a
+					>
+				</li>
+
+				<% if (user.role === 'BUSINESS') { %> <% if (!business) { %>
+				<li
+					id="addBusinessLink"
+					class="<%= path === '/add-business' ? 'active' : '' %>"
+				>
+					<a href="add-business"
+						><i class="lni lni-plus me-2"></i>Add Business</a
+					>
+				</li>
+				<% } %>
+				<li class="<%= path === '/my-listings' ? 'active' : '' %>">
+					<a href="my-listings"
+						><i class="lni lni-files me-2"></i>My Listings</a
+					>
+				</li>
+				<li class="<%= path === '/add-listings' ? 'active' : '' %>">
+					<a href="add-listing"
+						><i class="lni lni-add-files me-2"></i>Add Listing</a
+					>
+				</li>
+				<% } %>
+				<li class="<%= path === '/saved-listings' ? 'active' : '' %>">
+					<a href="saved-listings"
+						><i class="lni lni-bookmark me-2"></i>Saved Listing</a
+					>
+				</li>
+				<% if (user.role === 'BUSINESS') { %>
+				<li class="<%= path === '/claim-business' ? 'active' : '' %>">
+					<a href="claim-business"
+						><i class="lni lni-bookmark me-2"></i>Claim Business</a
+					>
+				</li>
+				<% } %>
+			</ul>
+			<ul data-submenu-title="Business & Marketing Tools">
+				<% if (user.role !== 'USER') { %>
+				<li class="<%= path === '/reviews' ? 'active' : '' %>">
+					<a href="reviews"
+						><i class="lni lni-pencil-alt me-2"></i>Write A Review</a
+					>
+				</li>
+				<% } %>
+				<li>
+					<a href="/index"><i class="lni lni-grow me-2"></i>Polls & Survey</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);"
+						><i class="fas fa-sms me-2"></i>Send SMS & Invite</a
+					>
+				</li>
+				<li>
+					<a href="/index"
+						><i class="lni lni-shopping-basket me-2"></i>Mystery Shopping</a
+					>
+				</li>
+				<li>
+					<a href=""><i class="lni lni-happy me-2"></i>Advertise With Us</a>
+				</li>
+			</ul>
+			<ul data-submenu-title="Blog, Questions & Answers">
+				<li class="<%= path === '/change-password' ? 'active' : '' %>">
+					<a href="change-password"
+						><i class="lni lni-list me-2"></i>My Articles</a
+					>
+				</li>
+				<li>
+					<a href="javascript:void(0);"
+						><i class="fas fa-plus-circle me-2"></i>List An Article</a
+					>
+				</li>
+				<li>
+					<a href="/"
+						><i class="lni lni-question-circle me-2"></i> Ask A Question</a
+					>
+				</li>
+				<li>
+					<a href="/"><i class="lni lni-bookmark me-2"></i>My Questions</a>
+				</li>
+				<li>
+					<a href="/"
+						><i class="lni lni-checkmark-circle me-2"></i>My Answers</a
+					>
+				</li>
+			</ul>
+			<ul data-submenu-title="Other Listing Options">
+				<li>
+					<a href="add-business"
+						><i class="lni lni-plus me-2"></i>Add Business</a
+					>
+				</li>
+				<li>
+					<a href="javascript:void(0);"
+						><i class="lni lni-money-location me-2"></i> List Places & Tourist
+						Destin...</a
+					>
+				</li>
+				<li>
+					<a href="login"
+						><i class="lni lni-music me-2"></i>List Movies, Music & Awards</a
+					>
+				</li>
+			</ul>
+			<ul data-submenu-title="My Accounts">
+				<li>
+					<a href="my-profile"><i class="lni lni-user me-2"></i>My Profile </a>
+				</li>
+				<li class="<%= path === '/change-password' ? 'active' : '' %>">
+					<a href="change-password"
+						><i class="lni lni-lock-alt me-2"></i>Change Password</a
+					>
+				</li>
+				<li>
+					<a href="javascript:void(0);"
+						><i class="lni lni-trash-can me-2"></i>Delete Account</a
+					>
+				</li>
+				<li>
+					<a id="logoutBtn">
+						<i class="lni lni-power-switch me-2"></i>Log Out
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

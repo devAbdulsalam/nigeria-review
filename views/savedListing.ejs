@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:05 GMT -->
+	<head>
+		<!-- Morris Charts CSS -->
+		<link href="assets/js/plugins/morris.js/morris.css" rel="stylesheet" />
+
+		<%- include('includes/head.ejs') %>
+	</head>
+
+	<body>
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+		<div class="preloader"></div>
+
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<div id="main-wrapper">
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<!-- Start Navigation -->
+			<%- include('includes/header.ejs') %>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<style>
+				/* Your existing styles here */
+
+				@media (max-width: 768px) {
+					.add-list-btn {
+						width: 46%;
+						font-size: 13px;
+						margin: 5px; /* Make the buttons take full width on smaller screens */
+					}
+
+					.dashboard-head-author-clicl {
+						max-width: 100%; /* Adjust the maximum width for smaller screens */
+					}
+					.flex-container {
+						margin-left: 0px;
+					}
+					.add-list-btn.hidden {
+						display: none;
+					}
+					.abs-list-sec {
+						margin-left: 30px;
+					}
+
+					/* Add any additional styles for smaller screens here */
+				}
+			</style>
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<%- include('includes/dashboardHeader.ejs') %>
+			<!-- =============================== Dashboard Header ========================== -->
+
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a
+					class="mobNavigation"
+					data-bs-toggle="collapse"
+					href="#MobNav"
+					role="button"
+					aria-expanded="false"
+					aria-controls="MobNav"
+				>
+					<i class="fas fa-bars me-2"></i>Dashboard
+				</a>
+				<!-- =============================== Dashboard Nav ========================== -->
+				<%- include('includes/dashboardNav.ejs') %>
+				<!-- ======================= dashboard mobileNav ======================== -->
+
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">Manage Listings</h1>
+								<nav aria-label="breadcrumb">
+									<ol style="gap: 5px" class="breadcrumb">
+										<li class="text-muted"><a href="#">Home</a></li>
+										<li class="text-muted"><a href="#">Dashboard</a></li>
+										<li class="breadcrumb-item">
+											<a href="#" class="theme-cl">Manage Listings</a>
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-12 col-lg-12">
+								<div class="dashboard-list-wraps bg-white rounded mb-4">
+									<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+										<div class="dashboard-list-wraps-flx">
+											<h4 class="mb-0 ft-medium fs-md">
+												<i class="fa fa-file-alt me-2 theme-cl fs-sm"></i>My
+												Listings
+											</h4>
+										</div>
+									</div>
+
+									<div class="dashboard-list-wraps-body py-3 px-3">
+										<div class="dashboard-listing-wraps" id="listings">
+											<!-- Single Listing Item -->
+											<% if (listings.length> 0) { %> <% for (let item of
+											listings) { %>
+											<div class="dsd-single-listing-wraps">
+												<div class="dsd-single-lst-thumb">
+													<img
+														src="<%= item?.featuredImage?.url %>"
+														class="img-fluid"
+														alt=""
+													/>
+												</div>
+												<div class="dsd-single-lst-caption">
+													<div class="dsd-single-lst-title">
+														<h5>
+															<%= item?.BusinessName || item?.productName %>
+														</h5>
+													</div>
+													<span class="agd-location"
+														><i class="lni lni-map-marker me-1"></i><%=
+														item?.address %></span
+													>
+													<div class="ico-content">
+														<div class="Goodup-ft-first">
+															<div class="Goodup-rating">
+																<div class="Goodup-rates">
+																	<% for (let i = 0; i < item?.totalRating; i++)
+																	{ %>
+																	<i class="fas fa-star active"></i>
+																	<% } %>
+																</div>
+															</div>
+															<div class="Goodup-price-range">
+																<span class="ft-medium"
+																	><%= item.totalReviews || '20' %>
+																	Reviews</span
+																>
+															</div>
+														</div>
+													</div>
+													<div class="dsd-single-lst-footer">
+														<% if (user._id === item.userId) { %>
+														<a href="/<%= item._id %>" class="btn btn-edit mr-1"
+															><i class="fas fa-edit me-1"></i>Edit</a
+														>
+														<%}%>
+														<button
+															type="button"
+															id="<%= item._id %>"
+															class="btn btn-view mr-1 detailsBtn"
+														>
+															<i class="fas fa-eye me-1"></i>View
+														</button>
+
+														<button
+															type="button"
+															id="<%= item._id %>"
+															class="btn btn-delete detailsBtn"
+														>
+															<i class="fas fa-trash me-1"></i>Delete
+														</button>
+
+														<% if (item.status === 'PENDING') { %>
+														<a
+															href="<%= item._id %>"
+															style="
+																background-color: rgb(234, 0, 255);
+																color: white;
+															"
+															class="btn btn-claim"
+															><i class="fas fa-business-time me-1"></i>Claim</a
+														>
+														<%}%> <% if (user.role === 'USER') { %>
+														<a
+															href="reviews"
+															style="
+																background-color: rgb(107, 63, 4);
+																color: white;
+															"
+															class="btn mr-1"
+															><i class="fas fa-edit me-1"></i>Review</a
+														>
+														<% } %>
+													</div>
+												</div>
+											</div>
+											<% } %> <% } %>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">
+								<p class="mb-0">
+									<a
+										style="color: blue"
+										href="https://foramfera.com/"
+										target="_blank"
+										>© 2024 Foraminifera Market Research LTD.</a
+									>
+									All rights reserved.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
+				><i class="ti-arrow-up"></i
+			></a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		<%- include('includes/end.ejs') %>
+		<input
+			type="text"
+			style="display: none"
+			id="userId"
+			value="<%= user._id %>"
+		/>
+		<script src="assets/js/saved-listings.js"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->
+	</body>
+
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard-my-listings by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:07 GMT -->
+</html>

@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:05 GMT -->
+	<head>
+		<%- include('includes/head.ejs') %>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+	</head>
+
+	<body>
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+		<div class="preloader"></div>
+
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<div id="main-wrapper">
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<!-- Start Navigation -->
+			<%- include('includes/header.ejs') %>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<style>
+				/* Your existing styles here */
+
+				@media (max-width: 768px) {
+					.add-list-btn {
+						width: 46%;
+						font-size: 13px;
+						margin: 5px; /* Make the buttons take full width on smaller screens */
+					}
+
+					.dashboard-head-author-clicl {
+						max-width: 100%; /* Adjust the maximum width for smaller screens */
+					}
+					.flex-container {
+						margin-left: 0px;
+					}
+					.add-list-btn.hidden {
+						display: none;
+					}
+					.abs-list-sec {
+						margin-left: 30px;
+					}
+
+					/* Add any additional styles for smaller screens here */
+				}
+			</style>
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<section
+				class="bg-cover position-relative"
+				style="background: red url(assets/img/banner-6.jpg) no-repeat"
+				data-overlay="3"
+			>
+				<div class="abs-list-sec">
+					<div class="flex-container">
+						<a href="/survey/index" class="add-list-btn hidden"
+							><i class="fas fa-plus me-2"></i>Create Survey</a
+						>
+						<a href="/poll/strawpoll.com/create/index" class="add-list-btn"
+							><i class="fas fa-poll me-2"></i>Create Poll</a
+						>
+						<a href="/Bulk sms/index" class="add-list-btn"
+							><i class="fas fa-sms me-2"></i>Send SMS</a
+						>
+						<a href="dashboard-add-listing" class="add-list-btn"
+							><i class="fas fa-list me-2"></i>Create Marketting List</a
+						>
+						<a href="dashboard-add-listing" class="add-list-btn"
+							><i class="fas fa-shopping-bag me-2"></i>Mystery Shopping Task</a
+						>
+						<a href="add-listing" class="add-list-btn hidden"
+							><i class="fas fa-plus me-2"></i>Add Listing</a
+						>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+							<div class="dashboard-head-author-clicl">
+								<div
+									style="border-radius: 20px"
+									class="dashboard-head-author-thumb"
+								>
+									<img
+										id="businessImage"
+										style="border-radius: 20px"
+										src="assets/img/t-5.png"
+										class="img-fluid"
+										alt=""
+									/>
+								</div>
+								<div class="dashboard-head-author-caption">
+									<div class="dashploio">
+										<h4 class="businessName">Sablak Hotel</h4>
+									</div>
+									<div class="dashploio">
+										<span class="agd-location"
+											><i class="lni lni-map-marker me-1"></i
+											><span id="businessLocation"
+												>Challenge Ibadan, Oyo Nigeria</span
+											></span
+										>
+									</div>
+									<div class="listing-rating high">
+										<i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i>
+									</div>
+
+									<div class="Goodup-price-range">
+										<span class="ft-medium text-light">34 Reviews</span>
+									</div>
+									<div class="d-block mt-3">
+										<div class="list-lioe">
+											<div class="list-lioe-single">
+												<span class="ft-medium text-info"
+													><i class="fas fa-check-circle me-1"></i>Claimed</span
+												>
+											</div>
+											<div class="list-lioe-single ms-2 ps-3 seperate">
+												<a
+													href="javascript:void(0);"
+													class="text-light ft-medium"
+													>Chicken | Wings</a
+												>|<a
+													href="javascript:void(0);"
+													class="text-light ft-medium ms-1"
+													>| Sports</a
+												>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br /><br /><br /><br /><br />
+			</section>
+			<!-- =============================== Dashboard Header ========================== -->
+
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a
+					class="mobNavigation"
+					data-bs-toggle="collapse"
+					href="#MobNav"
+					role="button"
+					aria-expanded="false"
+					aria-controls="MobNav"
+				>
+					<i class="fas fa-bars me-2"></i>Dashboard
+				</a>
+				<!-- =============================== Dashboard Nav ========================== -->
+				<%- include('includes/dashboardNav.ejs') %>
+				<!-- ======================= dashboard mobileNav ======================== -->
+
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">Add Listing</h1>
+								<nav aria-label="breadcrumb">
+									<ol style="gap: 5px" class="breadcrumb">
+										<li class="text-muted"><a href="/">Home</a></li>
+										<li class="text-muted"><a href="/dashboard">Dashboard</a></li>
+										<li class="breadcrumb-item">
+											<a href="#" class="theme-cl">Add Listing</a>
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div class="col-xl-12 col-lg-2 col-md-12 col-sm-12">
+								<div class="submit-form">
+									<!-- Listing Info -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fa fa-file me-2 theme-cl fs-sm"></i>Listing
+													Info
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Business Name</label>
+														<input
+															type="text"
+															id="bname"
+															class="form-control rounded"
+															placeholder="Decathlon Sport House"
+														/>
+													</div>
+													<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+														<div class="form-group">
+															<label class="mb-1">Keywords</label>
+															<input
+																type="text"
+																id="keywords"
+																class="form-control rounded"
+																placeholder="Type keywords by comma's"
+															/>
+														</div>
+													</div>
+												</div>
+
+												<style>
+													/* Default styles for all screens */
+
+													/* Media query for large screens */
+													@media screen and (min-width: 1200px) {
+														/* Styles for large screens go here */
+														.cat {
+															width: 66%;
+															display: flex;
+															gap: 11px;
+														}
+														/* Add more styles for large screens as needed */
+													}
+												</style>
+
+												<div class="cat">
+													<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+														<div class="form-group">
+															<label class="mb-1">Categories</label>
+															<select id="category" class="form-control">
+																<option value="hotel">Hotel & Spa</option>
+																<option value="education">Education</option>
+																<option value="wed"></option>Wedding</option>
+																<option value="res">Restaurents</option>
+																<option value="caf">Cafe & Bars</option>
+																<option value="bank">Bankings</option>
+																<option value="serv">Services</option>
+															</select>
+														</div>
+													</div>
+
+													<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+														<div class="form-group">
+															<label class="mb-1">Sub Categories</label>
+															<select
+																id="subCategories"
+																class="form-control"
+																multiple
+															>
+																<option value="hotel">Hotel & Spa</option>
+																<option value="education">Education</option>
+																<option value="wed"></option>Wedding</option>
+																<option value="res">Restaurents</option>
+																<option value="caf">Cafe & Bars</option>
+																<option value="bank">Bankings</option>
+																<option value="serv">Services</option>
+															</select>
+														</div>
+													</div>
+
+													<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+														<div class="form-group">
+															<label class="mb-1">Sub-sub Categories</label>
+															<select class="form-control">
+															<option value="hotel">Hotel & Spa</option>
+																<option value="education">Education</option>
+																<option value="wed"></option>Wedding</option>
+																<option value="res">Restaurents</option>
+																<option value="caf">Cafe & Bars</option>
+																<option value="bank">Bankings</option>
+																<option value="serv">Services</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">About Business</label>
+														<textarea
+															id="description"
+															name="description"
+															class="form-control rounded ht-150"
+															placeholder="Describe your business"
+														></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Listing Info -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fa fa-file me-2 theme-cl fs-sm"></i>Product
+													and Services
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Name</label>
+														<input
+															type="text"
+															id="productName"
+															class="form-control rounded"
+															placeholder="Decathlon Sport House"
+														/>
+													</div>
+												</div>
+
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Description</label>
+														<textarea
+															id="productDescription"
+															name="description"
+															class="form-control rounded ht-150"
+															placeholder="Describe your product..."
+														></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Image & Gallery Option -->
+										<div class="dashboard-list-wraps bg-white rounded mb-4">
+											<div
+												class="dashboard-list-wraps-head br-bottom py-3 px-3"
+											>
+												<div class="dashboard-list-wraps-flx">
+													<h4 class="mb-0 ft-medium fs-md">
+														<i class="fa fa-camera me-2 theme-cl fs-sm"></i
+														>Image
+													</h4>
+												</div>
+											</div>
+
+											<div class="dashboard-list-wraps-body py-3 px-3">
+												<div class="row">
+													<!-- Logo -->
+
+													<!-- Featured Image -->
+													<div class="col-lg-4 col-md-6">
+														<label class="mb-1" for="imageInput1"
+															>Featured Image</label
+														>
+														<div class="dropzone" id="imageDropzone1">
+															<label for="imageInput1">
+																<img
+																	class="displayImage"
+																	src=""
+																	alt="imageDropzone1"
+																	style="
+																		display: none;
+																		width: 60px;
+																		height: 60px;
+																		border-radius: 100%;
+																		object-fit: contain;
+																		object-position: center;
+																	"
+																/>
+																<i class="fas fa-upload uploadIcon"></i>
+																<input
+																	type="file"
+																	id="imageInput1"
+																	class="imageInput"
+																	name="image"
+																	style="display: none"
+																/>
+																<p class="imageName">
+																	Drop file here to upload
+																</p>
+															</label>
+														</div>
+														<label class="smart-text" for="imageInput1"
+															>Maximum file size: 2 MB.</label
+														>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Location Info -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i
+														class="fas fa-map-marker-alt me-2 theme-cl fs-sm"
+													></i
+													>Location Info
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Latitude</label>
+														<input
+															type="text"
+															id="latitude"
+															class="form-control rounded"
+															placeholder="8054256"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Longitude</label>
+														<input
+															type="text"
+															id="longitude"
+															class="form-control rounded"
+															placeholder="-7254625"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<iframe
+															src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27437.803590312993!2d76.75937213955079!3d30.726117899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feda9761bdc2f%3A0x5e764f7f18edc390!2sMidpoint%20Cafe!5e0!3m2!1sen!2sin!4v1649569611177!5m2!1sen!2sin"
+															class="full-width"
+															height="300"
+															style="border: 0"
+															allowfullscreen=""
+															loading="lazy"
+															referrerpolicy="no-referrer-when-downgrade"
+														></iframe>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">State</label>
+														<select id="state" class="form-control">
+															<option value="lag">Lagos</option>
+															<option value="Oyo">Oyo</option>
+															<option value="ondo">Ondo</option>
+															<option value="admd">Anambra</option>
+															<option value="enug">Enugu</option>
+															<option value="rvs">Rivers</option>
+															<option value="abj">Abuja</option>
+															<option value="others">Others</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">City</label>
+														<select id="city" class="form-control">
+														<option value="lag">Lagos</option>
+															<option value="Oyo">Oyo</option>
+															<option value="ondo">Ondo</option>
+															<option value="admd">Anambra</option>
+															<option value="enug">Enugu</option>
+															<option value="rvs">Rivers</option>
+															<option value="abj">Abuja</option>
+															<option value="others">Others</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Address</label>
+														<input
+															type="text"
+															id="address"
+															class="form-control rounded"
+															placeholder="Ikeja Mainland Market NG"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Zip Code</label>
+														<input
+															type="text"
+															id="zipCode"
+															class="form-control rounded"
+															placeholder="HQ125478"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Mobile</label>
+														<input
+															type="text"
+															id="mobile"
+															class="form-control rounded"
+															placeholder="080 256 584 7895"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Email</label>
+														<input
+															type="email"
+															id="email"
+															class="form-control rounded"
+															placeholder="adeagbojosiah@gmail.com"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Website</label>
+														<input
+															type="text"
+															id="website"
+															class="form-control rounded"
+															placeholder="https://www.reviewsnigeria.net/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															>Do You Have Other Location?</label
+														>
+														<select id="otherLocation" class="form-control">
+															<option value="lag">Lagos</option>
+															<option value="Oyo">Oyo</option>
+															<option value="ondo">Ondo</option>
+															<option value="admd">Anambra</option>
+															<option value="enug">Enugu</option>
+															<option value="rvs">Rivers</option>
+															<option value="abj">Abuja</option>
+															<option value="others">Others</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">LGA</label>
+														<select id="lga" class="form-control">
+															<option value="lag">Lagos</option>
+															<option value="Oyo">Oyo</option>
+															<option value="ondo">Ondo</option>
+															<option value="admd">Anambra</option>
+															<option value="enug">Enugu</option>
+															<option value="rvs">Rivers</option>
+															<option value="abj">Abuja</option>
+															<option value="others">Others</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Image & Gallery Option -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fa fa-camera me-2 theme-cl fs-sm"></i>Image
+													& Gallery Option
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<!-- Logo -->
+												<div class="col-lg-4 col-md-6">
+													<label class="mb-1">Upload Logo</label>
+													<form
+														action="https://themezhub.net/file-upload"
+														class="dropzone"
+														id="single-logo"
+													>
+														<i class="fas fa-upload"></i>
+													</form>
+													<label class="smart-text"
+														>Maximum file size: 2 MB.</label
+													>
+												</div>
+
+												<!-- Featured Image -->
+												<div class="col-lg-4 col-md-6">
+													<label class="mb-1">Featured Image</label>
+													<form
+														action="https://themezhub.net/file-upload"
+														class="dropzone"
+														id="featured-image"
+													>
+														<i class="fas fa-upload"></i>
+													</form>
+													<label class="smart-text"
+														>Maximum file size: 2 MB.</label
+													>
+												</div>
+
+												<!-- Gallery -->
+												<div class="col-lg-4 col-md-12">
+													<label class="mb-1">Image Gallery</label>
+													<form
+														action="https://themezhub.net/file-upload"
+														class="dropzone"
+														id="gallery"
+													>
+														<i class="fas fa-upload"></i>
+													</form>
+													<label class="smart-text"
+														>Maximum file size: 2 MB.</label
+													>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Menu Items -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fas fa-utensils me-2 theme-cl fs-sm"></i
+													>Menu Items
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Item Name</label>
+														<input
+															type="text"
+															id="itemName"
+															class="form-control rounded"
+															placeholder="Spicy Brunchi Burger"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Category</label>
+														<input
+															type="text"
+															id="itemCategory"
+															class="form-control rounded"
+															placeholder="Fast Food"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Price</label>
+														<input
+															type="text"
+															id="itemPrice"
+															class="form-control rounded"
+															placeholder="ex. ₦5,000"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">About Item</label>
+														<textarea
+															id="ItemDescription"
+															name="description"
+															class="form-control rounded ht-80"
+															placeholder="Describe your Item"
+														></textarea>
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label for="formFileLg" class="form-label"
+															>Upload Item Image</label
+														>
+														<input
+															class="form-control rounded"
+															id="formFileLg"
+															type="file"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<button
+															type="button"
+															class="btn theme-cl rounded theme-bg-light ft-medium"
+														>
+															Add New
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Working hours -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fa fa-clock me-2 theme-cl fs-sm"></i>Working
+													Hours
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="form-group">
+													<div class="row align-items-center">
+														<label class="control-label col-lg-2 col-md-2"
+															>Monday</label
+														>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control chosen-select">
+																<option>Opening Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control">
+																<option>Closing Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="row align-items-center">
+														<label class="control-label col-lg-2 col-md-2"
+															>Tuesday</label
+														>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control chosen-select">
+																<option>Opening Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control">
+																<option>Closing Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="row align-items-center">
+														<label class="control-label col-lg-2 col-md-2"
+															>Wednesday</label
+														>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control chosen-select">
+																<option>Opening Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control">
+																<option>Closing Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="row align-items-center">
+														<label class="control-label col-lg-2 col-md-2"
+															>Thursday</label
+														>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control chosen-select">
+																<option>Opening Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control">
+																<option>Closing Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="row align-items-center">
+														<label class="control-label col-lg-2 col-md-2"
+															>Friday</label
+														>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control chosen-select">
+																<option>Opening Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control">
+																<option>Closing Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="row align-items-center">
+														<label class="control-label col-lg-2 col-md-2"
+															>Saturday</label
+														>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control chosen-select">
+																<option>Opening Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control">
+																<option>Closing Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="row align-items-center">
+														<label class="control-label col-lg-2 col-md-2"
+															>Sunday</label
+														>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control chosen-select">
+																<option>Opening Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+														<div class="col-lg-5 col-md-5">
+															<select class="form-control">
+																<option>Closing Time</option>
+																<option>1 :00 AM</option>
+																<option>2 :00 AM</option>
+																<option>3 :00 AM</option>
+																<option>4 :00 AM</option>
+																<option>5 :00 AM</option>
+																<option>6 :00 AM</option>
+																<option>7 :00 AM</option>
+																<option>8 :00 AM</option>
+																<option>9 :00 AM</option>
+																<option>10 :00 AM</option>
+																<option>11 :00 AM</option>
+																<option>12 :00 AM</option>
+																<option>1 :00 PM</option>
+																<option>2 :00 PM</option>
+																<option>3 :00 PM</option>
+																<option>4 :00 PM</option>
+																<option>5 :00 PM</option>
+																<option>6 :00 PM</option>
+																<option>7 :00 PM</option>
+																<option>8 :00 PM</option>
+																<option>9 :00 PM</option>
+																<option>10 :00 PM</option>
+																<option>11 :00 PM</option>
+																<option>12 :00 PM</option>
+																<option>Closed</option>
+															</select>
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group mt-4">
+													<input
+														id="t24"
+														class="checkbox-custom"
+														name="24-1"
+														type="checkbox"
+													/>
+													<label for="t24" class="checkbox-custom-label"
+														>This Business open 7x24</label
+													>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Amenties Options -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="lni lni-coffee-cup me-2 theme-cl fs-sm"></i
+													>Amenties & More
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="Goodup-all-features-list">
+														<ul id="amenties">
+															<li>
+																<input
+																	id="am1"
+																	class="checkbox-custom"
+																	name="am1"
+																	type="checkbox"
+																/>
+																<label for="am1" class="checkbox-custom-label"
+																	>Health Score 8.7 / 10</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am2"
+																	class="checkbox-custom"
+																	name="am2"
+																	type="checkbox"
+																/>
+																<label for="am2" class="checkbox-custom-label"
+																	>Reservations</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am3"
+																	class="checkbox-custom"
+																	name="am3"
+																	type="checkbox"
+																/>
+																<label for="am3" class="checkbox-custom-label"
+																	>Vegetarian Options</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am4"
+																	class="checkbox-custom"
+																	name="am4"
+																	type="checkbox"
+																/>
+																<label for="am4" class="checkbox-custom-label"
+																	>Moderate Noise</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am5"
+																	class="checkbox-custom"
+																	name="am5"
+																	type="checkbox"
+																/>
+																<label for="am5" class="checkbox-custom-label"
+																	>Good For Kids</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am6"
+																	class="checkbox-custom"
+																	name="am6"
+																	type="checkbox"
+																/>
+																<label for="am6" class="checkbox-custom-label"
+																	>Private Lot Parking</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am7"
+																	class="checkbox-custom"
+																	name="am7"
+																	type="checkbox"
+																/>
+																<label for="am7" class="checkbox-custom-label"
+																	>Beer & Wine</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am8"
+																	class="checkbox-custom"
+																	name="am8"
+																	type="checkbox"
+																/>
+																<label for="am8" class="checkbox-custom-label"
+																	>TV Services</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am9"
+																	class="checkbox-custom"
+																	name="am9"
+																	type="checkbox"
+																/>
+																<label for="am9" class="checkbox-custom-label"
+																	>Pets Allow</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am10"
+																	class="checkbox-custom"
+																	name="am10"
+																	type="checkbox"
+																/>
+																<label for="am10" class="checkbox-custom-label"
+																	>Offers Delivery</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am11"
+																	class="checkbox-custom"
+																	name="am11"
+																	type="checkbox"
+																/>
+																<label for="am11" class="checkbox-custom-label"
+																	>Staff wears masks</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am12"
+																	class="checkbox-custom"
+																	name="am12"
+																	type="checkbox"
+																/>
+																<label for="am12" class="checkbox-custom-label"
+																	>Accepts Credit Cards</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am13"
+																	class="checkbox-custom"
+																	name="am13"
+																	type="checkbox"
+																/>
+																<label for="am13" class="checkbox-custom-label"
+																	>Offers Catering</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am14"
+																	class="checkbox-custom"
+																	name="am14"
+																	type="checkbox"
+																/>
+																<label for="am14" class="checkbox-custom-label"
+																	>Good for Breakfast</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am15"
+																	class="checkbox-custom"
+																	name="am15"
+																	type="checkbox"
+																/>
+																<label for="am15" class="checkbox-custom-label"
+																	>Waiter Service</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am16"
+																	class="checkbox-custom"
+																	name="am16"
+																	type="checkbox"
+																/>
+																<label for="am16" class="checkbox-custom-label"
+																	>Drive-Thru</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am17"
+																	class="checkbox-custom"
+																	name="am17"
+																	type="checkbox"
+																/>
+																<label for="am17" class="checkbox-custom-label"
+																	>Outdoor Seating</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am18"
+																	class="checkbox-custom"
+																	name="am18"
+																	type="checkbox"
+																/>
+																<label for="am18" class="checkbox-custom-label"
+																	>Offers Takeout</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am19"
+																	class="checkbox-custom"
+																	name="am19"
+																	type="checkbox"
+																/>
+																<label for="am19" class="checkbox-custom-label"
+																	>Vegan Options</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am20"
+																	class="checkbox-custom"
+																	name="am20"
+																	type="checkbox"
+																/>
+																<label for="am20" class="checkbox-custom-label"
+																	>Casual</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am21"
+																	class="checkbox-custom"
+																	name="am21"
+																	type="checkbox"
+																/>
+																<label for="am21" class="checkbox-custom-label"
+																	>Good for Groups</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am22"
+																	class="checkbox-custom"
+																	name="am22"
+																	type="checkbox"
+																/>
+																<label for="am22" class="checkbox-custom-label"
+																	>Brunch, Lunch, Dinner</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am23"
+																	class="checkbox-custom"
+																	name="am23"
+																	type="checkbox"
+																/>
+																<label for="am23" class="checkbox-custom-label"
+																	>Free Wi-Fi</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am24"
+																	class="checkbox-custom"
+																	name="am24"
+																	type="checkbox"
+																/>
+																<label for="am24" class="checkbox-custom-label"
+																	>Wheelchair Accessible</label
+																>
+															</li>
+															<li>
+																<input
+																	id="am25"
+																	class="checkbox-custom"
+																	name="am25"
+																	type="checkbox"
+																/>
+																<label for="am25" class="checkbox-custom-label"
+																	>Happy Hour</label
+																>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Social Links -->
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fa fa-user-friends me-2 theme-cl fs-sm"></i
+													>Social Links
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row" id="socials">
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="ti-facebook theme-cl me-1"></i
+															>Facebook</label
+														>
+														<input
+															type="text"
+															id="facebook"
+															class="form-control rounded"
+															placeholder="https://facebook.com/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="fa-brands fa-x-twitter"></i>
+															Twitter</label
+														>
+														<input
+															type="text"
+															id="twitter"
+															class="form-control rounded"
+															placeholder="https://twitter.com/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="ti-instagram theme-cl me-1"></i
+															>Instagram</label
+														>
+														<input
+															type="text"
+															id="instagram"
+															class="form-control rounded"
+															placeholder="https://instagram.com/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="ti-linkedin theme-cl me-1"></i
+															>Linkedin</label
+														>
+														<input
+															type="text"
+															id="linkedin"
+															class="form-control rounded"
+															placeholder="https://linkedin.com/"
+														/>
+													</div>
+												</div>
+												<div class="eltio_k2">
+													<p id="errorText" class="theme-cl"></p>
+												</div>
+												<!-- style="display: flex; gap: 150px; text-align: center" -->
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<!-- <button class="btn theme-bg rounded text-light">
+														Save All
+													</button> -->
+													<button
+														type="button"
+														id="submitBtn"
+														class="btn theme-bg rounded text-light"
+													>
+														Submit & Preview
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">
+								<p class="mb-0">
+									<a style="color: blue" href="https://foramfera.com/"
+										>© 2024 Foraminifera Market Research LTD.</a
+									>
+									All rights reserved.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
+				><i class="ti-arrow-up"></i
+			></a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+        <%- include('includes/end.ejs') %>
+		<input type="text" style="display: none;" id="userId" value="<%= user._id %>">
+		<input type="text" style="display: none;" id="businessId" value="<%= user._id %>">
+		<script src="assets/js/addListing.js"></script>
+
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->
+
+	</body>
+
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/add-listing by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:05:36 GMT -->
+</html>

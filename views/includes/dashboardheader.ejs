@@ -1,0 +1,94 @@
+<section
+	class="bg-cover position-relative"
+	style="background: red url(assets/img/banner-6.jpg) no-repeat"
+	data-overlay="3"
+>
+	<div class="abs-list-sec">
+		<div class="flex-container">
+			<a href="/dashboard" class="add-list-btn hidden"
+				><i class="fas fa-plus me-2"></i>Create Survey</a
+			>
+			<a href="/index" class="add-list-btn"
+				><i class="fas fa-poll me-2"></i>Create Poll</a
+			>
+			<a href="/index" class="add-list-btn"
+				><i class="fas fa-sms me-2"></i>Send SMS</a
+			>
+			<a href="/" class="add-list-btn"
+				><i class="fas fa-list me-2"></i>Create Marketting List</a
+			>
+			<a href="add-listing" class="add-list-btn"
+				><i class="fas fa-shopping-bag me-2"></i>Mystery Shopping Task</a
+			>
+			<a href="add-listing" class="add-list-btn hidden"
+				><i class="fas fa-plus me-2"></i>Add Listing</a
+			>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="dashboard-head-author-clicl">
+					<div style="border-radius: 20px" class="dashboard-head-author-thumb">
+						<img
+							id="businessImage"
+							style="border-radius: 20px"
+							src="assets/img/t-5.png"
+							class="img-fluid"
+							alt=""
+						/>
+					</div>
+					<div class="dashboard-head-author-caption">
+						<div class="dashploio">
+							<h4 class="businessName">
+								<%= business?.name || user?.firstName %>
+							</h4>
+						</div>
+						<div class="dashploio">
+							<span class="agd-location"
+								><i class="lni lni-map-marker me-1"></i
+								><span id="businessLocation"
+									><%= business?.address || user?.address %></span
+								></span
+							>
+						</div>
+						<div class="listing-rating high">
+							<% for (let i = 0; i < totalRating; i++) { %>
+							<i class="fas fa-star active"></i>
+							<% } %>
+						</div>
+
+						<div class="Goodup-price-range">
+							<span class="ft-medium text-light"
+								><span id="reviews"><%= totalReviews %></span> Reviews</span
+							>
+						</div>
+						<div class="d-block mt-3">
+							<div class="list-lioe">
+								<div class="list-lioe-single">
+									<span class="ft-medium text-info"
+										><i class="fas fa-check-circle me-1"></i
+										><span id="status"
+											><%= business?.status || user?.totalReviews %></span
+										></span
+									>
+								</div>
+								<div class="list-lioe-single ms-2 ps-3 seperate">
+									<a href="javascript:void(0);" class="text-light ft-medium"
+										>Chicken | Wings</a
+									>|<a
+										href="javascript:void(0);"
+										class="text-light ft-medium ms-1"
+										>| Sports</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</section>

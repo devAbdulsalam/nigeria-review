@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+<html lang="en" id="html" x-data="global()" class="h-full js-focus-visible">
+	<head>
+		<meta charset="utf-8">
+		
+        <!--             
+                    *******,******,            
+                .,,,.******,**********.        
+              ,,,,,,,,*****,************,      
+            .,,,,,,,,,,****,**************.    
+           ,,,,,,,,,,,,****,***************.   
+          ,.,,,,,,,,,,,,,**,****************,        ____    __                                ____        ___    ___    
+         */////,.,,,,,,,,**,*****************       /\  _`\ /\ \__                            /\  _`\     /\_ \  /\_ \    
+         //////////*,,,,,.*,*****************.      \ \,\L\_\ \ ,_\  _ __    __     __  __  __\ \ \L\ \___\//\ \ \//\ \    
+         ///////////////*..,*****************,       \/_\__ \\ \ \/ /\`'__\/'__`\  /\ \/\ \/\ \\ \ ,__/ __`\\ \ \  \ \ \   
+         /////////////////,*,,***************,         /\ \L\ \ \ \_\ \ \//\ \L\.\_\ \ \_/ \_/ \\ \ \/\ \L\ \\_\ \_ \_\ \_ 
+         ///////////////,******,,************.         \ `\____\ \__\\ \_\\ \__/.\_\\ \___x___/' \ \_\ \____//\____\/\____\ 
+         *///////////*,***********,**********           \/_____/\/__/ \/_/ \/__/\/_/ \/__//__/    \/_/\/___/ \/____/\/____/
+          *////////*,****************,******,  
+           //////*,********************,,**.   
+            ,//***************************.    
+              ,*************************,      
+                .*********************.        
+                   .,***********/*, 
+        -->
+
+		<title>Log in to Your Account - StrawPoll</title>
+
+		<meta name="description" content="Welcome back to StrawPoll! Enter your email address and password to login to your account." />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<meta name="robots" content="max-image-preview:large">	
+
+			<link rel="canonical" href="https://strawpoll.com/login/" />
+
+		<link rel="alternate" hreflang="x-default" href="https://strawpoll.com/login/" />
+		<link rel="alternate" hreflang="en" href="https://strawpoll.com/login/" />
+		<link rel="alternate" hreflang="de" href="https://strawpoll.com/de/login/" />
+		<link rel="alternate" hreflang="fr" href="https://strawpoll.com/fr/login/" />
+		<link rel="alternate" hreflang="es" href="https://strawpoll.com/es/login/" />
+		<link rel="alternate" hreflang="pt" href="https://strawpoll.com/pt/login/" />
+
+
+		<link rel="stylesheet" href="https://cdn.strawpoll.com/dist/main.css?v=231">
+
+		<script defer src="https://cdn.strawpoll.com/dist/app.js?v=231"></script>
+		
+
+
+			<meta name="twitter:card" content="summary_large_image" />
+<meta property="fb:app_id" content="567582844767504" />
+
+<meta property="og:site_name" content="StrawPoll" />
+<meta property="og:title" content="Log in to Your Account - StrawPoll" />
+<meta property="og:description" content="Welcome back to StrawPoll! Enter your email address and password to login to your account." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://strawpoll.com/login/" />
+<meta property="og:image" content="https://cdn.strawpoll.com/images/logos/strawpoll-logo-title-splash.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en" />
+
+
+
+		<meta name="apple-mobile-web-app-title" content="StrawPoll" />
+<meta name="application-name" content="StrawPoll" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+
+
+		<style>
+			[x-cloak] {
+			  display: none;
+			}
+		</style>
+
+		<script>
+	const TIMESTAMP = new Date().getTime()
+	const WEBSOCKET_URL = 'wss://ws.strawpoll.com'
+	const API_ENDPOINT = 'https://api.strawpoll.com/v3'
+	const STATIC_URL = 'https://cdn.strawpoll.com'
+	const DEVICE_TYPE = 'desktop'
+	const APP_VERSION = '231'
+
+	const L = {
+		'error_retry': 'An error occurred. Please reload the page and try again.',
+		'timeout_retry': 'Timeout, please try again.',
+		'already_voted': 'You already voted on this poll.',
+		'incognito_vote': 'Voting in incognito mode is not allowed. Please disable incognito mode and try again.',
+		'backend_error': 'Backend error.',
+		'request_failed': 'Request failed.',
+		'request_help': 'Please contact support@strawpoll.com for help.',
+		'day': 'day',
+		'days': 'days',
+		'hour': 'hour',
+		'hours': 'hours',
+		'minute': 'minute',
+		'minutes': 'minutes',
+		'second': 'second',
+		'seconds': 'seconds',
+	}
+
+	const APPEARANCE = 'auto'
+</script>
+
+
+		
+
+<script>
+	let defaultThemeLight = { 'id': null, 'name': 'Default', colors: { 'pageBg': '#f9fafb', 'boxBg': '#ffffff', 'boxBorder': '#e5e8eb', 'boxBorderTop': '#fbbf24', 'title': '#111827', 'text': '#6b7280', 'highlight': '#4f46e5', 'buttonBg': '#4f46e5', 'buttonText': '#ffffff', 'border': '#e5e7eb', 'titleColor': '#000', 'textColor': '#444', 'primaryColor': '#00f', 'answerColor': '#000', }, 'hideShareButton': false }
+	let defaultThemeDark = { 'id': null, 'name': 'Default', colors: { 'pageBg': '#111827', 'boxBg': '#1f2937', 'boxBorder': '#374151', 'boxBorderTop': '#818cf8', 'title': '#e5e7eb', 'text': '#94a3b8', 'highlight': '#6366f1', 'buttonBg': '#6366f1', 'buttonText': '#ffffff', 'border': '#374151' }, 'hideShareButton': false }
+
+		let customTheme = { id: null }
+
+	let currentTheme = defaultThemeLight
+
+	if (APPEARANCE === 'dark' || APPEARANCE === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		document.getElementById('html').classList.add('dark')
+		currentTheme = defaultThemeDark
+	}
+
+	if (customTheme.id) {
+		currentTheme = customTheme
+
+		if (isDarkBg(hexToRGBA(customTheme.colors.pageBg, 1, 0, 1))) {
+			if (!document.getElementById('html').classList.contains('dark')) {
+				document.getElementById('html').classList.add('dark')
+			}
+		} else {
+			if (document.getElementById('html').classList.contains('dark')) {
+				document.getElementById('html').classList.remove('dark')
+			}
+		}
+	}
+
+		let pollOptionColors = ['#3EB991', '#FF7563', '#AA66CC', '#FFBB33', '#FF8800', '#33B5E5', '#AA66CC']
+
+	setCustomTheme(currentTheme)
+
+	function setCustomTheme(theme) {
+		for (const [key, value] of Object.entries(theme.colors)) {
+			document.documentElement.style.setProperty('--'+key, hexToRGBA(value, 1, 0, 1))
+		}
+
+		document.documentElement.style.setProperty('--buttonBgLight', hexToRGBA(theme.colors['buttonBg'],  1, 1, 1.16))
+		document.documentElement.style.setProperty('--borderDark', hexToRGBA(theme.colors['border'], 1, 1, 0.84))
+		document.documentElement.style.setProperty('--highlightDark', hexToRGBA(theme.colors['highlight'], 1, 1, 0.84))
+		document.documentElement.style.setProperty('--textShadow', hexToRGBA(theme.colors['text'], 1, 5, 0.954))
+		document.documentElement.style.setProperty('--textLight', hexToRGBA(theme.colors['text'], 0.8, 0, 1)) // 1, 113, 0.5568)
+		document.documentElement.style.setProperty('--textLighter', hexToRGBA(theme.colors['text'], 1, 168, 0.3431))
+		document.documentElement.style.setProperty('--highlightShadow', hexToRGBA(theme.colors['highlight'], 1, 58, 0.772))
+
+		// new
+		if (theme.colors['titleColor']) {
+			// document.documentElement.style.setProperty('--titleColorLight', hexToRGBA(theme.colors['titleColor'], 1, 113, 0.5568))
+			document.documentElement.style.setProperty('--titleColorLight', hexToRGBA(theme.colors['titleColor'], 0.2, 0, 1))
+			document.documentElement.style.setProperty('--textColorLight', hexToRGBA(theme.colors['textColor'], 1, 113, 0.5568))
+			document.documentElement.style.setProperty('--primaryColorLight', hexToRGBA(theme.colors['primaryColor'], 1, 113, 0.5568))
+			document.documentElement.style.setProperty('--answerColorLight', hexToRGBA(theme.colors['answerColor'], 0.6, 0, 1))
+			document.documentElement.style.setProperty('--answerColorLighter', hexToRGBA(theme.colors['answerColor'], 0.3, 0, 1))
+			document.documentElement.style.setProperty('--answerColorLightest', hexToRGBA(theme.colors['answerColor'], 0.1, 0, 1))
+		}
+	}
+
+	function hexToRGBA(hex, opacity, modifierAdd, modifierMulti) {
+		if (!hex) {
+			return 'rgba(0, 0, 0, 0)'
+		}
+		let c;
+		if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+			c = hex.substring(1).split('')
+			if (c.length === 3) {
+				c= [c[0], c[0], c[1], c[1], c[2], c[2]]
+			}
+			c= '0x'+c.join('')
+			return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].map(x => parseInt(modifierAdd + modifierMulti * x)).join(',')+', '+opacity+')'
+		}
+	}
+
+	function isDarkBg(color) {
+		let colors = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/)
+
+		let r = colors[1]
+		let g = colors[2]
+		let b = colors[3]
+		let a = parseInt(colors[4])
+
+		if (a === 0) return 0
+
+		let hsp = Math.sqrt(0.299 * (r * r) + 0.587 * (g * g) +	0.114 * (b * b))
+
+		if (hsp <= 127.5) {
+			return 1
+		}
+	}
+</script>
+
+<style>
+	/* THEME */
+	:root {
+		--backgroundColor: rgba(240, 240, 240, 1);
+		--sectionBackgroundColor: rgba(255, 255, 255, 1);
+		--titleColor: rgba(0, 0, 0, 1);
+		--titleColorLight: rgba(150, 150, 150, 1);
+		--textColor: rgba(100, 100, 100, 1);
+		--textColorLight: rgba(200, 200, 200, 1);
+		--answerColor: rgba(255, 0, 255, 1);
+		--primaryColor: rgba(0, 0, 255, 1);
+		--brandBorderColor: rgba(251, 191, 36, 1);
+	}
+	.form-background {
+		background-color: var(--backgroundColor);
+	}
+	.form-section-wrapper {
+		background-color: var(--sectionBackgroundColor);
+	}
+	.form-section {
+		background-color: var(--sectionBackgroundColor);
+	}
+	.section-title, .section-title::placeholder {
+		color: var(--titleColor);
+	}
+	/* .section-title::placeholder {
+		color: var(--titleColorLight);
+	} */
+	.section-text, .section-text::placeholder {
+		color: var(--textColor);
+	}
+	/* .section-text::placeholder {
+		color: var(--textColorLight);
+	} */
+	.field-choice-input, .field-choice-input::placeholder {
+		color: var(--answerColor);
+	}
+	/* .field-choice-input::placeholder {
+		color: var(--answerColorLight);
+	} */
+	.section-title:hover, .section-text:hover, .field-choice-input:hover {
+		border-color: var(--textColorLight);
+	}
+	.section-title:focus, .section-text:focus, .field-choice-input:focus {
+		border-color: var(--primaryColor);
+	}
+	.field-choice-card {
+		color: var(--answerColor);
+		border-color: var(--answerColorLight);
+		background-color: var(--answerColorLightest);
+	}
+	.form .field-choice-card:hover {
+		background-color: var(--answerColorLighter);
+	}
+	.choice-symbol {
+		border-color: var(--answerColorLight);
+		background-color: var(--sectionBackgroundColor);
+	}
+
+	.primary-link {
+		color: var(--primaryColor);
+	}
+
+	.brand-border-top {
+		border-top: 4px solid var(--brandBorderColor);
+	}
+	.border-text {
+		border-color: var(--textColor);
+	}
+
+	/* layout: plain, card, image_top, image_left, image_right, transparent */
+	/* background_image */
+	/* logo_image */
+	/* colors: page_bg, question_bg, title, questions, answers, primary (highlight), secondary */
+	/* font */
+	/* text size */
+	/* align: left, center, right */
+	/* ltr? */
+</style>
+
+
+
+
+
+
+		<style>
+			/* THEME */
+			:root {
+				/* --backgroundColor: rgba(240, 240, 240, 1);
+				--questionBackgroundColor: rgba(255, 255, 255, 1);
+				--titleColor: rgba(0, 0, 0, 1);
+				--titleColorLight: rgba(150, 150, 150, 1);
+				--textColor: rgba(100, 100, 100, 1);
+				--textColorLight: rgba(200, 200, 200, 1);
+				--answerColor: rgba(255, 0, 255, 1);
+				--primaryColor: rgba(0, 0, 255, 1); */
+		
+				/* dark mode */
+				--formBackgroundColor: rgba(17, 24, 39);
+				--questionBackgroundColor: rgba(31, 41, 55, 1);
+				--questionTitleColor: rgba(255, 255, 255, 1);
+				--questionTitleColorLight: rgba(150, 150, 150, 1);
+				--questionTextColor: rgba(100, 100, 100, 1);
+				--questionTextColorLight: rgba(200, 200, 200, 1);
+				--questionChoiceColor: rgba(255, 0, 255, 1);
+				--questionChoiceColorLight: rgba(255, 0, 255, 1);
+				--questionChoiceColorLightest: rgba(255, 0, 255, 1);
+				--formPrimaryColor: rgba(0, 0, 255, 1);
+		
+				--formBorderColor: rgba(55, 65, 81, 1);
+				--formBorderTopColor: rgba(129, 140, 248, 1);
+			}
+			.form-background {
+				background-color: var(--formBackgroundColor);
+			}
+			.form-question-wrapper {
+				background-color: var(--questionBackgroundColor);
+			}
+			.form-question {
+				background-color: var(--questionBackgroundColor);
+			}
+			.question-top-border {
+				border-top-color: var(--formBorderTopColor);
+			}
+			.question-title, .question-title::placeholder, .question-title input {
+				color: var(--questionTitleColor);
+			}
+			/* .question-title::placeholder {
+				color: var(--titleColorLight);
+			} */
+			.question-text, .question-text::placeholder {
+				color: var(--questionTextColor);
+			}
+			/* .question-text::placeholder {
+				color: var(--textColorLight);
+			} */
+			.field-choice-input, .field-choice-input::placeholder {
+				color: var(--questionChoiceColor);
+			}
+			/* .field-choice-input::placeholder {
+				color: var(--answerColorLight);
+			} */
+			.question-title:hover, .question-text:hover, .field-choice-input:hover {
+				border-color: var(--questionTextColorLight);
+			}
+			.question-title:focus, .question-text:focus, .field-choice-input:focus {
+				border-color: var(--formPrimaryColor);
+			}
+			.field-choice-card {
+				color: var(--questionChoiceColor);
+				border-color: var(--questionChoiceColorLight);
+				background-color: var(--questionChoiceColorLightest);
+			}
+			.form .field-choice-card:hover {
+				background-color: var(--questionChoiceColorLighter);
+			}
+			.choice-symbol {
+				border-color: var(--questionChoiceColorLight);
+				background-color: var(--questionBackgroundColor);
+			}
+		
+			.primary-link {
+				color: var(--formPrimaryColor);
+			}
+		
+			/* layout: plain, card, image_top, image_left, image_right, transparent */
+			/* background_image */
+			/* logo_image */
+			/* colors: page_bg, question_bg, title, questions, answers, primary (highlight), secondary */
+			/* font */
+			/* text size */
+			/* align: left, center, right */
+			/* ltr? */
+		</style>
+	</head>
+	<body class="font-sans antialiased min-h-full flex flex-col text-default bg-gray-50 dark:bg-gray-900">		
+		
+		
+
+		<div class="flex-auto  ">
+			<!--div class="hidden sm:flex sm:justify-end bg-gray-50 dark:bg-gray-900 p-4">
+	<div class="flex items-center text-sm">
+		<span>Don&#39;t have an account yet?</span>
+		<a href="/signup/" class="button is-light ml-3">Sign up</a>
+	</div>
+</div-->
+
+<div x-data="userLogin()" class="bg-gray-50 dark:bg-gray-900 flex flex-col justify-center mt-0 py-6 sm:px-6 lg:px-8">
+	<div class="sm:mx-auto sm:w-full sm:max-w-md">
+		<a href="/">
+			<img class="mx-auto h-12 w-auto" src="/assets/img/logo.png" alt="StrawPoll" />
+		</a>
+		<h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
+			Log in to your account
+		</h2>
+		<p class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400">
+			Or
+			<!-- space -->
+			<a href="/poll/strawpoll.com/strawpoll.com/signup/index.html" class="link">
+				create a free account
+			</a>
+		</p>
+	</div>
+
+	<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md space-y-8">
+		<div class="px-4 py-5 sm:p-6 box is-primary sm:px-10">
+			<form class="space-y-6" @submit.prevent="loginUser()">
+				<div>
+					<label for="email" class="label">
+						Email
+					</label>
+					<div class="mt-1">
+						<input id="email" name="email" type="email" autocomplete="email" required x-model="email" class="input">
+					</div>
+				</div>
+
+				<div>
+					<label for="password" class="label">
+						Password
+					</label>
+					<div class="mt-1">
+						<input id="password" name="password" type="password" autocomplete="current-password" required x-model="password" class="input">
+					</div>
+				</div>
+
+				<div class="flex items-center justify-between">
+					<div class="flex items-center">
+						<input id="remember-me" name="remember-me" type="checkbox" x-model="rememberMe"
+							class="h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 dark:border-gray-700 rounded cursor-pointer dark:bg-gray-700">
+						<label for="remember-me" class="ml-2 block text-sm text-gray-900 dark:text-white cursor-pointer">
+							Remember me
+						</label>
+					</div>
+
+					<div class="text-sm">
+						<a href="/poll/strawpoll.com/forgot-password/index.html" class="link">
+							Forgot your password?
+						</a>
+					</div>
+				</div>
+
+				<template x-if="error">
+					<div class="rounded-md bg-red-50 dark:bg-red-500 dark:bg-opacity-10 border border-transparent dark:border-red-500 dark:border-opacity-50 p-4">
+						<div class="flex">
+							<div class="flex-shrink-0">
+								<svg class="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+
+								</svg>
+							</div>
+							<div class="ml-3">
+								<h3 class="text-sm text-red-800 dark:text-gray-300" x-text="error"></h3>
+							</div>
+						</div>
+					</div>
+				</template>
+
+				<div>
+					
+
+	
+<a href="/marketing-list/strawpoll.com/strawpoll.com/account/index.html" class="inline-flex justify-center items-center border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:focus:ring-offset-gray-800 px-4 py-2 text-sm w-full">
+	login
+</a>
+
+				</div>
+			</form>
+
+			<div class="mt-6" x-data="oauthButtons()">
+	<div class="relative">
+		<div class="absolute inset-0 flex items-center">
+			<div class="w-full border-t border-gray-300 dark:border-gray-700"></div>
+		</div>
+		<div class="relative flex justify-center text-sm">
+			<span class="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-300">
+				Or continue with
+			</span>
+		</div>
+	</div>
+
+	<div class="mt-6 grid grid-cols-2 gap-3">
+		<template x-for="account in accounts">
+			<div>
+				<a :href="account.authorize_url"
+					class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm bg-white dark:bg-gray-600 text-sm font-medium text-gray-500 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">
+					<span class="sr-only" x-text="strawpoll.placeholder('Sign in with {name}', { name: account.name })"></span>
+
+					<template x-if="account.type == 'facebook'">
+						<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+							<path fill-rule="evenodd"
+								d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
+								clip-rule="evenodd" />
+						</svg>
+					</template>
+					<template x-if="account.type == 'microsoft'">
+						<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" >
+							<path d="M0 32h214.6v214.6H0V32zm233.4 0H448v214.6H233.4V32zM0 265.4h214.6V480H0V265.4zm233.4 0H448V480H233.4V265.4z"></path>
+						</svg>
+					</template>
+					<template x-if="account.type == 'google'">
+						<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
+							<path d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z"/>
+							<path d="M -14.754 63.239 C -11.514 63.239 -8.804 62.159 -6.824 60.329 L -10.684 57.329 C -11.764 58.049 -13.134 58.489 -14.754 58.489 C -17.884 58.489 -20.534 56.379 -21.484 53.529 L -25.464 53.529 L -25.464 56.619 C -23.494 60.539 -19.444 63.239 -14.754 63.239 Z"/>
+							<path d="M -21.484 53.529 C -21.734 52.809 -21.864 52.039 -21.864 51.239 C -21.864 50.439 -21.724 49.669 -21.484 48.949 L -21.484 45.859 L -25.464 45.859 C -26.284 47.479 -26.754 49.299 -26.754 51.239 C -26.754 53.179 -26.284 54.999 -25.464 56.619 L -21.484 53.529 Z"/>
+							<path d="M -14.754 43.989 C -12.984 43.989 -11.404 44.599 -10.154 45.789 L -6.734 42.369 C -8.804 40.429 -11.514 39.239 -14.754 39.239 C -19.444 39.239 -23.494 41.939 -25.464 45.859 L -21.484 48.949 C -20.534 46.099 -17.884 43.989 -14.754 43.989 Z"/>
+							</g>
+						</svg>
+					</template>
+					<template x-if="account.type == 'discord'">
+						<svg class="w-5 h-5" viewBox="0 0 71 55" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" />
+						</svg>
+					</template>
+					<span class="ml-2" x-text="account.name"></span>
+				</a>
+			</div>
+		</template>
+	</div>
+</div>
+
+<script>
+	function oauthButtons() {
+		return {
+			accounts: [{"authorize_url":"https:\/\/accounts.google.com\/o\/oauth2\/v2\/auth?scope=https:\/\/www.googleapis.com\/auth\/userinfo.email+https:\/\/www.googleapis.com\/auth\/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=https:\/\/strawpoll.com\/oauth2\/&client_id=97897999993-n0oi9qakd4ukrn7pcnpg5dfu9gohgn4r.apps.googleusercontent.com","client_id":"97897999993-n0oi9qakd4ukrn7pcnpg5dfu9gohgn4r.apps.googleusercontent.com","name":"Google","state":{"hash":"7rnzx4qYZOl","page":"login","provider":"google"},"type":"google"},{"authorize_url":"https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/authorize?client_id=22b90ab7-c8d4-42a2-a482-a0118aa10df6&redirect_uri=https:\/\/strawpoll.com\/oauth2\/&response_type=code&display=page&scope=https%3A%2F%2Fgraph.microsoft.com%2FUser.Read+openid+profile+email","client_id":"22b90ab7-c8d4-42a2-a482-a0118aa10df6","name":"Microsoft","state":{"hash":"7MZ0zWa1nom","page":"login","provider":"microsoft"},"type":"microsoft"},{"authorize_url":"https:\/\/discord.com\/api\/oauth2\/authorize?client_id=767149423574515712&redirect_uri=https:\/\/strawpoll.com\/oauth2\/&response_type=code&scope=email%20guilds%20identify","client_id":"767149423574515712","name":"Discord","state":{"hash":"Qrgew04KypY","page":"login","provider":"discord"},"type":"discord"},{"authorize_url":"https:\/\/www.facebook.com\/v12.0\/dialog\/oauth?client_id=567582844767504&redirect_uri=https:\/\/strawpoll.com\/oauth2\/&scope=public_profile,email","client_id":"567582844767504","name":"Facebook","state":{"hash":"8kogjJe1g6M","page":"login","provider":"facebook"},"type":"facebook"}],
+			config: {
+				locale: strawpoll.getLocale(),
+				timezone: strawpoll.getTimezone(),
+				first_day_of_week: strawpoll.getFirstDayOfWeek(),
+				clock_type: strawpoll.getClockType(),
+			},
+			init() {
+				this.accounts.forEach((account) => {
+					account.state.locale = this.config.locale
+					account.state.timezone = this.config.timezone
+					account.state.first_day_of_week = this.config.first_day_of_week
+					account.state.clock_type = this.config.clock_type
+
+					account.authorize_url = account.authorize_url + '&state=' + JSON.stringify(account.state)
+				})
+			}
+		}
+	}
+</script>
+
+		</div>
+
+		<div class="text-sm">
+			<div class="text-center">
+				<span>Don&#39;t have an account yet?</span>
+				<a href="/poll/strawpoll.com/strawpoll.com/signup/" class="link">Sign up</a>
+			</div>
+		</div>
+		
+		<div class="mt-8 text-gray-500 text-sm text-center space-x-1">
+            <a href="#">Home</a>
+	<span>·</span>
+	<a href="#">Contact</a> 
+	<span>·</span>
+	<a href="#">Terms</a> 
+	<span>·</span>
+	<a href="#">Imprint</a>
+</div>
+
+	</div>
+</div>
+
+<script>
+	function userLogin() {
+		return {
+			email: '',
+			password: '',
+			rememberMe: false,
+			error: null,
+			isLoading: false,
+			async loginUser() {
+				if (!email || !password) return
+
+				this.isLoading = true
+
+				const response = await strawpoll.fetchAPI('/auth/login', {
+					method: 'POST',
+					body: JSON.stringify({
+						email: this.email,
+						password: this.password,
+						remember_me: this.rememberMe,
+						forward_to: ''
+					})
+				}, { showNotification: false })
+
+				if (!response.error) {
+					window.location.href = response.location
+				} else {
+					this.error = response.error.message
+				}
+
+				this.isLoading = false
+			}
+		}
+	}
+</script>
+
+		</div>
+
+		
+
+		<div x-data aria-live="assertive" class="fixed z-50 top-16 inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+    <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
+        <div x-show="$store.notification.open" x-transition:enter="transform ease-out duration-300 transition" x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-gray-300 dark:ring-gray-700 overflow-hidden" aria-hidden="true" x-cloak>
+        	<div class="p-4">
+        		<div class="flex items-start">
+            		<div class="flex-shrink-0" x-show="$store.notification.type === 'success'">
+						
+
+<svg 
+	
+	class="h-6 w-6 text-green-400" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+
+</svg>
+
+             		</div>
+					<div class="flex-shrink-0" x-show="$store.notification.type === 'error'">
+						
+
+<svg 
+	
+	class="h-6 w-6 text-red-400" 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="none"
+	viewBox="0 0 24 24"
+	stroke="currentColor">
+	<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+
+</svg>
+
+             		</div>
+					<div class="ml-3 w-0 flex-1 pt-0.5">
+						<p class="text-sm font-medium text-gray-900" x-text="$store.notification.title"></p>
+						<p class="mt-1 text-sm text-gray-500" x-text="$store.notification.description" x-cloak></p>
+					</div>
+					<div class="ml-4 flex-shrink-0 flex">
+						<button @click="$store.notification.hide()" class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+							<span class="sr-only">Close</span>
+							
+
+<svg 
+	
+	class="h-5 w-5 " 
+	xmlns="http://www.w3.org/2000/svg" 
+	fill="currentColor"
+	viewBox="0 0 20 20"
+	stroke="">
+	<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+
+</svg>
+
+						</button>
+					</div>
+				</div>
+          	</div>
+        </div>
+    </div>
+</div>
+
+
+		<script>
+	function global() {
+		return {
+			isMobileView: false,
+			expandBox: false,
+			init() {
+				let width = (window.innerWidth > 0) ? window.innerWidth : screen.width
+				if (width < 769) {
+					this.isMobileView = true
+				}
+
+				this.$store.meta.update({
+					availableLanguages: ['en', 'de', 'fr', 'es', 'pt'],
+					displayLang: "en",
+					csrfToken: "8d381018e072bce1c58ae09886daaf14cb77b79c",
+				})
+
+
+
+				dayjs.locale(strawpoll.getLanguage())
+			}
+		}
+	}
+
+</script>
+
+	</body>
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/home-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Feb 2024 20:42:19 GMT -->
+	<head>
+		<!-- Meta Data -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Reviews Nigeria - Add Business</title>
+
+		<!-- Favicon -->
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="assets/img/favicon.png"
+		/>
+
+		<!-- Custom CSS -->
+		<link href="assets/css/styles.css" rel="stylesheet" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+		/>
+	</head>
+
+	<body>
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+		<div class="preloader"></div>
+
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<div id="main-wrapper">
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<!-- Start Navigation -->
+			<div class="header header-transparent change-logo">
+				<div class="container">
+					<nav id="navigation" class="navigation navigation-landscape">
+						<div class="nav-header">
+							<a class="nav-brand static-logo" href="#"
+								><img src="assets/img/logo-light.png" class="logo" alt=""
+							/></a>
+							<a class="nav-brand fixed-logo" href="#"
+								><img src="assets/img/logo.png" class="logo" alt=""
+							/></a>
+							<div class="nav-toggle"></div>
+							<div class="mobile_nav">
+								<ul>
+									<li>
+										<a
+											href="#"
+											data-bs-toggle="modal"
+											data-bs-target="#login"
+											class="theme-cl fs-lg"
+										>
+											<i class="lni lni-user"></i>
+										</a>
+									</li>
+									<li>
+										<a
+											href="add-listing.html"
+											class="crs_yuo12 w-auto text-white theme-bg"
+										>
+											<span class="embos_45"
+												><i class="fas fa-plus me-2"></i>Add Listing</span
+											>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="nav-menus-wrapper" style="transition-property: none">
+							<ul class="nav-menu">
+								<li class="active"><a href="index.html">Home</a></li>
+
+								<li>
+									<a href="javascript:void(0);">For Business</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li><a href="author-detail.html">Submit Business</a></li>
+										<li><a href="author-detail.html">Claim Business</a></li>
+										<li><a href="author-detail.html">Log in to Business</a></li>
+									</ul>
+								</li>
+
+								<li>
+									<a href="javascript:void(0);">Reviewers</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li>
+											<a href="dashboard-my-profile.html"
+												><i class="lni lni-user me-2"></i>Sign in
+											</a>
+										</li>
+										<li>
+											<a href="dashboard-change-password.html"
+												><i class="lni lni-lock-alt me-2"></i>Register as a
+												Reviewer</a
+											>
+										</li>
+									</ul>
+								</li>
+
+								<li>
+									<a href="javascript:void(0);">Advertisers</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li><a href="signup.html">Sign In</a></li>
+										<li><a href="login.html">Advertise with us</a></li>
+									</ul>
+								</li>
+								<li><a href="index.html">Write Reviews</a></li>
+							</ul>
+
+							<ul class="nav-menu nav-menu-social align-to-right">
+								<li>
+									<a
+										href="#"
+										data-bs-toggle="modal"
+										data-bs-target="#login"
+										class="ft-bold"
+									>
+										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
+									</a>
+								</li>
+								<li class="add-listing">
+									<a href="add-listing.html">
+										<i class="fas fa-plus me-2"></i>Add Listing
+									</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+
+			<!-- ======================= Login Detail ======================== -->
+			<section class="gray">
+				<div class="container">
+					<div class="row align-items-start justify-content-center">
+						<div class="col-xl-5 col-lg-8 col-md-12">
+							<div class="signup-screen-wrap">
+								<div class="signup-screen-single">
+									<div class="text-center mb-4">
+										<h4 class="m-0 ft-medium">Business Registration</h4>
+									</div>
+
+									<form id="uploadForm" class="submit-form">
+										<div class="form-group">
+											<label class="mb-1">Business Name</label>
+											<input
+												type="text"
+												id="business_name"
+												class="form-control rounded"
+												placeholder="Your Business Name"
+											/>
+										</div>
+
+										<div class="form-group">
+											<label class="mb-1">Location</label>
+											<input
+												type="text"
+												id="address"
+												class="form-control rounded"
+												placeholder="Business adress"
+											/>
+										</div>
+
+										<div class="form-group">
+											<label class="mb-1">Email</label>
+											<input
+												type="email"
+												id="email"
+												class="form-control rounded"
+												placeholder="example@gmail.com"
+											/>
+										</div>
+
+										<div class="form-group">
+											<label class="mb-1">Phone number</label>
+											<input
+												type="number"
+												id="phone"
+												class="form-control rounded"
+												placeholder="+234 808 888 6823"
+											/>
+										</div>
+
+										<div class="form-group">
+											<label class="mb-1">Password</label>
+											<input
+												type="password"
+												id="password"
+												class="form-control rounded"
+												placeholder="************"
+											/>
+										</div>
+
+										<div class="form-group">
+											<label class="mb-1">Business Description</label>
+											<input
+												type="text"
+												id="description"
+												class="form-control rounded"
+												placeholder="Business description..."
+											/>
+										</div>
+
+										<!-- Image & Gallery Option -->
+										<div class="dashboard-list-wraps bg-white rounded mb-4">
+											<div
+												class="dashboard-list-wraps-head br-bottom py-3 px-3"
+											>
+												<div class="dashboard-list-wraps-flx">
+													<h4 class="mb-0 ft-medium fs-md">
+														<i class="fa fa-camera me-2 theme-cl fs-sm"></i
+														>Company Logo Upload
+													</h4>
+												</div>
+											</div>
+
+											<div class="dashboard-list-wraps-body py-3 px-10">
+												<div class="col-lg-4 col-md-6"></div>
+
+												<!-- Featured Image -->
+												<div class="col-lg-4 col-md-6">
+													<label class="mb-1" for="logo"></label>
+													<form action="#" class="dropzone" id="featured-image">
+														<i class="fas fa-uploa"></i>
+													</form>
+													<label class="smart-text" for="logo"></label>
+												</div>
+
+												<!-- Gallery -->
+												<div class="col-lg-4 col-md-12">
+													<label class="mb-1" for="logo">Upload Logo</label>
+													<form action="#" class="dropzone">
+														<i class="fas fa-upload"></i>
+														<input
+															type="file"
+															id="logo"
+															name="logo"
+															style="display: none"
+														/>
+													</form>
+													<label for="logo" class="smart-text"
+														>Maximum file size: 2 MB.</label
+													>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<div
+												class="d-flex align-items-center justify-content-between"
+											>
+												<div class="flex-1">
+													<input
+														id="dd"
+														class="checkbox-custom"
+														name="dd"
+														type="checkbox"
+														checked
+													/>
+													<label for="dd" class="checkbox-custom-label"
+														>Accept terms</label
+													>
+												</div>
+											</div>
+										</div>
+										<br />
+										<div class="eltio_k2">
+											<p id="errorText" class="theme-cl"></p>
+										</div>
+										<div class="form-group">
+											<a href="login.html">
+												<button
+													type="button"
+													id="submitBtn"
+													class="btn btn-md full-width theme-bg text-light rounded ft-medium"
+												>
+													Register
+												</button>
+											</a>
+										</div>
+
+										<div class="form-group text-center mt-4 mb-0">
+											<p class="mb-0">
+												Already Registered?
+												<a href="login.html" class="ft-medium text-success"
+													>Login</a
+												>
+											</p>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ======================= Login End ======================== -->
+
+			<!-- ======================= Newsletter Start ============================ -->
+			<section
+				class="space bg-cover"
+				style="background: #03343b url(assets/img/landing-bg.png) no-repeat"
+			>
+				<div class="container py-5">
+					<div class="row justify-content-center">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+							<div class="sec_title position-relative text-center mb-5">
+								<h6 class="text-light mb-0">Subscribe Now</h6>
+								<h2 class="ft-bold text-light">
+									Get All Updates & Advance Offers
+								</h2>
+							</div>
+						</div>
+					</div>
+
+					<div class="row align-items-center justify-content-center">
+						<div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 col-12">
+							<form class="bg-white rounded p-1">
+								<div class="row no-gutters">
+									<div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-8">
+										<div class="form-group mb-0 position-relative">
+											<input
+												type="text"
+												class="form-control b-0"
+												placeholder="Enter Your Email Address"
+											/>
+										</div>
+									</div>
+									<div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
+										<div class="form-group mb-0 position-relative">
+											<button
+												class="btn full-width btn-height theme-bg text-light fs-md"
+												type="button"
+											>
+												Subscribe
+											</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ======================= Newsletter Start ============================ -->
+
+			<!-- ============================ Footer Start ================================== -->
+			<footer class="light-footer skin-light-footer style-2">
+				<div class="footer-middle">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+								<div class="footer_widget">
+									<img
+										src="assets/img/logo.png"
+										class="img-footer small mb-2"
+										alt=""
+									/>
+
+									<div class="address mt-2">
+										61-65 Egbe- Isolo Road, Iyana Ejigbo Shopping Arcade,
+										<br />Block A, Suite 19, Iyana Ejigbo Bus Stop, <br />
+										Ejigbo, Lagos State, Nigeria.
+									</div>
+									<div class="address mt-3">
+										+234-80-337-82-777 | +234-1-29 52 413
+										<br />hello@reviewnigeria.ng
+									</div>
+									<div class="address mt-2">
+										<ul class="list-inline">
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-facebook-filled"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-twitter-filled"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-youtube"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-instagram-filled"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-linkedin-original"></i
+												></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+								<div class="footer_widget">
+									<h4 class="widget_title">Company</h4>
+									<ul class="footer-menu">
+										<li><a href="#">Career</a></li>
+										<li><a href="about-us.html">About Us</a></li>
+										<li><a href="contact.html">Contact Us</a></li>
+										<li><a href="terms.html">Terms of Services</a></li>
+										<li><a href="how-it-works.html">How it works</a></li>
+										<li>
+											<a href="disclaimer.html"
+												>Disclaimer and Phishing Claims</a
+											>
+										</li>
+										<li><a href="cookie.html">Cookie Policy</a></li>
+										<li>
+											<a href="slaverry-statement.html"
+												>Modern Slavery Statement</a
+											>
+										</li>
+										<li><a href="GDPR.html">GDPR Policy</a></li>
+										<li>
+											<a href="do-not-share-my-info.html"
+												>Do Not Sell or Share My Personal Information</a
+											>
+										</li>
+										<li><a href="privacy.html">Privacy Policy</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+								<div class="footer_widget">
+									<h4 class="widget_title">For Business</h4>
+									<ul class="footer-menu">
+										<li><a href="#">Advertise With Us</a></li>
+										<li>
+											<a href="/claim-business/index.html"
+												>Claim Your Business</a
+											>
+										</li>
+										<li><a href="#">Build A Marketing List</a></li>
+										<li><a href="#">Send E-mail, SMS & Invite</a></li>
+										<li><a href="#">Polls</a></li>
+										<li><a href="#">Survey</a></li>
+										<li><a href="#">Mystery Shopping</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+								<div class="footer_widget">
+									<h4 class="widget_title">Resource Center</h4>
+									<ul class="footer-menu">
+										<li><a href="blog.html">Blog, Questtion and Answers</a></li>
+										<li><a href="#">Newsletter Subscription</a></li>
+										<li>
+											<a href="faq.html">Frequently Asked Questions (FAQ)</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+								<div class="footer_widget">
+									<h4 class="widget_title">For Reviewers</h4>
+									<ul class="footer-menu">
+										<li><a href="#">Sign In</a></li>
+										<li><a href="#">Write a Review</a></li>
+										<li><a href="#">Register As a Reviewer</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer-bottom br-top">
+					<div class="container">
+						<div class="row align-items-center">
+							<div class="col-lg-12 col-md-12 text-center">
+								<p class="mb-0">
+									<a style="color: blue" href="https://foramfera.com/"
+										>© 2024 Foraminifera Market Research LTD.</a
+									>
+									All rights reserved.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- ============================ Footer End ================================== -->
+
+			<!-- Log In Modal -->
+			<div
+				class="modal fade"
+				id="login"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="loginmodal"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog login-pop-form" role="document">
+					<div class="modal-content" id="loginmodal">
+						<div class="modal-headers">
+							<button
+								type="button"
+								class="close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							>
+								<span class="ti-close"></span>
+							</button>
+						</div>
+
+						<div class="modal-body p-5">
+							<div class="text-center mb-4">
+								<h4 class="m-0 ft-medium">Login Your Account</h4>
+							</div>
+
+							<form class="submit-form">
+								<div class="form-group">
+									<label class="mb-1">User Name</label>
+									<input
+										type="text"
+										class="form-control rounded bg-light"
+										placeholder="Username*"
+									/>
+								</div>
+
+								<div class="form-group">
+									<label class="mb-1">Password</label>
+									<input
+										type="password"
+										class="form-control rounded bg-light"
+										placeholder="Password*"
+									/>
+								</div>
+
+								<div class="form-group">
+									<div
+										class="d-flex align-items-center justify-content-between"
+									>
+										<div class="flex-1">
+											<input
+												id="dd"
+												class="checkbox-custom"
+												name="dd"
+												type="checkbox"
+												checked
+											/>
+											<label for="dd" class="checkbox-custom-label"
+												>Remember Me</label
+											>
+										</div>
+										<div class="eltio_k2">
+											<a href="#" class="theme-cl">Lost Your Password?</a>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<button
+										type="submit"
+										class="btn btn-md full-width theme-bg text-light rounded ft-medium"
+									>
+										Sign In
+									</button>
+								</div>
+
+								<div class="form-group text-center mb-0">
+									<p class="extra">Or login with</p>
+									<div class="option-log">
+										<div class="single-log-opt">
+											<a href="javascript:void(0);" class="log-btn"
+												><img
+													src="assets/img/c-1.png"
+													class="img-fluid"
+													alt=""
+												/>Login with Google</a
+											>
+										</div>
+										<div class="single-log-opt">
+											<a href="javascript:void(0);" class="log-btn"
+												><img
+													src="assets/img/facebook.png"
+													class="img-fluid"
+													alt=""
+												/>Login with Facebook</a
+											>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Modal -->
+
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
+				><i class="ti-arrow-up"></i
+			></a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			const preloader = document.querySelector('.preloader');
+			const checkUser = sessionStorage.getItem('myapp-user');
+			const accessToken = sessionStorage.getItem('myapp-accessToken');
+			document.addEventListener('DOMContentLoaded', function () {
+				if (checkUser) {
+					// Hide the preloader if user
+					preloader.style.display = 'none';
+				} else {
+					//  if not user is not redirected
+					window.location.href = '/index.html';
+				}
+			});
+			const apiurl = 'http://localhost:8080/api/v1';
+			//process the login and the register
+			document
+				.querySelector('#submitBtn')
+				.addEventListener('click', handleSubmit);
+			const errorText = document.getElementById('errorText');
+
+			function handleSubmit(ev) {
+				ev.preventDefault();				
+				errorText.innerText = '';
+				let name = document.querySelector('#business_name').value;
+				let email = document.querySelector('#email').value;
+				let password = document.querySelector('#password').value;
+				let location = document.querySelector('#address').value;
+				let description = document.querySelector('#description').value;
+				let phone = document.querySelector('#phone').value;
+				let logo = document.querySelector('#logo');
+				//TODO: Add form validation
+				if (!name) {
+					return (errorText.innerText = 'Business name is required');
+				}
+				if (!address) {
+					return (errorText.innerText = 'Business address is required');
+				}
+				if (logo.files.length === 0) {
+					return (errorText.innerText = 'Business logo is required');
+				}
+				let data = { name, email, phone, password, location, description };
+				let formData = new FormData();
+				for (let key in data) {
+					formData.append(key, data[key]);
+				}
+				formData.append('logo', logo.files[0]);
+				let endpoint = 'business/register';
+				preloader.style.display = 'block';
+				sendData(formData, endpoint, onSuccess);
+			}
+
+			function sendData(data, endpoint, callback) {
+				let url = `${apiurl}/${endpoint}`;
+				let req = new Request(url, {
+					method: 'POST',
+					headers: {
+						Authorization: `Bearer ${accessToken}`,
+					},
+					body: data,
+				});
+				fetch(req)
+					.then((res) => {
+						if (!res.ok) {
+							// Handle non-successful responses
+							throw new Error(`Request failed with status ${res.status}`);
+						}
+						return res.json();
+					})
+					.then((data) => {
+						// Check for errors in the response
+						if ((data && data.errors) || data.error) {
+							// Handle errors
+							failure(data.message || error || 'Received data is not valid');
+						}
+						// Successful response, pass data to the callback function
+						callback(data);
+					})
+					.catch((error) => {
+						// Handle any errors occurred during the fetch
+						console.error('Fetch error:', error);
+						failure(error.message || 'An error occurred during the fetch');
+					});
+			}
+
+			function onSuccess(data) {
+				//we have a token so put it in localstorage
+				preloader.style.display = 'none';
+				// sessionStorage.setItem('myapp-business', data.business);
+				Swal.fire('Success', `Business registration successfull`, 'success');
+			}
+			function failure(error) {
+				preloader.style.display = 'none';
+				console.error('Fetch error:', error);
+				if (error instanceof Response) {
+					if (error.status === 401) {
+						// Clear session and redirect to index page
+						sessionStorage.removeItem('myapp-accessToken');
+						sessionStorage.removeItem('myapp-user');
+						window.location.href = '/index.html';
+						Swal.fire('Oh Oops!', `${error}`, 'error');
+					} else {
+						console.error('Unexpected error:', error.statusText);
+					}
+				} else {
+					Swal.fire('Oh Oops!', `${error}`, 'error');
+				}
+			}
+		</script>
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/slick.js"></script>
+		<script src="assets/js/jquery.magnific-popup.min.js"></script>
+		<script src="assets/js/dropzone.js"></script>
+		<script src="assets/js/counterup.js"></script>
+		<script src="assets/js/lightbox.js"></script>
+		<script src="assets/js/moment.min.js"></script>
+		<script src="assets/js/daterangepicker.js"></script>
+		<script src="assets/js/lightbox.js"></script>
+		<script src="assets/js/jQuery.style.switcher.js"></script>
+		<script src="assets/js/custom.js"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->
+	</body>
+
+	<!-- Start cookieyes banner -->
+	<script
+		id="cookieyes"
+		type="text/javascript"
+		src="https://cdn-cookieyes.com/client_data/2047b3c28ff723db7e4a4e2d/script.js"
+	></script>
+	<!-- End cookieyes banner -->
+</html>

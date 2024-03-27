@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:05 GMT -->
+	<head>
+		<!-- Morris Charts CSS -->
+		<link href="assets/js/plugins/morris.js/morris.css" rel="stylesheet" />
+		<%- include('includes/head.ejs') %>
+	</head>
+
+	<body>
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+		<div class="preloader"></div>
+
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<div id="main-wrapper">
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<!-- Start Navigation -->
+			<%- include('includes/header.ejs') %>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<style>
+				/* Your existing styles here */
+
+				@media (max-width: 768px) {
+					.add-list-btn {
+						width: 46%;
+						font-size: 13px;
+						margin: 5px; /* Make the buttons take full width on smaller screens */
+					}
+
+					.dashboard-head-author-clicl {
+						max-width: 100%; /* Adjust the maximum width for smaller screens */
+					}
+					.flex-container {
+						margin-left: 0px;
+					}
+					.add-list-btn.hidden {
+						display: none;
+					}
+					.abs-list-sec {
+						margin-left: 30px;
+					}
+
+					/* Add any additional styles for smaller screens here */
+				}
+			</style>
+
+			<!-- =============================== Dashboard Header ========================== -->
+			<section
+				class="bg-cover position-relative"
+				style="background: red url(assets/img/banner-6.jpg) no-repeat"
+				data-overlay="3"
+			>
+				<div class="abs-list-sec">
+					<div class="flex-container">
+						<a href="/survey/index.html" class="add-list-btn hidden"
+							><i class="fas fa-plus me-2"></i>Create Survey</a
+						>
+						<a href="/poll/strawpoll.com/create/index.html" class="add-list-btn"
+							><i class="fas fa-poll me-2"></i>Create Poll</a
+						>
+						<a href="/Bulk sms/index.html" class="add-list-btn"
+							><i class="fas fa-sms me-2"></i>Send SMS</a
+						>
+						<a href="dashboard-add-listing.html" class="add-list-btn"
+							><i class="fas fa-list me-2"></i>Create Marketting List</a
+						>
+						<a href="dashboard-add-listing.html" class="add-list-btn"
+							><i class="fas fa-shopping-bag me-2"></i>Mystery Shopping Task</a
+						>
+						<a href="add-listing.html" class="add-list-btn hidden"
+							><i class="fas fa-plus me-2"></i>Add Listing</a
+						>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+							<div class="dashboard-head-author-clicl">
+								<div
+									style="border-radius: 20px"
+									class="dashboard-head-author-thumb"
+								>
+									<img
+										style="border-radius: 20px"
+										src="assets/img/t-5.png"
+										class="img-fluid"
+										alt=""
+									/>
+								</div>
+								<div class="dashboard-head-author-caption">
+									<div class="dashploio"><h4>Sablak Hotel</h4></div>
+									<div class="dashploio">
+										<span class="agd-location"
+											><i class="lni lni-map-marker me-1"></i>Challenge Ibadan,
+											Oyo Nigeria</span
+										>
+									</div>
+									<div class="listing-rating high">
+										<i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i
+										><i class="fas fa-star active"></i>
+									</div>
+
+									<div class="Goodup-price-range">
+										<span class="ft-medium text-light">34 Reviews</span>
+									</div>
+									<div class="d-block mt-3">
+										<div class="list-lioe">
+											<div class="list-lioe-single">
+												<span class="ft-medium text-info"
+													><i class="fas fa-check-circle me-1"></i>Claimed</span
+												>
+											</div>
+											<div class="list-lioe-single ms-2 ps-3 seperate">
+												<a
+													href="javascript:void(0);"
+													class="text-light ft-medium"
+													>Chicken | Wings</a
+												>|<a
+													href="javascript:void(0);"
+													class="text-light ft-medium ms-1"
+													>| Sports</a
+												>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br /><br /><br /><br /><br />
+			</section>
+			<!-- =============================== Dashboard Header ========================== -->
+
+			<!-- ======================= dashboard Detail ======================== -->
+			<div class="goodup-dashboard-wrap gray px-4 py-5">
+				<a
+					class="mobNavigation"
+					data-bs-toggle="collapse"
+					href="#MobNav"
+					role="button"
+					aria-expanded="false"
+					aria-controls="MobNav"
+				>
+					<i class="fas fa-bars me-2"></i>Dashboard
+				</a>
+				<!-- =============================== Dashboard Nav ========================== -->
+				<%- include('includes/dashboardNav.ejs') %>
+				<!-- ======================= dashboard mobileNav ======================== -->
+
+				<div class="goodup-dashboard-content">
+					<div class="dashboard-tlbar d-block mb-5">
+						<div class="row">
+							<div class="colxl-12 col-lg-12 col-md-12">
+								<h1 class="ft-medium">Profile Info</h1>
+								<nav aria-label="breadcrumb">
+									<ol style="gap: 5px" class="breadcrumb">
+										<li class="breadcrumb-item text-muted">
+											<a href="#">Home</a>
+										</li>
+										<br />
+										<li class="text-muted"><a href="#">Dashboard</a></li>
+										<br />
+										<li class="breadcrumb-item">
+											<a href="#" class="theme-cl">My Profile</a>
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+
+					<div class="dashboard-widg-bar d-block">
+						<div class="row">
+							<div
+								class="col-xl-3 col-lg-3 col-md-4 col-sm-12 order-xl-last order-lg-last order-md-last"
+							>
+								<div class="d-flex bg-white rounded px-3 py-3 mb-3">
+									<div class="dash-figure">
+										<div class="dash-figure-thumb">
+											<img
+												src="assets/img/t-4.png"
+												class="img-fluid rounded"
+												alt="user image"
+												id="userImage"
+											/>
+										</div>
+										<div class="upload-photo-btn">
+											<div class="Uploadphoto">
+												<span><i class="fas fa-upload"></i> Upload Photo</span>
+												<input type="file" class="upload" id="avatar" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-9 col-lg-9 col-md-8 col-sm-12">
+								<form class="submit-form">
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fa fa-user-check me-2 theme-cl fs-sm"></i>My
+													Profile
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row">
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">First Name</label>
+														<input
+															id="firstName"
+															type="text"
+															class="form-control rounded"
+															placeholder="Adeagbo"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Last Name</label>
+														<input
+															id="lastName"
+															type="text"
+															class="form-control rounded"
+															placeholder="Josiah"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Email ID</label>
+														<input
+															id="email"
+															type="text"
+															class="form-control rounded"
+															placeholder="adeagbojosiah1@gmail.com"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Mobile</label>
+														<input
+															id="phone"
+															type="text"
+															class="form-control rounded"
+															placeholder="080 256 584 7895"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">State</label>
+														<select id="state" class="form-control">
+															<option>Lagos</option>
+															<option>Oyo</option>
+															<option>Ondo</option>
+															<option>Anambra</option>
+															<option>Enugu</option>
+															<option>Rivers</option>
+															<option>Abuja</option>
+															<option>Others</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">City</label>
+														<select id="city" class="form-control">
+															<option>Ibadan</option>
+															<option>Akure</option>
+															<option>Ikeja</option>
+															<option>Awka</option>
+															<option>Enugu</option>
+															<option>Port Harcourt</option>
+															<option>Abuja</option>
+															<option>Others</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Address</label>
+														<input
+															id="address"
+															type="text"
+															class="form-control rounded"
+															placeholder="Ikeja Mainland Market NG"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">Zip Code</label>
+														<input
+															id="zipCode"
+															type="text"
+															class="form-control rounded"
+															placeholder="HQ125478"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1">About Notes</label>
+														<textarea
+															id="bio"
+															class="form-control rounded ht-150"
+															placeholder="Describe your self"
+														></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="dashboard-list-wraps bg-white rounded mb-4">
+										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
+											<div class="dashboard-list-wraps-flx">
+												<h4 class="mb-0 ft-medium fs-md">
+													<i class="fa fa-user-friends me-2 theme-cl fs-sm"></i
+													>My Social Links
+												</h4>
+											</div>
+										</div>
+
+										<div class="dashboard-list-wraps-body py-3 px-3">
+											<div class="row" id="socials">
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="ti-facebook theme-cl me-1"></i
+															>Facebook</label
+														>
+														<input
+															id="facebook"
+															type="text"
+															class="form-control rounded"
+															placeholder="https://facebook.com/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="ti-twitter theme-cl me-1"></i
+															>Twitter</label
+														>
+														<input
+															id="twitter"
+															type="text"
+															class="form-control rounded"
+															placeholder="https://twitter.com/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="ti-instagram theme-cl me-1"></i
+															>Instagram</label
+														>
+														<input
+															id="instagram"
+															type="text"
+															class="form-control rounded"
+															placeholder="https://instagram.com/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+													<div class="form-group">
+														<label class="mb-1"
+															><i class="ti-linkedin theme-cl me-1"></i
+															>Linkedin</label
+														>
+														<input
+															id="linkedin"
+															type="text"
+															class="form-control rounded"
+															placeholder="https://linkedin.com/"
+														/>
+													</div>
+												</div>
+												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+													<div class="form-group">
+														<button
+															id="submitBtn"
+															type="button"
+															class="btn theme-bg rounded text-light"
+														>
+															Save Changes
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- footer -->
+					<div class="row">
+						<div class="col-md-12">
+							<div class="py-3">
+								<p class="mb-0">
+									<a style="color: blue" href="https://foramfera.com/"
+										>© 2024 Foraminifera Market Research LTD.</a
+									>
+									All rights reserved.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ======================= dashboard Detail End ======================== -->
+
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
+				><i class="ti-arrow-up"></i
+			></a>
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+		<%- include('includes/end.ejs') %>
+		<script src="assets/js/profile.js"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->
+	</body>
+
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/dashboard-my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:08 GMT -->
+</html>
