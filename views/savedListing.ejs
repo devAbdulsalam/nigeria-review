@@ -116,7 +116,7 @@
 											<div class="dsd-single-listing-wraps">
 												<div class="dsd-single-lst-thumb">
 													<img
-														src="<%= item?.featuredImage?.url %>"
+														src="<%= item?.listingId?.featuredImage?.url %>"
 														class="img-fluid"
 														alt=""
 													/>
@@ -124,12 +124,12 @@
 												<div class="dsd-single-lst-caption">
 													<div class="dsd-single-lst-title">
 														<h5>
-															<%= item?.BusinessName || item?.productName %>
+															<%= item?.listingId?.BusinessName || item?.listingId?.productName %>
 														</h5>
 													</div>
 													<span class="agd-location"
 														><i class="lni lni-map-marker me-1"></i><%=
-														item?.address %></span
+														item?.listingId?.address %></span
 													>
 													<div class="ico-content">
 														<div class="Goodup-ft-first">

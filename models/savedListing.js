@@ -9,7 +9,7 @@ const SavedListingSchema = new mongoose.Schema(
 		},
 		listingId: {
 			type: Schema.Types.ObjectId,
-			ref: 'User',
+			ref: 'Listing',
 			required: true,
 		},
 	},

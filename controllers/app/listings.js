@@ -65,7 +65,9 @@ export const getEditListing = async (req, res) => {
 };
 export const getSavedListings = async (req, res) => {
 	const user = await req.session.user;
-	const listings = await SavedListing.find({ userId: user._id });
+	const listings = await SavedListing.find({ userId: user._id }).populate(
+		'listingId'
+	);
 	const dasboardInfo = await getDashboardInfo(user._id);
 	res.render('savedListing', {
 		path: '/saved-listings',
