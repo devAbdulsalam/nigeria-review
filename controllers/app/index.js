@@ -41,10 +41,10 @@ export const getDashboard = async (req, res, next) => {
 		const listings = await Listing.find({ userId: user._id });
 		const totalListing = await Listing.countDocuments({ userId: user._id });
 		const dasboardInfo = await getDashboardInfo(user._id);
-		const transactions = await Transaction.find()
-			.limit(50)
+		const transactions = await Transaction.find({ userId: user._id })
+			.limit(10)
 			.sort({ createdOn: -1 });
-		const newUsers = await User.find({ role: 'USER' })
+		const followers = await User.find({ role: 'USER' })
 			.limit(2)
 			.select('firstName lastName email')
 			.sort({ createdOn: -1 });
@@ -62,7 +62,7 @@ export const getDashboard = async (req, res, next) => {
 			listings,
 			totalListing,
 			totalBooking: 500,
-			followers: newUsers,
+			followers,
 			invoices: transactions,
 			activities: notifications,
 			path: '/dashboard',
