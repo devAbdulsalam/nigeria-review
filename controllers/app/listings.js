@@ -98,7 +98,7 @@ export const getSearchListings = async (req, res, next) => {
 		limit = 10,
 	} = req.query;
 	// status: 'ACTIVE';
-	let listingQuery = {  }; // Default filter for active listings
+	let listingQuery = {}; // Default filter for active listings
 
 	// Build search query based on parameters
 	if (query) {
@@ -121,7 +121,7 @@ export const getSearchListings = async (req, res, next) => {
 		.sort(sort)
 		.skip(skip)
 		.limit(limit)
-		.select({ _id: 1, }); // Select only necessary fields for efficiency
+		.select({ _id: 1 }); // Select only necessary fields for efficiency
 
 	const totalCount = await Listing.countDocuments(listingQuery); // Total matching listings
 	// Pass limit per page for pagination UI
@@ -129,7 +129,7 @@ export const getSearchListings = async (req, res, next) => {
 	const user = await req?.session?.user;
 	const dasboardInfo = await getDashboardInfo(user?._id);
 
-	console.log(listings);
+	console.log('listings', listings);
 
 	res.render('search', {
 		listings,

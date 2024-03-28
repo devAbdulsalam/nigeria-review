@@ -102,11 +102,17 @@
 							<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
 						</a>
 					</li>
-					<% } %> <% if (user) { %>
+					<% } %> <% if (user ) { %>
 					<li class="add-listing addListingHref">
+						<% if (user.role === 'BUSINESS' ) { %>
 						<a href="/add-listing">
 							<i class="fas fa-plus me-2"></i>Add Listing
 						</a>
+						<% } %> <% if (user.role !== 'BUSINESS' ) { %>
+						<a href="/listings">
+							<i class="fas fa-plus me-2"></i>Add Reviews
+						</a>
+						<% } %>
 					</li>
 					<% } %>
 				</ul>

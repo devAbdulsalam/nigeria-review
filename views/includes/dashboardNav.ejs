@@ -29,18 +29,19 @@
 					>
 				</li>
 				<% } %>
+				<li class="<%= path === '/listings' ? 'active' : '' %>">
+					<a href="listings"><i class="lni lni-add-files me-2"></i>Listings</a>
+				</li>
 				<li class="<%= path === '/saved-listings' ? 'active' : '' %>">
 					<a href="saved-listings"
 						><i class="lni lni-bookmark me-2"></i>Saved Listing</a
 					>
 				</li>
-				<% if (user.role === 'BUSINESS') { %>
 				<li class="<%= path === '/claim-business' ? 'active' : '' %>">
 					<a href="claim-business"
 						><i class="lni lni-bookmark me-2"></i>Claim Business</a
 					>
 				</li>
-				<% } %>
 			</ul>
 			<ul data-submenu-title="Business & Marketing Tools">
 				<% if (user.role !== 'USER') { %>
@@ -93,11 +94,13 @@
 				</li>
 			</ul>
 			<ul data-submenu-title="Other Listing Options">
+				<% if (user.role === 'BUSINESS') { %>
 				<li>
 					<a href="add-business"
 						><i class="lni lni-plus me-2"></i>Add Business</a
 					>
 				</li>
+				<% } %>
 				<li>
 					<a href="javascript:void(0);"
 						><i class="lni lni-money-location me-2"></i> List Places & Tourist
@@ -115,13 +118,8 @@
 					<a href="my-profile"><i class="lni lni-user me-2"></i>My Profile </a>
 				</li>
 				<li class="<%= path === '/change-password' ? 'active' : '' %>">
-					<a href="change-password"
+					<a href="update-password"
 						><i class="lni lni-lock-alt me-2"></i>Change Password</a
-					>
-				</li>
-				<li>
-					<a href="javascript:void(0);"
-						><i class="lni lni-trash-can me-2"></i>Delete Account</a
 					>
 				</li>
 				<li>
