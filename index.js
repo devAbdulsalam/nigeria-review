@@ -74,7 +74,10 @@ app.use(flash());
 // 	uri: process.env.MONGO_URL,
 // 	collection: 'sessions',
 // });
-app;
+app.use((req, res, next) => {
+	res.setHeader('X-Content-Type-Options', 'nosniff');
+	next();
+});
 app.use(
 	session({
 		secret: process.env.EXPRESS_SESSION_SECRET,
