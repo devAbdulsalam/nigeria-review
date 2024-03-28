@@ -146,15 +146,24 @@ export const getPricing = async (req, res, next) => {
 };
 export const getAuthor = async (req, res, next) => {
 	try {
-		const user = await req.session.user;
+		const user = await req?.session?.user;
 		const author = await User.findOne({ _id: req.params.id }).select(
-			'firstName lastName email avatar address'
+			'firstName lastName email avatar address phone'
 		);
+		const listings = await Listing.find({ userId: req.params.id });
+		const totalListings = await Listing.count({ userId: req.params.id });
+		const followers = await User.countDocuments({ _id: req.params.id });
+		const following = await User.countDocuments({ _id: req.params.id });
 		res.render('author', {
 			path: '/author',
 			pageTitle: 'Author',
 			user,
+			listings,
+			totalListings,
 			author,
+			followers,
+			following,
+			authorId: req.params.id,
 			isAuthenticated: req.session.isAuthenticated,
 			// isNew: user.verified,
 		});
@@ -186,6 +195,51 @@ export const getAbout = async (req, res, next) => {
 		res.render('about', {
 			path: '/about',
 			pageTitle: 'About',
+			user,
+			isAuthenticated: req.session.isAuthenticated,
+		});
+	} catch (err) {
+		const error = new Error(err);
+		error.httpStatusCode = 500;
+		return next(error);
+	}
+};
+export const getTerms = async (req, res, next) => {
+	try {
+		const user = await req.session.user;
+		res.render('terms', {
+			path: '/terms',
+			pageTitle: 'Terms',
+			user,
+			isAuthenticated: req.session.isAuthenticated,
+		});
+	} catch (err) {
+		const error = new Error(err);
+		error.httpStatusCode = 500;
+		return next(error);
+	}
+};
+export const getCareer = async (req, res, next) => {
+	try {
+		const user = await req.session.user;
+		res.render('career', {
+			path: '/career',
+			pageTitle: 'Career',
+			user,
+			isAuthenticated: req.session.isAuthenticated,
+		});
+	} catch (err) {
+		const error = new Error(err);
+		error.httpStatusCode = 500;
+		return next(error);
+	}
+};
+export const getContact = async (req, res, next) => {
+	try {
+		const user = await req.session.user;
+		res.render('contact', {
+			path: '/contact',
+			pageTitle: 'Contact',
 			user,
 			isAuthenticated: req.session.isAuthenticated,
 		});

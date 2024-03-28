@@ -562,16 +562,16 @@
 												<div class="Goodup-grid-fl-wrap">
 													<div class="Goodup-caption px-3 py-2">
 														<div class="Goodup-author">
-															<a href="author-detail"
+															<a href="author/<%= item.userId %>"
 																><img
 																	src="assets/img/t-1.png"
 																	class="img-fluid circle"
-																	alt=""
+																	alt="author"
 															/></a>
 														</div>
 														<h4 class="mb-0 ft-medium medium">
 															<a
-																href="listing/<%= item._id %>"
+																href="listings/<%= item._id %>"
 																class="text-dark fs-md"
 																><%= item?.businessName || item?.productName
 																%></a
@@ -609,11 +609,14 @@
 																	</button>
 																</div>
 																<div class="Goodup-bookmark-btn">
-																	<a href="saved-listings/<%= item._id %>">
+																	<button
+																		type="button"
+																		href="saved-listings/<%= item._id %>"
+																	>
 																		<i
 																			class="lni lni-heart-filled position-absolute"
 																		></i>
-																	</a>
+																	</button>
 																</div>
 															</div>
 														</div>
@@ -4076,7 +4079,10 @@
 						topCategories) { %>
 						<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
 							<div class="cats-wrap text-center">
-								<a href="listings/<%= category._id %>" class="Goodup-catg-wrap">
+								<a
+									href="search?q=<%= category._id.toLowerCase() %>"
+									class="Goodup-catg-wrap"
+								>
 									<div class="Goodup-catg-city">
 										<%= category.cities %> Cities
 									</div>

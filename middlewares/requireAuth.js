@@ -39,7 +39,6 @@ export const verifyPermission = (roles = []) =>
 	});
 
 const requiredAuth = (req, res, next) => {
-	console.log(req.session);
 	if (!req.session.isLoggedIn) {
 		return res.status(401).send('Require Authtentication');
 	}

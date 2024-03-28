@@ -4,6 +4,7 @@ import {
 	getAddListing,
 	getMyListing,
 	getListings,
+	getSearchListings,
 	getSavedListing,
 	getSavedListings,
 	getEditListing,
@@ -12,7 +13,8 @@ const router = express.Router();
 import { requiredAuthPage } from '../../middlewares/requireAuth.js';
 // users
 
-router.get('/listings', requiredAuthPage, getListings);
+router.get('/listings', getSearchListings);
+router.get('/search', getSearchListings);
 router.get('/listings/:id', requiredAuthPage, getListing);
 router.get('/my-listings', requiredAuthPage, getMyListing);
 router.get('/add-listing', requiredAuthPage, getAddListing);

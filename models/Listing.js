@@ -65,6 +65,14 @@ const ListingSchema = new mongoose.Schema(
 				type: String,
 			},
 		},
+		totalReviews: {
+			type: Number,
+			require: 0,
+		},
+		averageRating: {
+			type: Number,
+			default: 0,
+		},
 		amenties: [
 			{
 				type: String,
@@ -80,6 +88,9 @@ const ListingSchema = new mongoose.Schema(
 	},
 	{ timestamps: true }
 );
+ListingSchema.index({ keywords: 'text' }); // Text index for full-text search
+ListingSchema.index({ category: 1, location: 1 }); // Compound index for common searches
+
 
 const Listing = mongoose.model('Listing', ListingSchema);
 export default Listing;

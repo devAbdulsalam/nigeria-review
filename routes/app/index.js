@@ -11,6 +11,9 @@ import {
 	getAuthor,
 	getAbout,
 	getAddAdvert,
+	getCareer,
+	getTerms,
+	getContact,
 } from '../../controllers/app/index.js';
 import authRoutes from './auth.js';
 import businessRoutes from './business.js';
@@ -24,9 +27,6 @@ import {
 const router = express.Router();
 router.get('/', getIndex);
 router.get('/index', getIndex);
-router.get('/about', getAbout);
-router.get('/pricing', getPricing);
-router.get('/author', getAuthor);
 router.get('/advert', getAdvert);
 router.use('/', authRoutes);
 router.get('/register', getRegister);
@@ -35,7 +35,13 @@ router.get('/add-advert', requiredAuthPage, getAddAdvert);
 router.get('/dashboard', requiredAuthPage, getDashboard);
 router.get('/my-profile', requiredAuthPage, getProfile);
 router.get('/update-password', requiredAuthPage, getUpdatePassword);
+router.get('/author/:id', getAuthor);
 router.use('/', businessRoutes);
 router.use('/', listingRoutes);
 router.use('/', reviewRoutes);
+router.get('/about-us', getAbout);
+router.get('/pricing', getPricing);
+router.get('/contact', getContact);
+router.get('/terms', getTerms);
+router.get('/career', getCareer);
 export default router;

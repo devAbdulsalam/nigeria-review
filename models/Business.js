@@ -14,6 +14,14 @@ const BusinessSchema = new mongoose.Schema(
 		phone: String,
 		description: String,
 		address: String,
+		totalReviews: {
+			type: Number,
+			require: 0,
+		},
+		averageRating: {
+			type: Number,
+			default: 0,
+		},
 		primary: {
 			type: Boolean,
 			require: false,

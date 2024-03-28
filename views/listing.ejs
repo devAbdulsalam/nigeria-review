@@ -133,7 +133,7 @@
 							<img src="../assets/img/burger-king.png" class="img-fluid" width="90" alt="" />
 						</div>
 						<div class="Goodup-lkp-caption ps-3">
-							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold">Sake Cafe Sushi Bar & Grill</h4></div>
+							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold"><%= listing.businessName || listing.productName %></h4></div>
 							<div class="Goodup-ft-first">
 								<div class="Goodup-rating">
 									<div class="Goodup-rates">
@@ -186,8 +186,8 @@
 										<h5 class="ft-bold fs-lg">About the Business</h5>
 										
 										<div class="d-block mt-3">
-											<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur</p>
-											<p class="p-0 m-0">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur</p>
+											<p><%= listing.description %></p>
+											<p class="p-0 m-0"><%= listing.description %></p>
 										</div>
 									</div>
 									
@@ -296,26 +296,11 @@
 										
 										<div class="Goodup-all-features-list mt-3">
 											<ul>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="" alt="" /><span>Health Score 8.7 / 10</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Offers Delivery</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Offers Takeout</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Reservations</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Staff wears masks</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Vegan Options</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Vegetarian Options</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Accepts Credit Cards</span></div></li>
+												<% if (listing?.amenities?.length> 0) { %> 
+													<% for (let category of	listing?.amenities) { %>
+														<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="" alt="" /><span>Health Score 8.7 / 10</span></div></li>
+													<% } %> <% } %>
 												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Casual</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Moderate Noise</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Offers Catering</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Good for Groups</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Good For Kids</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Good for Breakfast</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Brunch, Lunch, Dinner</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Private Lot Parking</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Waiter Service</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Free Wi-Fi</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Beer & Wine</span></div></li>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Drive-Thru</span></div></li>
 												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Wheelchair Accessible</span></div></li>
 												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>TV Services</span></div></li>
 												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Outdoor Seating</span></div></li>
@@ -408,18 +393,19 @@
 									<div class="jbd-details mb-4">
 										<h5 class="ft-bold fs-lg">Recommended Reviews</h5>
 										<div class="reviews-comments-wrap">
-										
+											<% if (reviews.length> 0) { %> <% for (let item of
+						reviews) { %>
 											<!-- reviews-comments-item -->  
 											<div class="reviews-comments-item">
 												<div class="review-comments-avatar">
 													<img src="../assets/img/t-1.png" class="img-fluid" alt=""> 
 												</div>
 												<div class="reviews-comments-item-text">
-													<h4><a href="#">Kayla E. Claxton</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl me-1"></i>27 Oct 2019</span></h4>
-													<span class="agd-location"><i class="lni lni-map-marker me-1"></i>San Francisco, USA</span>
+													<h4><a href="#"><%= item?.name %></a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl me-1"></i><%= item?.createdAt %></span></h4>
+													<span class="agd-location"><i class="lni lni-map-marker me-1"></i><%= item?._id %></span>
 													<div class="listing-rating high"><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i></div>
 													<div class="clearfix"></div>
-													<p>" Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. "</p>
+													<p>" <%= item?.comment %>. "</p>
 													<div class="pull-left reviews-reaction">
 														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> 12</a>
 														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> 1</a>
@@ -427,47 +413,8 @@
 													</div>
 												</div>
 											</div>
+												<% } %> <% } %>
 											<!--reviews-comments-item end-->  
-											
-											<!-- reviews-comments-item -->  
-											<div class="reviews-comments-item">
-												<div class="review-comments-avatar">
-													<img src="../assets/img/t-2.png" class="img-fluid" alt=""> 
-												</div>
-												<div class="reviews-comments-item-text">
-													<h4><a href="#">Amy M. Taylor</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl me-1"></i>2 Nov May 2019</span></h4>
-													<span class="agd-location"><i class="lni lni-map-marker me-1"></i>Liverpool, London UK</span>
-													<div class="listing-rating mid"><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star"></i></div>
-													<div class="clearfix"></div>
-													<p>" Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. "</p>
-													<div class="pull-left reviews-reaction">
-														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> 12</a>
-														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> 1</a>
-														<a href="#" class="comment-love active"><i class="ti-heart"></i> 07</a>
-													</div>
-												</div>
-											</div>
-											<!--reviews-comments-item end-->
-											
-											<!-- reviews-comments-item -->  
-											<div class="reviews-comments-item">
-												<div class="review-comments-avatar">
-													<img src="../assets/img/t-3.png" class="img-fluid" alt=""> 
-												</div>
-												<div class="reviews-comments-item-text">
-													<h4><a href="#">Susan C. Daggett</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl me-1"></i>10 Nov 2019</span></h4>
-													<span class="agd-location"><i class="lni lni-map-marker me-1"></i>Denver, United State</span>
-													<div class="listing-rating good"><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star"></i></div>
-													<div class="clearfix"></div>
-													<p>" Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident. "</p>
-													<div class="pull-left reviews-reaction">
-														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> 12</a>
-														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> 1</a>
-														<a href="#" class="comment-love active"><i class="ti-heart"></i> 07</a>
-													</div>
-												</div>
-											</div>
-											<!--reviews-comments-item end-->
 											
 											<ul class="pagination">
 												<li class="page-item">
@@ -654,17 +601,17 @@
 								<div class="Goodup-agent-blocks">
 									<div class="Goodup-agent-thumb"><img src="../assets/img/t-1.png" width="90" class="img-fluid circle" alt=""></div>
 									<div class="Goodup-agent-caption">
-										<h4 class="ft-medium mb-0">Adeagbo Josiah</h4>
-										<span class="agd-location"><i class="lni lni-map-marker me-1"></i>San Francisco</span>
+										<h4 class="ft-medium mb-0"><%= author?.firstName author?.lastName %></h4>
+										<span class="agd-location"><i class="lni lni-map-marker me-1"></i><%= item?.address %></span>
 									</div>
 									<div class="clearfix"></div>
 								</div>
 								
 								<div class="Goodup-iuky">
 									<ul>
-										<li>140+<span>Listings</span></li>
-										<li><div class="text-success">4.7</div><span>Rattings</span></li>
-										<li>80K<span>Followers</span></li>
+										<li><%= totalListings %>+<span>Listings</span></li>
+										<li><div class="text-success"><%= following %></div><span>Rattings</span></li>
+										<li><%= followers %>K<span>Followers</span></li>
 									</ul>
 								</div>
 								
@@ -679,7 +626,7 @@
 									</div>
 									<div class="row mt-3">
 										<div class="col-12">
-											<a href="javascript:void(0);" class="adv-btn full-width theme-bg text-light">View Profile</a>
+											<a href="../author/<%= author?._id %>" class="adv-btn full-width theme-bg text-light">View Profile</a>
 										</div>
 									</div>
 								</div>
@@ -694,27 +641,27 @@
 										<li>
 											<div class="list-uiyt">
 												<div class="list-iobk"><i class="fas fa-globe"></i></div>
-												<div class="list-uiyt-capt"><h5>Live Site</h5><p>https://www.Goodup.com/</p></div>
+												<div class="list-uiyt-capt"><h5>Live Site</h5><p><%= item?.website %></p></div>
 											</div>
 										</li>
 										
 										<li>
 											<div class="list-uiyt">
 												<div class="list-iobk"><i class="fas fa-envelope"></i></div>
-												<div class="list-uiyt-capt"><h5>Drop a Mail</h5><p>support@Goodup.com</p></div>
+												<div class="list-uiyt-capt"><h5>Drop a Mail</h5><p><%= item?.email %></p></div>
 											</div>
 										</li>
 										
 										<li>
 											<div class="list-uiyt">
 												<div class="list-iobk"><i class="fas fa-phone"></i></div>
-												<div class="list-uiyt-capt"><h5>Call Us</h5><p>(210) 659 584 756</p></div>
+												<div class="list-uiyt-capt"><h5>Call Us</h5><p><%= author?.phone %></p></div>
 											</div>
 										</li>
 										<li>
 											<div class="list-uiyt">
 												<div class="list-iobk"><i class="fas fa-map-marker-alt"></i></div>
-												<div class="list-uiyt-capt"><h5>Get Directions</h5><p>2919 N Flores St San Antonio, TX 78212</p></div>
+												<div class="list-uiyt-capt"><h5>Get Directions</h5><p><%= author?.address %></p></div>
 											</div>
 										</li>
 										
@@ -753,6 +700,8 @@
 					<div class="row justify-content-center">
 					
 						<!-- Single -->
+						<% if (recentListing.length> 0) { %> <% for (let item of
+						recentListing) { %>
 						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
 							<div class="Goodup-grid-wrap">
 								<div class="Goodup-grid-upper">
@@ -778,9 +727,9 @@
 								</div>
 								<div class="Goodup-grid-fl-wrap">
 									<div class="Goodup-caption px-3 py-2">
-										<div class="Goodup-author"><a href="author-detail"><img src="../assets/img/t-1.png" class="img-fluid circle" alt=""></a></div>
-										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2" class="text-dark fs-md">Pretty Woman Smart Batra</a></h4>
-										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>California, USA</div>
+										<div class="Goodup-author"><a href="../author/<%= item?.userId %>"><img src="../assets/img/t-1.png" class="img-fluid circle" alt=""></a></div>
+										<h4 class="mb-0 ft-medium medium"><a href="<%= item?._id %>" class="text-dark fs-md"><%= item?.businessName || item?.productName %></a></h4>
+										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i><%= item?.address %></div>
 										<div class="Goodup-middle-caption mt-3">
 											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
 										</div>
@@ -799,152 +748,7 @@
 								</div>
 							</div>
 						</div>
-						
-						<!-- Single -->
-						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-							<div class="Goodup-grid-wrap">
-								<div class="Goodup-grid-upper">
-									<div class="Goodup-pos ab-left">
-										<div class="Goodup-status open me-2">Open</div>
-										<div class="Goodup-featured-tag">Featured</div>
-									</div>
-									<div class="Goodup-grid-thumb">
-										<a href="single-listing-detail-2" class="d-block text-center m-auto"><img src="../assets/img/listing/l-6.jpg" class="img-fluid" alt=""></a>
-									</div>
-									<div class="Goodup-rating overlay">
-										<div class="Goodup-pr-average high">4.1</div>
-										<div class="Goodup-aldeio">
-											<div class="Goodup-rates">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="Goodup-all-review"><span>17 Reviews</span></div>
-										</div>
-									</div>
-								</div>
-								<div class="Goodup-grid-fl-wrap">
-									<div class="Goodup-caption px-3 py-2">
-										<div class="Goodup-author"><a href="author-detail"><img src="../assets/img/t-2.png" class="img-fluid circle" alt=""></a></div>
-										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2" class="text-dark fs-md">The Sartaj Blue Night</a></h4>
-										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>San Francisco, USA</div>
-										<div class="Goodup-middle-caption mt-3">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
-										</div>
-									</div>
-									<div class="Goodup-grid-footer py-2 px-3">
-										<div class="Goodup-ft-first">
-											<a href="half-map-search-2" class="Goodup-cats-wrap"><div class="cats-ico bg-3"><i class="lni lni-cake"></i></div><span class="cats-title">Night Party</span></a>
-										</div>
-										<div class="Goodup-ft-last">
-											<div class="Goodup-inline">
-												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
-												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Single -->
-						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-							<div class="Goodup-grid-wrap">
-								<div class="Goodup-grid-upper">
-									<div class="Goodup-pos ab-left">
-										<div class="Goodup-status open me-2">Open</div>
-									</div>
-									<div class="Goodup-grid-thumb">
-										<a href="single-listing-detail-2" class="d-block text-center m-auto"><img src="../assets/img/listing/l-7.jpg" class="img-fluid" alt=""></a>
-									</div>
-									<div class="Goodup-rating overlay">
-										<div class="Goodup-pr-average mid">3.6</div>
-										<div class="Goodup-aldeio">
-											<div class="Goodup-rates">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="Goodup-all-review"><span>30 Reviews</span></div>
-										</div>
-									</div>
-								</div>
-								<div class="Goodup-grid-fl-wrap">
-									<div class="Goodup-caption px-3 py-2">
-										<div class="Goodup-author"><a href="author-detail"><img src="../assets/img/t-3.png" class="img-fluid circle" alt=""></a></div>
-										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2" class="text-dark fs-md">Pizza Delight Cafe Shop</a></h4>
-										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>102 Satirio, Canada</div>
-										<div class="Goodup-middle-caption mt-3">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
-										</div>
-									</div>
-									<div class="Goodup-grid-footer py-2 px-3">
-										<div class="Goodup-ft-first">
-											<a href="half-map-search-2" class="Goodup-cats-wrap"><div class="cats-ico bg-4"><i class="lni lni-coffee-cup"></i></div><span class="cats-title">Coffee &amp; Bars</span></a>
-										</div>
-										<div class="Goodup-ft-last">
-											<div class="Goodup-inline">
-												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
-												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Single -->
-						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-							<div class="Goodup-grid-wrap">
-								<div class="Goodup-grid-upper">
-									<div class="Goodup-pos ab-left">
-										<div class="Goodup-status close me-2">Closed</div>
-										<div class="Goodup-featured-tag">Featured</div>
-									</div>
-									<div class="Goodup-grid-thumb">
-										<a href="single-listing-detail-2" class="d-block text-center m-auto"><img src="../assets/img/listing/l-8.jpg" class="img-fluid" alt=""></a>
-									</div>
-									<div class="Goodup-rating overlay">
-										<div class="Goodup-pr-average poor">2.3</div>
-										<div class="Goodup-aldeio">
-											<div class="Goodup-rates">
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-												<i class="fas fa-star"></i>
-											</div>
-											<div class="Goodup-all-review"><span>42 Reviews</span></div>
-										</div>
-									</div>
-								</div>
-								<div class="Goodup-grid-fl-wrap">
-									<div class="Goodup-caption px-3 py-2">
-										<div class="Goodup-author"><a href="author-detail"><img src="../assets/img/t-4.png" class="img-fluid circle" alt=""></a></div>
-										<h4 class="mb-0 ft-medium medium"><a href="single-listing-detail-2" class="text-dark fs-md">The Great Allante Shop</a></h4>
-										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i>Oliy Denver, USA</div>
-										<div class="Goodup-middle-caption mt-3">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
-										</div>
-									</div>
-									<div class="Goodup-grid-footer py-2 px-3">
-										<div class="Goodup-ft-first">
-											<a href="half-map-search-2" class="Goodup-cats-wrap"><div class="cats-ico bg-5"><i class="lni lni-shopping-basket"></i></div><span class="cats-title">Shopping Mall</span></a>
-										</div>
-										<div class="Goodup-ft-last">
-											<div class="Goodup-inline">
-												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-envelope position-absolute"></i></button></div>
-												<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+							<% } %> <% } %>
 						
 					</div>
 					<!-- row -->
@@ -1171,7 +975,9 @@
 		<script src="../assets/js/plugins/lightbox.js"></script>
 		<script src="../assets/js/plugins/jQuery.style.switcher.js"></script>
 		<script src="../assets/js/plugins/custom.js"></script>
-		<!-- <script src="assets/js/custom.js"></script> -->
+		<input type="text" value="<%= listingId %>" id="listingId" style="display: none;"/>
+		<input type="text" value="<%= user._id %>" id="userId" style="display: none;"/>
+		<script src="../assets/js/listing.js"></script>
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->		

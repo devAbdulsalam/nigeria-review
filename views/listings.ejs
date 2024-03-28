@@ -20,78 +20,13 @@
         <!-- ============================================================== -->
         <div id="main-wrapper">
 		
-            <!-- ============================================================== -->
+           <!-- ============================================================== -->
             <!-- Top header  -->
             <!-- ============================================================== -->
             <!-- Start Navigation -->
-			<div class="header header-transparent change-logo">
-				<div class="container">
-					<nav id="navigation" class="navigation navigation-landscape">
-						<div class="nav-header">
-							<a class="nav-brand static-logo" href="#"><img src="assets/img/logo-light.png" class="logo" alt="" /></a>
-							<a class="nav-brand fixed-logo" href="#"><img src="assets/img/logo.png" class="logo" alt="" /></a>
-							<div class="nav-toggle"></div>
-							<div class="mobile_nav">
-								<ul>
-									<li>
-										<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="theme-cl fs-lg">
-											<i class="lni lni-user"></i>
-										</a>
-									</li>
-									<li>
-										<a href="add-listing" class="crs_yuo12 w-auto text-white theme-bg">
-											<span class="embos_45"><i class="fas fa-plus me-2"></i>Add Listing</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="nav-menus-wrapper" style="transition-property: none;">
-							<ul class="nav-menu">
-							
-								<li class="active"><a href="index">Home</a></li>
-								
-								<li><a href="javascript:void(0);">For Business</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="author-detail"><i class="lni lni-briefcase me-2"></i>Submit Business</a></li>
-										<li><a href="claim-business/companies-landing"><i class="lni lni-handshake me-2"></i>Claim Business</a></li>
-										<li><a href="business-login"><i class="lni lni-user me-2"></i>Log in to Business</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Reviewers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="dashboard-my-profile"><i class="lni lni-user me-2"></i>Sign in </a></li>
-										<li><a href="dashboard-change-password"><i class="lni lni-lock-alt me-2"></i>Register as a Reviewer</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Advertisers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="signup"><i class="lni lni-user me-2"></i>Sign In</a></li>
-										<li><a href="login"><i class="lni lni-link me-2"></i>Advertise with us</a></li>
-									</ul>
-								</li>
-								<li><a href="index">Write Reviews</a></li>
-								
-							</ul>
-							
-							<ul class="nav-menu nav-menu-social align-to-right">
-								<li>
-									<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="ft-bold">
-										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
-									</a>
-								</li>
-								<li class="add-listing">
-									<a href="add-listing" >
-										<i class="fas fa-plus me-2"></i>Add Listing
-									</a>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-			</div>
+			
+			<%- include('includes/header.ejs') %>
+		
 			<!-- End Navigation -->
 			<div class="clearfix"></div>
 			<!-- ============================================================== -->
@@ -184,6 +119,7 @@
 			</section>
 			<div class="clearfix"></div>
 			<!-- ============================ Search Tag & Filter End ================================== -->
+			
 			
 			
 			<!-- ============================ Main Section Start ================================== -->
@@ -1133,66 +1069,12 @@
 				</div>
 			</footer>
 			<!-- ============================ Footer End ================================== -->
-			
-			<!-- Log In Modal -->
-			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
-				<div class="modal-dialog login-pop-form" role="document">
-					<div class="modal-content" id="loginmodal">
-						<div class="modal-headers">
-							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-							  <span class="ti-close"></span>
-							</button>
-						  </div>
-					
-						<div class="modal-body p-5">
-							<div class="text-center mb-4">
-								<h4 class="m-0 ft-medium">Business Registration</h4>
-							</div>
-							
-							<form class="submit-form">				
-								<div class="form-group">
-									<label class="mb-1">User Name</label>
-									<input type="text" class="form-control rounded bg-light" placeholder="Username*">
-								</div>
-								
-								<div class="form-group">
-									<label class="mb-1">Password</label>
-									<input type="password" class="form-control rounded bg-light" placeholder="Password*">
-								</div>
-								
-								<div class="form-group">
-									<div class="d-flex align-items-center justify-content-between">
-										<div class="flex-1">
-											<input id="dd" class="checkbox-custom" name="dd" type="checkbox" checked>
-											<label for="dd" class="checkbox-custom-label">Remember Me</label>
-										</div>	
-										<div class="eltio_k2">
-											<a href="#" class="theme-cl">Lost Your Password?</a>
-										</div>	
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<button type="submit" class="btn btn-md full-width theme-bg text-light rounded ft-medium">Sign In</button>
-								</div>
-								
-								<div class="form-group text-center mb-0">
-									<p class="extra">Or login with</p>
-									<div class="option-log">
-										<div class="single-log-opt"><a href="javascript:void(0);" class="log-btn"><img src="assets/img/c-1.png" class="img-fluid" alt="" />Login with Google</a></div>
-										<div class="single-log-opt"><a href="javascript:void(0);" class="log-btn"><img src="assets/img/facebook.png" class="img-fluid" alt="" />Login with Facebook</a></div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Modal -->
+		
 			
 			<a id="tops-button" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 			
 
+		</div>
 		</div>
 		<!-- ============================================================== -->
 		<!-- End Wrapper -->
