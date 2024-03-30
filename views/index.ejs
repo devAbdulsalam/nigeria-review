@@ -536,7 +536,9 @@
 														<div class="Goodup-status close me-2">Closed</div>
 													</div>
 													<div class="Goodup-grid-thumb">
-														<a href="listing" class="d-block text-center m-auto"
+														<a
+															href="listings/<%= item?._id %>"
+															class="d-block text-center m-auto"
 															><img
 																src="<%= item?.featuredImage?.url %>"
 																class="img-fluid"
@@ -583,7 +585,10 @@
 															><%= item.address %>
 														</div>
 														<div class="Goodup-middle-caption mt-3">
-															<p><%= item.description %></p>
+															<p>
+																<%= item?.description.slice(0, 40) +
+																(item?.description.length > 40 ? '...' : '') %>
+															</p>
 														</div>
 													</div>
 													<div class="Goodup-grid-footer py-2 px-3">
@@ -612,6 +617,7 @@
 																<div class="Goodup-bookmark-btn">
 																	<button
 																		type="button"
+																		id="<%= item._id %>"
 																		href="saved-listings/<%= item._id %>"
 																	>
 																		<i

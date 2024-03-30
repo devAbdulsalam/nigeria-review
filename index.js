@@ -27,12 +27,6 @@ import businessRoutes from './routes/business.js';
 import errorHandler from './middlewares/errorHandler.js';
 import checkSessionUser from './middlewares/checkSession.js';
 
-// setups
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const file = fs.readFileSync(path.resolve(__dirname, './swagger.yaml'), 'utf8');
-const swaggerDocument = YAML.parse(file);
-/* CONFIGURATION */
 dotenv.config();
 const app = express();
 
@@ -57,27 +51,34 @@ const limiter = rateLimit({
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
 app.use(express.json());
-app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
+// app.use(
+// 	helmet({
+// 		contentSecurityPolicy: false, // Disable contentSecurityPolicy if it's causing conflicts
+// 		xssFilter: false, // Disable xssFilter if it's causing conflicts
+// 		frameguard: false, // Disable frameguard if it's causing conflicts
+// 		noSniff: true, // Ensure noSniff (x-content-type-options) is enabled
+// 	})
+// );
+// app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(express.static('public')); // configure static file to save images locally
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.set('view engine', 'ejs');
-
+// setups
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const file = fs.readFileSync(path.resolve(__dirname, './swagger.yaml'), 'utf8');
+const swaggerDocument = YAML.parse(file);
 // Set Cookie Parser, sessions and flash
-app.use(cookieParser('NotSoSecret'));
 app.use(flash());
+app.use(cookieParser('NotSoSecret'));
 // const MongoDBStoreSession = MongoDBStore(session);
 // const store = new MongoDBStoreSession({
 // 	uri: process.env.MONGO_URL,
 // 	collection: 'sessions',
 // });
-app.use((req, res, next) => {
-	res.setHeader('X-Content-Type-Options', 'nosniff');
-	next();
-});
 app.use(
 	session({
 		secret: process.env.EXPRESS_SESSION_SECRET,
@@ -90,8 +91,8 @@ app.use((req, res, next) => {
 	next();
 });
 app.use(checkSessionUser);
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+// app.use(passport.initialize());
+// app.use(passport.session()); // persistent login sessions
 
 /* ROUTES */
 app.use('/', appRoutes);
@@ -100,6 +101,9 @@ app.use('/api/v1/general', generalRoutes);
 app.use('/api/v1/admins', adminRoutes);
 app.use('/api/v1/business', businessRoutes);
 app.use('/api/v1/listings', listingRoutes);
+
+/* CONFIGURATION */
+
 // * API DOCS
 // ? Keeping swagger code at the end so that we can load swagger on "/" route
 app.use(

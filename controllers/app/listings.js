@@ -116,12 +116,12 @@ export const getSearchListings = async (req, res, next) => {
 
 	// Pagination logic
 	const skip = (page - 1) * limit;
-
+	console.log('listingQuery', listingQuery);
 	const listings = await Listing.find(listingQuery)
 		.sort(sort)
 		.skip(skip)
-		.limit(limit)
-		.select({ _id: 1 }); // Select only necessary fields for efficiency
+		.limit(limit);
+	// .select({ _id: 1 }); // Select only necessary fields for efficiency
 
 	const totalCount = await Listing.countDocuments(listingQuery); // Total matching listings
 	// Pass limit per page for pagination UI
@@ -129,9 +129,7 @@ export const getSearchListings = async (req, res, next) => {
 	const user = await req?.session?.user;
 	const dasboardInfo = await getDashboardInfo(user?._id);
 
-	console.log('listings', listings);
-
-	res.render('search', {
+	res.render('listing', {
 		listings,
 		totalCount, // Pass total count for pagination UI
 		filter, // Pass back the applied filter for UI state

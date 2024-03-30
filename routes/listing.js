@@ -49,8 +49,6 @@ router.get(
 );
 router.get(
 	'/all',
-	requireAuth,
-	verifyPermission(['USER', 'ADMIN', 'BUSINESS']),
 	getListings
 );
 router.get(

@@ -2,7 +2,7 @@
 <html lang="en">
 
 	
-<!-- Mirrored from themezhub.net/goodup-live/goodup/search.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:33 GMT -->
+<!-- Mirrored from themezhub.net/goodup-live/goodup/search by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:33 GMT -->
 <head>
 	 	<%- include('includes/head.ejs') %>
 		
@@ -325,7 +325,8 @@
 							
 							<!-- row -->
 							<div class="row justify-content-center gx-3" id="listings">
-							
+								<% if (listings.length> 0) { %> <% for (let item of
+										listings) { %>
 								<!-- Single -->
 								<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
 									<div class="Goodup-grid-wrap">
@@ -336,14 +337,14 @@
 												<div class="Goodup-featured-tag">Featured</div>
 											</div>
 											<div class="Goodup-grid-thumb">
-												<a href="listing-search-v1.html" class="d-block text-center m-auto"><img src="assets/img/listing/l-1.jpg" class="img-fluid" alt="" /></a>
+												<a href="listings/<%= item?._id %>" class="d-block text-center m-auto"><img src="<%= item?.featuredImage?.url %>" class="img-fluid" alt="" /></a>
 											</div>
 										</div>
 										<div class="Goodup-grid-fl-wrap">
 											<div class="Goodup-caption px-3 py-2">
-												<div class="Goodup-author"><a href="author-detail.html"><img src="assets/img/t-1.png" class="img-fluid circle" alt="" /></a></div>
-												<div class="Goodup-cates"><a href="search.html">Wedding</a></div>
-												<h4 class="mb-0 ft-medium medium"><a href="listing-search-v1.html" class="text-dark fs-md">Rajwara Marriage Home<span class="verified-badge"><i class="fas fa-check-circle"></i></span></a></h4>
+												<div class="Goodup-author"><a href="author/<%= item?.userId %>"><img src="assets/img/t-1.png" class="img-fluid circle" alt="" /></a></div>
+												<div class="Goodup-cates"><a href="search?q=<%= item?.category %>"><%= item?.category%></a></div>
+												<h4 class="mb-0 ft-medium medium"><a href="listings/<%= item?._id %>" class="text-dark fs-md"><%= item?.businessName || item?.productName %><span class="verified-badge"><i class="fas fa-check-circle"></i></span></a></h4>
 												<div class="Goodup-middle-caption mt-3">
 													<div class="Goodup-location"><i class="fas fa-map-marker-alt"></i>Liverpool, London UK</div>
 													<div class="Goodup-call"><i class="fas fa-phone-alt"></i>+91 365 795 4526</div>
@@ -375,7 +376,7 @@
 										</div>
 									</div>
 								</div>
-								
+								<% } %> <% } %>
 								
 							</div>
 							<!-- /row -->
@@ -482,16 +483,16 @@
 									<h4 class="widget_title">Company</h4>
 									<ul class="footer-menu">
 										<li><a href="#">Career</a></li>
-										<li><a href="about-us.html">About Us</a></li>
-										<li><a href="contact.html">Contact Us</a></li>
-										<li><a href="terms.html">Terms of Services</a></li>
-										<li><a href="how-it-works.html">How it works</a></li>
-										<li><a href="disclaimer.html">Disclaimer and  Phishing Claims</a></li>
-										<li><a href="cookie.html">Cookie Policy</a></li>
-										<li><a href="slaverry-statement.html">Modern Slavery Statement</a></li>
-										<li><a href="GDPR.html">GDPR Policy</a></li>
-										<li><a href="do-not-share-my-info.html">Do Not Sell or Share My Personal  Information</a></li>
-										<li><a href="privacy.html">Privacy Policy</a></li>
+										<li><a href="about-us">About Us</a></li>
+										<li><a href="contact">Contact Us</a></li>
+										<li><a href="terms">Terms of Services</a></li>
+										<li><a href="how-it-works">How it works</a></li>
+										<li><a href="disclaimer">Disclaimer and  Phishing Claims</a></li>
+										<li><a href="cookie">Cookie Policy</a></li>
+										<li><a href="slaverry-statement">Modern Slavery Statement</a></li>
+										<li><a href="GDPR">GDPR Policy</a></li>
+										<li><a href="do-not-share-my-info">Do Not Sell or Share My Personal  Information</a></li>
+										<li><a href="privacy">Privacy Policy</a></li>
 									</ul>
 								</div>
 							</div>
@@ -501,7 +502,7 @@
 									<h4 class="widget_title">For Business</h4>
 									<ul class="footer-menu">
 										<li><a href="#">Advertise With Us</a></li>
-										<li><a href="/claim-business/index.html">Claim  Your Business</a></li>
+										<li><a href="/claim-business/index">Claim  Your Business</a></li>
 										<li><a href="#">Build A Marketing List</a></li>
 										<li><a href="#">Send E-mail, SMS & Invite</a></li>
 										<li><a href="#">Polls</a></li>
@@ -515,9 +516,9 @@
 								<div class="footer_widget">
 									<h4 class="widget_title">Resource  Center</h4>
 									<ul class="footer-menu">
-										<li><a href="blog.html">Blog,  Questtion and Answers</a></li>
+										<li><a href="blog">Blog,  Questtion and Answers</a></li>
 										<li><a href="#">Newsletter Subscription</a></li>
-										<li><a href="faq.html">Frequently Asked Questions (FAQ)</a></li>
+										<li><a href="faq">Frequently Asked Questions (FAQ)</a></li>
 									</ul>
 								</div>
 							</div>
@@ -568,7 +569,7 @@
 
 	</body>
 
-<!-- Mirrored from themezhub.net/goodup-live/goodup/home-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Feb 2024 20:42:59 GMT -->
+<!-- Mirrored from themezhub.net/goodup-live/goodup/home-5 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Feb 2024 20:42:59 GMT -->
 </html>
  
 </body>

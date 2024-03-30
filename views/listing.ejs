@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,7 +134,7 @@
 							<img src="../assets/img/burger-king.png" class="img-fluid" width="90" alt="" />
 						</div>
 						<div class="Goodup-lkp-caption ps-3">
-							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold"><%= listing.businessName || listing.productName %></h4></div>
+							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold"><%= listing?.businessName || listing?.productName %></h4></div>
 							<div class="Goodup-ft-first">
 								<div class="Goodup-rating">
 									<div class="Goodup-rates">
@@ -186,8 +187,8 @@
 										<h5 class="ft-bold fs-lg">About the Business</h5>
 										
 										<div class="d-block mt-3">
-											<p><%= listing.description %></p>
-											<p class="p-0 m-0"><%= listing.description %></p>
+											<p><%= listing?.description %></p>
+											<p class="p-0 m-0"><%= listing?.description %></p>
 										</div>
 									</div>
 									
@@ -512,51 +513,56 @@
 									<div class="jbd-details mb-4">
 										<h5 class="ft-bold fs-lg">Drop Your Review</h5>
 										<div class="review-form-box form-submit mt-3">
-											<form>
+											<form id="reviewForm" type="POST" action="/reviews/<%= listingId %>">
 												<div class="row">
 													
 													<div class="col-lg-12 col-md-12 col-sm-12">
 														<div class="form-group mb-3">
-															<label class="ft-medium small mb-1">Choose Rate</label>
-															<select class="form-control rounded">
+															<label for="rating" class="ft-medium small mb-1">Choose Rate</label>
+															<select id="rating" name="rating" class="form-control rounded">
 																<option>Choose Rating</option>
-																<option>1 Star</option>
-																<option>2 Star</option>
-																<option>3 Star</option>
-																<option>4 Star</option>
-																<option>5 Star</option>
+																<option value="1">1 Star</option>
+																<option value="2">2 Star</option>
+																<option value="3">3 Star</option>
+																<option value="4">4 Star</option>
+																<option value="5">5 Star</option>
 															</select>
 														</div>
 													</div>
 													
 													<div class="col-lg-6 col-md-6 col-sm-12">
 														<div class="form-group mb-3">
-															<label class="ft-medium small mb-1">Name</label>
-															<input class="form-control rounded" type="text" placeholder="Your Name">
+															<label for="name" class="ft-medium small mb-1">Name</label>
+															<input id="name" name="name" class="form-control rounded" type="text" placeholder="Your Name">
 														</div>
 													</div>
 													
 													<div class="col-lg-6 col-md-6 col-sm-12">
 														<div class="form-group mb-3">
-															<label class="ft-medium small mb-1">Email</label>
-															<input class="form-control rounded" type="email" placeholder="Your Email">
+															<label for="email" class="ft-medium small mb-1">Email</label>
+															<input id="email" name="email" class="form-control rounded" type="email" placeholder="Your Email">
 														</div>
 													</div>
 													
 													<div class="col-lg-12 col-md-12 col-sm-12">
 														<div class="form-group mb-3">
-															<label class="ft-medium small mb-1">Review</label>
-															<textarea class="form-control rounded ht-140" placeholder="Review"></textarea>
+															<label for="content" class="ft-medium small mb-1">Review</label>
+															<textarea id="content" name="content" class="form-control rounded ht-140" placeholder="Review"></textarea>
 														</div>
 													</div>
-													
+													<div class="eltio_k2">
+														<p id="errorText" class="theme-cl"></p>
+													</div>
+												
 													<div class="col-lg-12 col-md-12 col-sm-12">
 														<div class="form-group">
-															<button type="submit" class="btn theme-bg text-light rounded">Submit Review</button>
+															<button id="submitBtn" type="submit" class="btn theme-bg text-light rounded">Submit Review</button>
 														</div>
 													</div>
 													
-												</div>
+												</div>												
+												<input type="text" value="<%= listingId %>" id="listingId" name="listingid" style="display: none;"/>
+												<input type="text" value="<%= user?._id %>" id="userId" name="userId" style="display: none;"/>
 											</form>
 										</div>
 									</div>
@@ -601,8 +607,8 @@
 								<div class="Goodup-agent-blocks">
 									<div class="Goodup-agent-thumb"><img src="../assets/img/t-1.png" width="90" class="img-fluid circle" alt=""></div>
 									<div class="Goodup-agent-caption">
-										<h4 class="ft-medium mb-0"><%= author?.firstName author?.lastName %></h4>
-										<span class="agd-location"><i class="lni lni-map-marker me-1"></i><%= item?.address %></span>
+										<h4 class="ft-medium mb-0"><%= author?.firstName|| author?.lastName %></h4>
+										<span class="agd-location"><i class="lni lni-map-marker me-1"></i><%= author?.address %></span>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -641,14 +647,14 @@
 										<li>
 											<div class="list-uiyt">
 												<div class="list-iobk"><i class="fas fa-globe"></i></div>
-												<div class="list-uiyt-capt"><h5>Live Site</h5><p><%= item?.website %></p></div>
+												<div class="list-uiyt-capt"><h5>Live Site</h5><p><%= author?.website %></p></div>
 											</div>
 										</li>
 										
 										<li>
 											<div class="list-uiyt">
 												<div class="list-iobk"><i class="fas fa-envelope"></i></div>
-												<div class="list-uiyt-capt"><h5>Drop a Mail</h5><p><%= item?.email %></p></div>
+												<div class="list-uiyt-capt"><h5>Drop a Mail</h5><p><%= author?.email %></p></div>
 											</div>
 										</li>
 										
@@ -709,7 +715,7 @@
 										<div class="Goodup-status close me-2">Closed</div>
 									</div>
 									<div class="Goodup-grid-thumb">
-										<a href="single-listing-detail-2" class="d-block text-center m-auto"><img src="../assets/img/listing/l-5.jpg" class="img-fluid" alt=""></a>
+										<a href="listings/<%= item?._id %>" class="d-block text-center m-auto"><img src="<%= item?.featuredImage?.url %>" class="img-fluid" alt=""></a>
 									</div>
 									<div class="Goodup-rating overlay">
 										<div class="Goodup-pr-average high">4.8</div>
@@ -731,7 +737,7 @@
 										<h4 class="mb-0 ft-medium medium"><a href="<%= item?._id %>" class="text-dark fs-md"><%= item?.businessName || item?.productName %></a></h4>
 										<div class="Goodup-location"><i class="fas fa-map-marker-alt me-1 theme-cl"></i><%= item?.address %></div>
 										<div class="Goodup-middle-caption mt-3">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus</p>
+											<p><%= item?.description.slice(0, 40) + (item?.description.length > 40 ? '...' : '') %></p>
 										</div>
 									</div>
 									<div class="Goodup-grid-footer py-2 px-3">
@@ -975,9 +981,7 @@
 		<script src="../assets/js/plugins/lightbox.js"></script>
 		<script src="../assets/js/plugins/jQuery.style.switcher.js"></script>
 		<script src="../assets/js/plugins/custom.js"></script>
-		<input type="text" value="<%= listingId %>" id="listingId" style="display: none;"/>
-		<input type="text" value="<%= user._id %>" id="userId" style="display: none;"/>
-		<script src="../assets/js/listing.js"></script>
+		<script src="../assets/js/review.js"></script>
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->		

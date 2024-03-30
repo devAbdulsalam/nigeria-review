@@ -1,21 +1,4 @@
 import Review from '../../models/Review.js';
-
-export const getReviews = async (req, res, next) => {
-	try {
-		const user = await req.session.user;
-		const reviews = await Review.find({ userId: user._id });
-		res.render('reviews', {
-			path: '/my-reviews',
-			pageTitle: 'Reviews',
-			reviews,
-			user,
-		});
-	} catch (err) {
-		const error = new Error(err);
-		error.httpStatusCode = 500;
-		return next(error);
-	}
-};
 export const getMyReview = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
@@ -32,14 +15,16 @@ export const getMyReview = async (req, res, next) => {
 		return next(error);
 	}
 };
-export const getReview = async (req, res, next) => {
+export const getReviews = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
-		const review = await Review.find({ _id: req.params._id });
-		res.render('review', {
+		const reviews = await Review.find({ id: req.params.id });
+		res.render('reviews', {
 			path: '/review',
 			pageTitle: 'Reviews',
-			review,
+			reviews,
+			listingId: req.params.id,
+			userId: user._id,
 			user,
 		});
 	} catch (err) {
@@ -51,11 +36,13 @@ export const getReview = async (req, res, next) => {
 export const postReview = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
-		const review = await Review.create({ ...req.body, userId: user._id });
+		const id = req.params?.id;
+		const newReview = await Review.create({ ...req.body, userId: user?._id });
+		const reviews = await Review.find({ id });
 		res.render('reviews', {
 			path: '/my-reviews',
 			pageTitle: 'Reviews',
-			review,
+			reviews,
 			user,
 		});
 	} catch (err) {
