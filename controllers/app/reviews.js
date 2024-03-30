@@ -24,7 +24,7 @@ export const getReviews = async (req, res, next) => {
 			pageTitle: 'Reviews',
 			reviews,
 			listingId: req.params.id,
-			userId: user._id,
+			userId: user?._id,
 			user,
 		});
 	} catch (err) {
@@ -43,6 +43,9 @@ export const postReview = async (req, res, next) => {
 			path: '/my-reviews',
 			pageTitle: 'Reviews',
 			reviews,
+			newReview,
+			listingId: req.params.id,
+			userId: user?._id,
 			user,
 		});
 	} catch (err) {
