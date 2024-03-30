@@ -27,6 +27,21 @@ const ReviewSchema = new mongoose.Schema(
 			type: Number,
 			required: true,
 		},
+		likes: {
+			type: Number,
+			default: 0,
+			required: true,
+		},
+		dislikes: {
+			type: Number,
+			default: 0,
+			required: true,
+		},
+		loves: {
+			type: Number,
+			required: true,
+			default: 0,
+		},
 		status: String,
 	},
 	{ timestamps: true }

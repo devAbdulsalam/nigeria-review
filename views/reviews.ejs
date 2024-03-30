@@ -24,75 +24,7 @@
             <!-- Top header  -->
             <!-- ============================================================== -->
             <!-- Start Navigation -->
-			<div class="header header-light dark-text">
-				<div class="container">
-					<nav id="navigation" class="navigation navigation-landscape">
-						<div class="nav-header">
-							<a class="nav-brand" href="#">
-								<img src="assets/img/logo.png" class="logo" alt="" />
-							</a>
-							<div class="nav-toggle"></div>
-							<div class="mobile_nav">
-								<ul>
-								<li>
-									<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="theme-cl fs-lg">
-										<i class="lni lni-user"></i>
-									</a>
-								</li>
-								<li>
-									<a href="business-login" class="crs_yuo12 w-auto text-white theme-bg">
-										<span class="embos_45"><i class="fas fa-user me-2"></i>For Company</span>
-									</a>
-								</li>
-								</ul>
-							</div>
-						</div>
-						<div class="nav-menus-wrapper" style="transition-property: none;">
-							<ul class="nav-menu">
-							
-								<li class="active"><a href="index">Home</a></li>
-								
-								<li><a href="javascript:void(0);">For Business</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="author-detail">Submit Business</a>
-										<li><a href="claim-business/companies-landing">Claim Business</a>
-										<li><a href="business-login">Log in to Business</a>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Reviewers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="dashboard-my-profile"><i class="lni lni-user me-2"></i>Sign in </a></li>
-										<li><a href="dashboard-change-password"><i class="lni lni-lock-alt me-2"></i>Register as a Reviewer</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Advertisers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="signup">Sign In</a></li>
-										<li><a href="login">Advertise with us</a></li>
-									</ul>
-								</li>
-								<li><a href="index">Write Reviews</a></li>
-								
-							</ul>
-							
-							<ul class="nav-menu nav-menu-social align-to-right">
-								<li>
-									<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="ft-bold">
-										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
-									</a>
-								</li>
-								<li class="add-listing">
-									<a href="business-login" >
-										<i class="fas fa-plus me-2"></i>Add Your Business
-									</a>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-			</div>
+			<%- include('includes/header2.ejs') %>
 			<!-- End Navigation -->
 			<div class="clearfix"></div>
 			<!-- ============================================================== -->
@@ -118,7 +50,7 @@
 							<img src="assets/img/burger-king.png" class="img-fluid" width="90" alt="" />
 						</div>
 						<div class="Goodup-lkp-caption ps-3">
-							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold">Sake Cafe Sushi Bar & Grill</h4></div>
+							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold"><%= listing.businessName || listing.productName%></h4></div>
 							<div class="Goodup-ft-first">
 								<div class="Goodup-rating">
 									<div class="Goodup-rates">
@@ -203,7 +135,7 @@
 													<img src="assets/img/t-1.png" class="img-fluid" alt=""> 
 												</div>
 												<div class="reviews-comments-item-text">
-													<h4><a href="#"><%= item?.name %></a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl me-1"></i>27 Oct 2019</span></h4>
+													<h4><a href="#"><%= item?.name %></a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl me-1"></i><span id="createdAt"><%= item?.createdAt %></span></span></h4>
 													<span class="agd-location"><i class="lni lni-map-marker me-1"></i><%= item?.email %></span>
 													<div class="listing-rating high">
 														<i class="fas fa-star active">
@@ -211,17 +143,18 @@
 														</i><i class="fas fa-star active"></i>
 														<i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i></div>
 													<div class="clearfix"></div>
-													<p>" <%= item?.content %>. "</p>
+													<p>" <%= item?.comment %>. "</p>
 													<div class="pull-left reviews-reaction">
-														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> 12</a>
-														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> 1</a>
-														<a href="#" class="comment-love active"><i class="ti-heart"></i> 07</a>
+														<span id="<%= item?._id %>" class="comment-like active likeBtn"><i class="ti-thumb-up"></i><%= item?.likes %></span>
+														<span id="<%= item?._id %>" class="comment-dislike active disLikeBtn"><i class="ti-thumb-down"></i><%= item?.dislikes %></span>
+														<span id="<%= item?._id %>" class="comment-love active loveBtn"><i class="ti-heart"></i> <%= item?.loves %></span>
 													</div>
 												</div>
 											</div>
 											<!--reviews-comments-item end-->  
 											
 								<% } %> <% } %>
+								<% if (reviews.length > 20) { %>
 											
 											<ul class="pagination">
 												<li class="page-item">
@@ -242,7 +175,7 @@
 												  </a>
 												</li>
 											</ul>
-											
+											<% } %>
 										</div>
 									</div>
 								</div>
@@ -258,7 +191,7 @@
 									<div class="jbd-details mb-4">
 										<h5 class="ft-bold fs-lg">Drop Your Review</h5>
 										<div class="review-form-box form-submit mt-3">											
-											<form id="reviewForm" type="POST" action="/reviews/<%= listingId %>">
+											<form id="reviewForm" method="post" action="/reviews/<%= listingId %>">
 												<div class="row">
 													
 													<div class="col-lg-12 col-md-12 col-sm-12">
@@ -291,8 +224,8 @@
 													
 													<div class="col-lg-12 col-md-12 col-sm-12">
 														<div class="form-group mb-3">
-															<label for="content" class="ft-medium small mb-1">Review</label>
-															<textarea id="content" name="content" class="form-control rounded ht-140" placeholder="Review"></textarea>
+															<label for="comment" class="ft-medium small mb-1">Review</label>
+															<textarea id="comment" name="comment" class="form-control rounded ht-140" placeholder="Review"></textarea>
 														</div>
 													</div>
 													
@@ -307,7 +240,7 @@
 													</div>
 													
 												</div>
-												<input type="text" value="<%= listingId %>" id="listingId" name="listingId" style="display: none;"/>
+												<input type="text" value="<%= listingId %>" id="listingId" name="itemId" style="display: none;"/>
 												<input type="text" value="<%= user?._id %>" id="userId" name="userId" style="display: none;"/>
 											</form>
 										</div>

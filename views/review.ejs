@@ -1,20 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	
 <!-- Mirrored from themezhub.net/goodup-live/goodup/listing-search-v1 by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:05:42 GMT -->
 <head>
-	   <!-- Meta Data -->
-	   <meta charset="UTF-8">
-	   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	   <meta name="viewport" content="width=device-width, initial-scale=1">
-	   <title>Goodup - Business Directory & Reviews</title>
-
-	   <!-- Favicon -->
-	   <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
-		 
-        <!-- Custom CSS -->
-        <link href="../assets/css/styles.css" rel="stylesheet">
+	   <%- include('includes/head.ejs') %>
 		
     </head>
 	
@@ -34,75 +22,7 @@
             <!-- Top header  -->
             <!-- ============================================================== -->
             <!-- Start Navigation -->
-			<div class="header header-light dark-text">
-				<div class="container">
-					<nav id="navigation" class="navigation navigation-landscape">
-						<div class="nav-header">
-							<a class="nav-brand" href="#">
-								<img src="../assets/img/logo.png" class="logo" alt="" />
-							</a>
-							<div class="nav-toggle"></div>
-							<div class="mobile_nav">
-								<ul>
-								<li>
-									<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="theme-cl fs-lg">
-										<i class="lni lni-user"></i>
-									</a>
-								</li>
-								<li>
-									<a href="business-login" class="crs_yuo12 w-auto text-white theme-bg">
-										<span class="embos_45"><i class="fas fa-user me-2"></i>For Company</span>
-									</a>
-								</li>
-								</ul>
-							</div>
-						</div>
-						<div class="nav-menus-wrapper" style="transition-property: none;">
-							<ul class="nav-menu">
-							
-								<li class="active"><a href="index">Home</a></li>
-								
-								<li><a href="javascript:void(0);">For Business</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="author-detail">Submit Business</a>
-										<li><a href="claim-business/companies-landing">Claim Business</a>
-										<li><a href="business-login">Log in to Business</a>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Reviewers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="dashboard-my-profile"><i class="lni lni-user me-2"></i>Sign in </a></li>
-										<li><a href="dashboard-change-password"><i class="lni lni-lock-alt me-2"></i>Register as a Reviewer</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Advertisers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="signup">Sign In</a></li>
-										<li><a href="login">Advertise with us</a></li>
-									</ul>
-								</li>
-								<li><a href="index">Write Reviews</a></li>
-								
-							</ul>
-							
-							<ul class="nav-menu nav-menu-social align-to-right">
-								<li>
-									<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="ft-bold">
-										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
-									</a>
-								</li>
-								<li class="add-listing">
-									<a href="business-login" >
-										<i class="fas fa-plus me-2"></i>Add Your Business
-									</a>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-			</div>
+			<%- include('includes/header.ejs') %>
 			<!-- End Navigation -->
 			<div class="clearfix"></div>
 			<!-- ============================================================== -->
@@ -562,19 +482,7 @@
 		<!-- ============================================================== -->
 		<!-- All Jquery -->
 		<!-- ============================================================== -->
-		<script src="../assets/js/plugins/jquery.min.js"></script>
-		<script src="../assets/js/plugins/popper.min.js"></script>
-		<script src="../assets/js/plugins/bootstrap.min.js"></script>
-		<script src="../assets/js/plugins/slick.js"></script>
-		<script src="../assets/js/plugins/jquery.magnific-popup.min.js"></script>
-		<script src="../assets/js/plugins/dropzone.js"></script>
-		<script src="../assets/js/plugins/counterup.js"></script>
-		<script src="../assets/js/plugins/lightbox.js"></script>
-		<script src="../assets/js/plugins/moment.min.js"></script>
-		<script src="../assets/js/plugins/daterangepicker.js"></script>
-		<script src="../assets/js/plugins/lightbox.js"></script>		
-		<script src="../assets/js/plugins/jQuery.style.switcher.js"></script>
-		<script src="../assets/js/plugins/custom.js"></script>
+		<%- include('includes/end.ejs') %>
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->		

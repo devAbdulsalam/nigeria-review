@@ -42,73 +42,6 @@
             <!-- ============================================================== -->
             <!-- Start Navigation -->
 			<%- include('includes/header.ejs') %>
-			<!-- <div class="header header-transparent change-logo">
-				<div class="container">
-					<nav id="navigation" class="navigation navigation-landscape">
-						<div class="nav-header">
-							<a class="nav-brand static-logo" href="#"><img src="assets/img/logo-light.png" class="logo" alt="" /></a>
-							<a class="nav-brand fixed-logo" href="#"><img src="assets/img/logo.png" class="logo" alt="" /></a>
-							<div class="nav-toggle"></div>
-							<div class="mobile_nav">
-								<ul>
-									<li>
-										<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="theme-cl fs-lg">
-											<i class="lni lni-user"></i>
-										</a>
-									</li>
-									<li>
-										<a href="add-listing" class="crs_yuo12 w-auto text-white theme-bg">
-											<span class="embos_45"><i class="fas fa-plus me-2"></i>Add Listing</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="nav-menus-wrapper" style="transition-property: none;">
-							<ul class="nav-menu">
-							
-								<li class="active"><a href="index">Home</a></li>
-								
-								<li><a href="javascript:void(0);">For Business</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="author-detail"><i class="lni lni-briefcase me-2"></i>Submit Business</a></li>
-										<li><a href="/claim-business/login"><i class="lni lni-handshake me-2"></i>Claim Business</a></li>
-										<li><a href="business-login"><i class="lni lni-user me-2"></i>Log in to Business</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Reviewers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="dashboard-my-profile"><i class="lni lni-user me-2"></i>Sign in </a></li>
-										<li><a href="dashboard-change-password"><i class="lni lni-lock-alt me-2"></i>Register as a Reviewer</a></li>
-									</ul>
-								</li>
-								
-								<li><a href="javascript:void(0);">Advertisers</a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="signup"><i class="lni lni-user me-2"></i>Sign In</a></li>
-										<li><a href="login"><i class="lni lni-link me-2"></i>Advertise with us</a></li>
-									</ul>
-								</li>
-								<li><a href="index">Write Reviews</a></li>
-							</ul>
-							
-							<ul class="nav-menu nav-menu-social align-to-right">
-								<li>
-									<a href="#" data-bs-toggle="modal" data-bs-target="#login" class="ft-bold">
-										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
-									</a>
-								</li>
-								<li class="add-listing">
-									<a href="add-listing" >
-										<i class="fas fa-plus me-2"></i>Add Listing
-									</a>
-								</li>
-							</ul>
-						</div>
-					</nav>
-				</div>
-			</div> -->
 			<!-- End Navigation -->
 			<div class="clearfix"></div>
 			<!-- ============================================================== -->
@@ -513,7 +446,8 @@
 									<div class="jbd-details mb-4">
 										<h5 class="ft-bold fs-lg">Drop Your Review</h5>
 										<div class="review-form-box form-submit mt-3">
-											<form id="reviewForm" type="POST" action="/reviews/<%= listingId %>">
+											<form id="reviewForm" 
+										method="post" action="/reviews/<%= listingId %>">
 												<div class="row">
 													
 													<div class="col-lg-12 col-md-12 col-sm-12">
@@ -546,8 +480,8 @@
 													
 													<div class="col-lg-12 col-md-12 col-sm-12">
 														<div class="form-group mb-3">
-															<label for="content" class="ft-medium small mb-1">Review</label>
-															<textarea id="content" name="content" class="form-control rounded ht-140" placeholder="Review"></textarea>
+															<label for="comment" class="ft-medium small mb-1">Review</label>
+															<textarea id="comment" name="comment" class="form-control rounded ht-140" placeholder="Review"></textarea>
 														</div>
 													</div>
 													<div class="eltio_k2">
@@ -561,7 +495,7 @@
 													</div>
 													
 												</div>												
-												<input type="text" value="<%= listingId %>" id="listingId" name="listingid" style="display: none;"/>
+												<input type="text" value="<%= listingId %>" id="listingId" name="itemid" style="display: none;"/>
 												<input type="text" value="<%= user?._id %>" id="userId" name="userId" style="display: none;"/>
 											</form>
 										</div>
@@ -755,10 +689,8 @@
 							</div>
 						</div>
 							<% } %> <% } %>
-						
 					</div>
 					<!-- row -->
-					
 				</div>
 			</section>
 			<!-- ======================= Related Listings ======================== -->
