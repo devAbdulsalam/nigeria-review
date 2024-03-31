@@ -27,10 +27,11 @@ import {
 const router = express.Router();
 router.get('/', getIndex);
 router.get('/index', getIndex);
-router.get('/advert', getAdvert);
 router.use('/', authRoutes);
 router.get('/register', getRegister);
 router.get('/register-advertizer', getRegisterAdvertizer);
+router.get('/advert', getAdvert);
+router.get('/advertise', getAdvert);
 router.get('/add-advert', requiredAuthPage, getAddAdvert);
 router.get('/dashboard', requiredAuthPage, getDashboard);
 router.get('/my-profile', requiredAuthPage, getProfile);

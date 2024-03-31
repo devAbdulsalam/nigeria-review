@@ -7,6 +7,7 @@ import {
 	getReviews,
 	getReview,
 	deleteReview,
+	registerAdvertizer,
 } from '../controllers/business.js';
 import { requireAuth, verifyPermission } from '../middlewares/requireAuth.js';
 import { upload } from '../middlewares/multer.js';
@@ -26,6 +27,7 @@ router.post(
 	addBusiness
 );
 router.post('/register', upload.single('logo'), registerBusiness);
+router.post('/register/advertizer', upload.single('logo'), registerAdvertizer);
 router.get(
 	'/reviews',
 	requireAuth,

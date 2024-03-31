@@ -124,6 +124,10 @@ export const registerBusiness = async (req, res) => {
 			password: hashedPassword,
 		});
 		if (!user) {
+			await fs.promises.unlink(req.file.path);
+			return res
+				.status(400)
+				.json({ error: 'Unable to register business user' });
 		}
 		const business = await Business.create({
 			name: businessName,
@@ -140,6 +144,65 @@ export const registerBusiness = async (req, res) => {
 		res
 			.status(200)
 			.json({ business, message: 'Business registration successfully' });
+	} catch (error) {
+		console.log(error);
+		if (req.file) {
+			await fs.promises.unlink(req.file.path);
+		}
+		throw new ApiError(401, error?.message || 'Server errer');
+	}
+};
+export const registerAdvertizer = async (req, res) => {
+	const {
+		firstName,
+		lastName,
+		businessName,
+		description,
+		email,
+		phone,
+		address,
+		password,
+	} = req.body;
+	try {
+		if (!req.file) {
+			return res.status(400).json({ error: 'Business logo is required' });
+		}
+		const existingUser = await User.findOne({ email });
+		if (existingUser) {
+			await fs.promises.unlink(req.file.path);
+			return res.status(409).json({ error: 'Email Address already Exists' });
+		}
+		const logo = await uploader(req.file.path, 'logo');
+		const hashedPassword = await hash(password);
+		const user = await User.create({
+			firstName,
+			email,
+			phone,
+			lastName,
+			role: 'BUSINESS',
+			address,
+			password: hashedPassword,
+		});
+		if (!user) {
+			await fs.promises.unlink(req.file.path);
+			return res
+				.status(400)
+				.json({ error: 'Unable to register business user' });
+		}
+		const business = await Business.create({
+			name: businessName,
+			description,
+			logo,
+			address,
+			claimed: true,
+			primary: true,
+			phone,
+			email,
+			userId: user._id,
+		});
+		res
+			.status(200)
+			.json({ business, message: 'Advetizer registered successfully' });
 	} catch (error) {
 		console.log(error);
 		if (req.file) {

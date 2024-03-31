@@ -2,6 +2,7 @@ import User from '../../models/User.js';
 import Listing from '../../models/Listing.js';
 import Transaction from '../../models/Transaction.js';
 import Notification from '../../models/Notification.js';
+import Business from '../../models/Business.js';
 import {
 	getIndexPageInfo,
 	getDashboardInfo,
@@ -114,7 +115,7 @@ export const getListing = async (req, res, next) => {
 export const getAdvert = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
-		res.render('advert', {
+		res.render('advertise', {
 			user,
 			path: '/advert',
 			isAuthenticated: req.session.isAuthenticated,
@@ -176,10 +177,12 @@ export const getAuthor = async (req, res, next) => {
 export const getAddAdvert = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
-		res.render('addAdvert', {
+		const dasboardInfo = await getDashboardInfo(user?._id);
+		res.render('advertise', {
 			path: '/add-advert',
 			pageTitle: 'Add advert',
 			user,
+			...dasboardInfo,
 			isAuthenticated: req.session.isAuthenticated,
 			// isNew: user.verified,
 		});
