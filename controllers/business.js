@@ -162,7 +162,11 @@ export const claimBusiness = async (req, res) => {
 	const { id } = req.params;
 	try {
 		const user = await User.findById(id);
-		const business = await Business.findById(id);
+		const business = await Business.findByIdAndUpdate(
+			id,
+			{ userId: user._id },
+			{ new: true }
+		);
 		res.status(200).json(business);
 	} catch (error) {
 		console.log(error);

@@ -14,7 +14,7 @@ export const getListing = async (req, res, next) => {
 	const author = await User.findOne({ _id: listing.userId }).select(
 		'firstName lastName email avatar address phone'
 	);
-	const reviews = await Review.find({ listingId: id }).populate('listingId');
+	const reviews = await Review.find({ itemId: id }).populate('itemId');
 	const recentListing = await Listing.find().limit(4).sort({ createdAt: -1 });
 	const totalListings = await Listing.count({ userId: author?._id });
 	const followers = await User.countDocuments({ _id: author?._id });
@@ -129,7 +129,7 @@ export const getSearchListings = async (req, res, next) => {
 	const user = await req?.session?.user;
 	const dasboardInfo = await getDashboardInfo(user?._id);
 
-	res.render('listing', {
+	res.render('search', {
 		listings,
 		totalCount, // Pass total count for pagination UI
 		filter, // Pass back the applied filter for UI state
@@ -194,27 +194,26 @@ export const getSavedListings = async (req, res) => {
 };
 export const getSavedListing = async (req, res) => {
 	const user = await req.session.user;
-	let listings;
 	const listingExist = await SavedListing.findOne({
 		userId: user._id,
 		listingId: req.params.id,
 	});
-	if (listingExist) {
-		listings = await SavedListing.create({ userId: user._id }).populate(
-			'listingId'
-		);
-	} else {
-		listings = await SavedListing.create({
+	let listing;
+	if (!listingExist) {
+		listing = await SavedListing.create({
 			userId: user._id,
 			listingId: req.params.id,
-		}).populate('listingId');
+		});
 	}
-	console.log(listings);
+	const listings = await SavedListing.find({ userId: user._id }).populate(
+		'listingId'
+	);
 	const dasboardInfo = await getDashboardInfo(user._id);
 	res.render('savedListing', {
 		path: '/saved-listings',
 		pageTitle: 'Listing',
 		listings,
+		listing,
 		...dasboardInfo,
 		user,
 	});

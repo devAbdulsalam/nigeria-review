@@ -19,8 +19,8 @@ export const getMyReview = async (req, res, next) => {
 export const getReviews = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const listing = await Listing.findOne({ _id: req.params.id });
 		const reviews = await Review.find({ id: req.params.id });
-		const listing = await Listing.find({ id: req.params.id });
 		res.render('reviews', {
 			path: '/review',
 			pageTitle: 'Reviews',

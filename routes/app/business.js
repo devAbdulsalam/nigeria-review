@@ -2,16 +2,13 @@ import express from 'express';
 import {
 	getAddBusiness,
 	getBusinessProfile,
-	getClaimBusiness,
+	getBusiness,
 } from '../../controllers/app/business.js';
 const router = express.Router();
-import {
-	requiredAuth,
-	requiredAuthPage,
-} from '../../middlewares/requireAuth.js';
+import { requiredAuthPage } from '../../middlewares/requireAuth.js';
 // business
 router.get('/add-business', requiredAuthPage, getAddBusiness);
 router.get('/submit-business', requiredAuthPage, getAddBusiness);
-router.get('/claim-business', requiredAuthPage, getClaimBusiness);
-router.get('/business-profile', requiredAuthPage, getBusinessProfile);
+router.get('/business', getBusiness);
+router.get('/claim-business/:id', requiredAuthPage, getBusinessProfile);
 export default router;

@@ -1,14 +1,14 @@
 import mongoose, { Schema } from 'mongoose';
 // Define the schema for the socials
 const SocialSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    value: {
-        type: String,
-        required: true
-    }
+	name: {
+		type: String,
+		required: true,
+	},
+	value: {
+		type: String,
+		required: true,
+	},
 });
 const ListingSchema = new mongoose.Schema(
 	{
@@ -67,7 +67,7 @@ const ListingSchema = new mongoose.Schema(
 		},
 		totalReviews: {
 			type: Number,
-			require: 0,
+			default: 0,
 		},
 		averageRating: {
 			type: Number,
@@ -90,7 +90,6 @@ const ListingSchema = new mongoose.Schema(
 );
 ListingSchema.index({ keywords: 'text' }); // Text index for full-text search
 ListingSchema.index({ category: 1, location: 1 }); // Compound index for common searches
-
 
 const Listing = mongoose.model('Listing', ListingSchema);
 export default Listing;

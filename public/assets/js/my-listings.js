@@ -44,8 +44,8 @@ const errorText = document.querySelector('#errorText');
 function handleDetails(id) {
 	const item = listingsData.find((item) => item._id === id);
 	Swal.fire({
-		title: `${item.productName}`,
-		text: 'Modal with a custom image.',
+		title: `${ item?.businessName || item.productName}`,
+		text: `${item.description}`,
 		imageUrl: `${item?.featuredImage?.url}`,
 		imageWidth: 400,
 		imageHeight: 200,

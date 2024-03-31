@@ -16,7 +16,7 @@ const BusinessSchema = new mongoose.Schema(
 		address: String,
 		totalReviews: {
 			type: Number,
-			require: 0,
+			default: 0,
 		},
 		averageRating: {
 			type: Number,

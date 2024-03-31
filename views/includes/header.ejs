@@ -33,9 +33,9 @@
 				</div>
 			</div>
 			<div class="nav-menus-wrapper" style="transition-property: none">
-				<% if (!user) { %>
 				<ul class="nav-menu">
 					<li class="active"><a href="index">Home</a></li>
+					<% if (!user) { %>
 
 					<li>
 						<a href="javascript:void(0);">For Business</a>
@@ -88,11 +88,10 @@
 							</li>
 						</ul>
 					</li>
-					<% if (user?.role === 'REVIEWER') { %>
+					<% } %> <% if (user?.role === 'REVIEWER') { %>
 					<li><a href="index">Write Reviews</a></li>
 					<% } %>
 				</ul>
-				<% } %>
 
 				<ul class="nav-menu nav-menu-social align-to-right">
 					<% if (!user) { %>
@@ -100,6 +99,13 @@
 					<li class="authHref">
 						<a href="/login" class="ft-bold">
 							<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
+						</a>
+					</li>
+					<% } %> <% if (user) { %>
+
+					<li class="">
+						<a href="/logout" class="ft-bold">
+							<i class="fas fa-sign-out-alt me-1 theme-cl"></i>Log out
 						</a>
 					</li>
 					<% } %> <% if (user ) { %>

@@ -5,7 +5,7 @@
 		<!-- Morris Charts CSS -->
 		<link href="assets/js/plugins/morris.js/morris.css" rel="stylesheet" />
 
-		<%- include('includes/head2.ejs') %>
+		<%- include('includes/head.ejs') %>
 	</head>
 
 	<body>
@@ -58,7 +58,7 @@
 			</style>
 
 			<!-- =============================== Dashboard Header ========================== -->
-			<%- include('includes/dashboardHeader2.ejs') %>
+			<%- include('includes/dashboardHeader.ejs') %>
 			<!-- =============================== Dashboard Header ========================== -->
 
 			<!-- ======================= dashboard Detail ======================== -->
@@ -182,9 +182,9 @@
 															class="btn btn-claim"
 															><i class="fas fa-business-time me-1"></i>Claim</a
 														>
-														<%}%> <% if (user._id !== item?.userId) { %>
+														<%}%> <% if (user.role === 'USER') { %>
 														<a
-															href="reviews/<%= item._id%>"
+															href="reviews"
 															style="
 																background-color: rgb(107, 63, 4);
 																color: white;
@@ -235,14 +235,14 @@
 		<!-- ============================================================== -->
 		<!-- All Jquery -->
 		<!-- ============================================================== -->
-		<%- include('includes/end2.ejs') %>
+		<%- include('includes/end.ejs') %>
 		<input
 			type="text"
 			style="display: none"
 			id="userId"
 			value="<%= user._id %>"
 		/>
-		<script src="../assets/js/saved-listings.js"></script>
+		<script src="assets/js/saved-listings.js"></script>
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->

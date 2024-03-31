@@ -3,7 +3,7 @@
 		<div class="goodup-dashboard-inner">
 			<ul data-submenu-title="Dashboard">
 				<li class="<%= path === '/dashboard' ? 'active' : '' %>">
-					<a href="dashboard"
+					<a href="../dashboard"
 						><i class="lni lni-dashboard me-2"></i>Dashboard</a
 					>
 				</li>
@@ -13,32 +13,34 @@
 					id="addBusinessLink"
 					class="<%= path === '/add-business' ? 'active' : '' %>"
 				>
-					<a href="add-business"
+					<a href="../add-business"
 						><i class="lni lni-plus me-2"></i>Add Business</a
 					>
 				</li>
 				<% } %>
 				<li class="<%= path === '/my-listings' ? 'active' : '' %>">
-					<a href="my-listings"
+					<a href="../my-listings"
 						><i class="lni lni-files me-2"></i>My Listings</a
 					>
 				</li>
 				<li class="<%= path === '/add-listings' ? 'active' : '' %>">
-					<a href="add-listing"
+					<a href="../add-listing"
 						><i class="lni lni-add-files me-2"></i>Add Listing</a
 					>
 				</li>
 				<% } %>
 				<li class="<%= path === '/listings' ? 'active' : '' %>">
-					<a href="listings"><i class="lni lni-add-files me-2"></i>Listings</a>
+					<a href="../listings"
+						><i class="lni lni-add-files me-2"></i>Listings</a
+					>
 				</li>
 				<li class="<%= path === '/saved-listings' ? 'active' : '' %>">
-					<a href="saved-listings"
+					<a href="../saved-listings"
 						><i class="lni lni-bookmark me-2"></i>Saved Listing</a
 					>
 				</li>
-				<li class="<%= path === '/business' || path === 'business-profile' ? 'active' : '' %>">
-					<a href="business"
+				<li class="<%= path === '/claim-business' ? 'active' : '' %>">
+					<a href="../claim-business"
 						><i class="lni lni-bookmark me-2"></i>Claim Business</a
 					>
 				</li>
@@ -46,13 +48,13 @@
 			<ul data-submenu-title="Business & Marketing Tools">
 				<% if (user?.role !== 'USER') { %>
 				<li class="<%= path === '/reviews' ? 'active' : '' %>">
-					<a href="reviews"
+					<a href="../reviews"
 						><i class="lni lni-pencil-alt me-2"></i>Write A Review</a
 					>
 				</li>
 				<% } %>
 				<li>
-					<a href="/index"><i class="lni lni-grow me-2"></i>Polls & Survey</a>
+					<a href="../index"><i class="lni lni-grow me-2"></i>Polls & Survey</a>
 				</li>
 				<li>
 					<a href="javascript:void(0);"
@@ -60,7 +62,7 @@
 					>
 				</li>
 				<li>
-					<a href="/index"
+					<a href="../index"
 						><i class="lni lni-shopping-basket me-2"></i>Mystery Shopping</a
 					>
 				</li>
@@ -69,10 +71,8 @@
 				</li>
 			</ul>
 			<ul data-submenu-title="Blog, Questions & Answers">
-				<li class="<%= path === '/change-password' ? 'active' : '' %>">
-					<a href="change-password"
-						><i class="lni lni-list me-2"></i>My Articles</a
-					>
+				<li class="<%= path === '/blog' ? 'active' : '' %>">
+					<a href="../"><i class="lni lni-list me-2"></i>My Articles</a>
 				</li>
 				<li>
 					<a href="javascript:void(0);"
@@ -96,7 +96,7 @@
 			<ul data-submenu-title="Other Listing Options">
 				<% if (user?.role === 'BUSINESS') { %>
 				<li>
-					<a href="add-business"
+					<a href="../add-business"
 						><i class="lni lni-plus me-2"></i>Add Business</a
 					>
 				</li>
@@ -108,14 +108,16 @@
 					>
 				</li>
 				<li>
-					<a href="login"
+					<a href="../login"
 						><i class="lni lni-music me-2"></i>List Movies, Music & Awards</a
 					>
 				</li>
 			</ul>
 			<ul data-submenu-title="My Accounts">
 				<li>
-					<a href="my-profile"><i class="lni lni-user me-2"></i>My Profile </a>
+					<a href="../my-profile"
+						><i class="lni lni-user me-2"></i>My Profile
+					</a>
 				</li>
 				<li class="<%= path === '/change-password' ? 'active' : '' %>">
 					<a href="update-password"

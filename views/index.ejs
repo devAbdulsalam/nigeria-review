@@ -586,8 +586,8 @@
 														</div>
 														<div class="Goodup-middle-caption mt-3">
 															<p>
-																<%= item?.description.slice(0, 40) +
-																(item?.description.length > 40 ? '...' : '') %>
+																<%= item?.description?.slice(0, 40) +
+																(item?.description?.length > 40 ? '...' : '') %>
 															</p>
 														</div>
 													</div>
@@ -615,15 +615,13 @@
 																	</button>
 																</div>
 																<div class="Goodup-bookmark-btn">
-																	<button
-																		type="button"
-																		id="<%= item._id %>"
-																		href="saved-listings/<%= item._id %>"
-																	>
-																		<i
-																			class="lni lni-heart-filled position-absolute"
-																		></i>
-																	</button>
+																	<form action="saved-listings/<%= item._id %>">
+																		<button type="submit">
+																			<i
+																				class="lni lni-heart-filled position-absolute"
+																			></i>
+																		</button>
+																	</form>
 																</div>
 															</div>
 														</div>
@@ -4866,145 +4864,7 @@
 			<!-- ======================= Newsletter Start ============================ -->
 
 			<!-- ============================ Footer Start ================================== -->
-			<footer class="light-footer skin-light-footer style-2">
-				<div class="footer-middle">
-					<div class="container">
-						<div class="row">
-							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-								<div class="footer_widget">
-									<img
-										src="assets/img/logo.png"
-										class="img-footer small mb-2"
-										alt=""
-									/>
-
-									<div class="address mt-2">
-										61-65 Egbe- Isolo Road, Iyana Ejigbo Shopping Arcade,
-										<br />Block A, Suite 19, Iyana Ejigbo Bus Stop, <br />
-										Ejigbo, Lagos State, Nigeria.
-									</div>
-									<div class="address mt-3">
-										+234-80-337-82-777 | +234-1-29 52 413
-										<br />hello@reviewnigeria.ng
-									</div>
-									<div class="address mt-2">
-										<ul class="list-inline">
-											<li class="list-inline-item">
-												<a href="#" class="theme-cl"
-													><i class="lni lni-facebook-filled"></i
-												></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#" class="theme-cl"
-													><i class="lni lni-twitter-filled"></i
-												></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#" class="theme-cl"
-													><i class="lni lni-youtube"></i
-												></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#" class="theme-cl"
-													><i class="lni lni-instagram-filled"></i
-												></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#" class="theme-cl"
-													><i class="lni lni-linkedin-original"></i
-												></a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
-								<div class="footer_widget">
-									<h4 class="widget_title">Company</h4>
-									<ul class="footer-menu">
-										<li><a href="#">Career</a></li>
-										<li><a href="about-us">About Us</a></li>
-										<li><a href="contact">Contact Us</a></li>
-										<li><a href="terms">Terms of Services</a></li>
-										<li><a href="how-it-works">How it works</a></li>
-										<li>
-											<a href="disclaimer">Disclaimer and Phishing Claims</a>
-										</li>
-										<li><a href="cookie">Cookie Policy</a></li>
-										<li>
-											<a href="slaverry-statement">Modern Slavery Statement</a>
-										</li>
-										<li><a href="GDPR">GDPR Policy</a></li>
-										<li>
-											<a href="do-not-share-my-info"
-												>Do Not Sell or Share My Personal Information</a
-											>
-										</li>
-										<li><a href="privacy">Privacy Policy</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
-								<div class="footer_widget">
-									<h4 class="widget_title">For Business</h4>
-									<ul class="footer-menu">
-										<li><a href="#">Advertise With Us</a></li>
-										<li>
-											<a href="/claim-business/index">Claim Your Business</a>
-										</li>
-										<li><a href="#">Build A Marketing List</a></li>
-										<li><a href="#">Send E-mail, SMS & Invite</a></li>
-										<li><a href="#">Polls</a></li>
-										<li><a href="#">Survey</a></li>
-										<li><a href="#">Mystery Shopping</a></li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
-								<div class="footer_widget">
-									<h4 class="widget_title">Resource Center</h4>
-									<ul class="footer-menu">
-										<li><a href="blog">Blog, Questtion and Answers</a></li>
-										<li><a href="#">Newsletter Subscription</a></li>
-										<li>
-											<a href="faq">Frequently Asked Questions (FAQ)</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-
-							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
-								<div class="footer_widget">
-									<h4 class="widget_title">For Reviewers</h4>
-									<ul class="footer-menu">
-										<li><a href="#">Sign In</a></li>
-										<li><a href="#">Write a Review</a></li>
-										<li><a href="#">Register As a Reviewer</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="footer-bottom br-top">
-					<div class="container">
-						<div class="row align-items-center">
-							<div class="col-lg-12 col-md-12 text-center">
-								<p class="mb-0">
-									<a style="color: blue" href="https://foramfera.com/"
-										>© 2024 Foraminifera Market Research LTD.</a
-									>
-									All rights reserved.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<%- include('includes/footer.ejs') %>
 			<!-- ============================ Footer End ================================== -->
 			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
 				><i class="ti-arrow-up"></i

@@ -62,6 +62,7 @@ const validateSignup = [
 ];
 router.post('/signup', validateSignup, postSignup);
 
+router.get('/logout', postLogout);
 router.post('/logout', postLogout);
 
 router.get('/forgot-password', getForgotPassword);

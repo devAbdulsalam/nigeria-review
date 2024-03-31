@@ -1,6 +1,5 @@
 import User from '../../models/User.js';
 import Business from '../../models/Business.js';
-import Review from './../../models/Review.js';
 
 export const getAddBusiness = async (req, res, next) => {
 	try {
@@ -31,11 +30,12 @@ export const getAddBusiness = async (req, res, next) => {
 export const getBusinessProfile = async (req, res, next) => {
 	try {
 		const { id } = req.params;
-		const business = await Business.find({ id });
-		const reviews = await Review.find({ businessId: id });
+		const user = req.session.user;
+		const business = await Business.findOne({ id });
 		res.render('businessProfile', {
 			business,
-			reviews,
+			user,
+			totalRating: 0,
 			path: '/business',
 			isAuthenticated: true,
 		});
@@ -45,14 +45,15 @@ export const getBusinessProfile = async (req, res, next) => {
 		return next(error);
 	}
 };
-export const getClaimBusiness = async (req, res, next) => {
+export const getBusiness = async (req, res, next) => {
 	try {
-		const { id } = req.params;
-		const business = await Business.find({ id });
-		const reviews = await Review.find({ businessId: id });
-		res.render('claimBusiness', {
+		const user = req.session.user;
+		const business = await Business.find();
+		res.render('business', {
 			business,
-			reviews,
+			user,
+			totalRating: 0,
+			totalReviews: 0,
 			path: '/business',
 			isAuthenticated: true,
 		});

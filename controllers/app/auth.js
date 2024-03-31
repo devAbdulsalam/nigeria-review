@@ -126,7 +126,6 @@ export function postSignup(req, res, next) {
 	const email = req.body.email;
 	const password = req.body.password;
 	const errors = validationResult(req);
-	console.log(req.body);
 	if (!errors.isEmpty()) {
 		console.log(errors.array());
 		return res.status(422).render('signup', {

@@ -111,26 +111,23 @@
 									<div class="dashboard-list-wraps-body py-3 px-3">
 										<div class="dashboard-listing-wraps" id="listings">
 											<!-- Single Listing Item -->
-											<% if (listings.length> 0) { %> <% for (let item of
-											listings) { %>
+											<% if (business.length> 0) { %> <% for (let item of
+											business) { %>
 											<div class="dsd-single-listing-wraps">
 												<div class="dsd-single-lst-thumb">
 													<img
-														src="<%= item?.listingId?.featuredImage?.url %>"
+														src="<%= item?.logo?.url %>"
 														class="img-fluid"
 														alt=""
 													/>
 												</div>
 												<div class="dsd-single-lst-caption">
 													<div class="dsd-single-lst-title">
-														<h5>
-															<%= item?.listingId?.BusinessName ||
-															item?.listingId?.productName %>
-														</h5>
+														<h5><%= item?.name %></h5>
 													</div>
 													<span class="agd-location"
 														><i class="lni lni-map-marker me-1"></i><%=
-														item?.listingId?.address %></span
+														item?.address %></span
 													>
 													<div class="ico-content">
 														<div class="Goodup-ft-first">
@@ -144,55 +141,19 @@
 															</div>
 															<div class="Goodup-price-range">
 																<span class="ft-medium"
-																	><%= item.totalReviews || '20' %>
+																	><%= item?.totalReviews || '20' %>
 																	Reviews</span
 																>
 															</div>
 														</div>
 													</div>
 													<div class="dsd-single-lst-footer">
-														<% if (user._id === item.userId) { %>
-														<a href="/<%= item._id %>" class="btn btn-edit mr-1"
-															><i class="fas fa-edit me-1"></i>Edit</a
-														>
-														<%}%>
-														<button
-															type="button"
-															id="<%= item._id %>"
+														<a
+															href="business-profile/<%= item._id %>"
 															class="btn btn-view mr-1 detailsBtn"
 														>
 															<i class="fas fa-eye me-1"></i>View
-														</button>
-
-														<button
-															type="button"
-															id="<%= item._id %>"
-															class="btn btn-delete deleteBtn"
-														>
-															<i class="fas fa-trash me-1"></i>Delete
-														</button>
-
-														<% if (item.status === 'PENDING') { %>
-														<a
-															href="<%= item._id %>"
-															style="
-																background-color: rgb(234, 0, 255);
-																color: white;
-															"
-															class="btn btn-claim"
-															><i class="fas fa-business-time me-1"></i>Claim</a
-														>
-														<%}%> <% if (user._id !== item?.userId) { %>
-														<a
-															href="reviews/<%= item._id%>"
-															style="
-																background-color: rgb(107, 63, 4);
-																color: white;
-															"
-															class="btn mr-1"
-															><i class="fas fa-edit me-1"></i>Review</a
-														>
-														<% } %>
+														</a>
 													</div>
 												</div>
 											</div>
@@ -240,7 +201,7 @@
 			type="text"
 			style="display: none"
 			id="userId"
-			value="<%= user._id %>"
+			value="<%= user?._id %>"
 		/>
 		<script src="../assets/js/saved-listings.js"></script>
 		<!-- ============================================================== -->
