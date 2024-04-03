@@ -65,12 +65,10 @@ export const getUser = async (req, res) => {
 			'-password'
 		);
 		if (!user) {
-			return res.status(400).json({ message: 'Invalid user id' });
+			return res.status(400).json({ message: 'Invalid user' });
 		}
-		const resources = await Resource.find({ userId: user._id });
 		res.status(200).json({
 			user,
-			resources,
 		});
 	} catch (error) {
 		console.log(error);

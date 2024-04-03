@@ -20,7 +20,6 @@ const ListingSchema = new mongoose.Schema(
 		businessId: {
 			type: Schema.Types.ObjectId,
 			ref: 'Business',
-			required: true,
 		},
 		businessName: String,
 		keywords: [
@@ -79,6 +78,10 @@ const ListingSchema = new mongoose.Schema(
 			},
 		],
 		socials: [SocialSchema],
+		claimed: {
+			type: Boolean,
+			default: false,
+		},
 		status: {
 			type: String,
 			default: 'PENDING',

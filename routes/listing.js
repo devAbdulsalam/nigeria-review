@@ -7,6 +7,7 @@ import {
 	getBusinessListings,
 	addManyListing,
 	addListing,
+	newListing,
 	updateListing,
 	updateListings,
 	deleteListings,
@@ -33,6 +34,13 @@ router.post(
 	verifyPermission(['ADMIN', 'BUSINESS']),
 	upload.fields(listingFields),
 	addListing
+);
+router.post(
+	'/new',
+	requireAuth,
+	verifyPermission(['ADMIN', 'BUSINESS']),
+	upload.fields(listingFields),
+	newListing
 );
 router.post(
 	'/add',

@@ -10,5 +10,5 @@ import { requiredAuthPage } from '../../middlewares/requireAuth.js';
 router.get('/add-business', requiredAuthPage, getAddBusiness);
 router.get('/submit-business', requiredAuthPage, getAddBusiness);
 router.get('/business', getBusiness);
-router.get('/claim-business/:id', requiredAuthPage, getBusinessProfile);
+router.get('/business-profile/:id', requiredAuthPage, getBusinessProfile);
 export default router;

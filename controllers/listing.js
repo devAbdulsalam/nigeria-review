@@ -131,6 +131,64 @@ export const addListing = async (req, res) => {
 		}
 	}
 };
+export const newListing = async (req, res) => {
+	try {
+		// Validate required field and presence of files
+		if (!req.files || !req.files.featuredImage) {
+			return res
+				.status(400)
+				.json({ error: 'Listing featuredImage is required' });
+		}
+		// Separate gallery and single uploads for efficient processing
+		const singleUploads = Object.entries(req.files)
+			.filter(([fieldName]) => fieldName !== 'gallery')
+			.map(([fieldName, files]) => ({ fieldName, file: files[0] })); // Destructure directly
+
+		const singleUploadResults = await Promise.all(
+			singleUploads.map(async (upload) => {
+				const { fieldName, file } = upload; // Destructure fieldName and file
+				const result = await uploader(file.path, fieldName); // Use fieldName directly
+				return { [upload.fieldName]: { ...result } }; // Spread result object directly to fieldName
+			})
+		);
+		const cleanedResult = singleUploadResults.reduce((acc, obj) => {
+			const key = Object.keys(obj)[0];
+			acc[key] = obj[key];
+			return acc;
+		}, {});
+
+		const listing = await Listing.create({
+			...req.body,
+			...cleanedResult,
+		});
+
+		// Delete temporary files after successful upload (assuming uploader handles cleanup)
+		if (req.files) {
+			const filePromises = Object.values(req.files)
+				.flat()
+				.map((file) => fs.promises.unlink(file.path));
+			await Promise.all(filePromises);
+		}
+		res.status(200).json({ listing, message: 'Listing added successfully' });
+	} catch (error) {
+		console.error(error);
+
+		// Clean up uploaded files if any
+		if (req.files) {
+			const filePromises = Object.values(req.files)
+				.flat()
+				.map((file) => fs.promises.unlink(file.path));
+			await Promise.all(filePromises);
+		}
+
+		// Handle errors
+		if (error instanceof ApiError) {
+			res.status(error.status).json({ message: error.message });
+		} else {
+			res.status(500).json({ message: 'Server error' });
+		}
+	}
+};
 
 export const addManyListing = async (req, res) => {
 	try {
@@ -157,6 +215,21 @@ export const addManyListing = async (req, res) => {
 };
 
 export const updateListing = async (req, res) => {
+	const id = req.params.id;
+	try {
+		if (!id || !mongoose.isValidObjectId(id)) {
+			return res.status(404).json({ error: 'Enter a valid listing' });
+		}
+		const listing = await Listing.findByIdAndUpdate(id, {
+			...req.body,
+		});
+		res.status(200).json({ listing, message: 'Listing updated successfully' });
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({ message: 'server error' });
+	}
+};
+export const updateListingImage = async (req, res) => {
 	const id = req.user._id;
 	const { name, description } = req.body;
 	try {
@@ -174,7 +247,7 @@ export const updateListing = async (req, res) => {
 			userId: id,
 		});
 		await fs.promises.unlink(req.file.path);
-		res.status(200).json({ teacher, message: 'Teacher updated successfully' });
+		res.status(200).json({ teacher, message: 'Listing updated successfully' });
 	} catch (error) {
 		console.log(error);
 		await fs.promises.unlink(req.file.path);
@@ -184,10 +257,7 @@ export const updateListing = async (req, res) => {
 export const getListing = async (req, res) => {
 	const { id } = req.params;
 	try {
-		const listing = await Listing.find({
-			userId: id,
-			status: { $ne: 'DELETED' },
-		});
+		const listing = await Listing.findById(id).populate('userId');
 		res.status(200).json(listing);
 	} catch (error) {
 		console.log(error);
@@ -212,7 +282,10 @@ export const getBusinessListings = async (req, res) => {
 export const getUserListings = async (req, res) => {
 	const { id } = req.params;
 	try {
-		const listing = await Listing.findById(id);
+		const listing = await Listing.find({
+			userId: id,
+			status: { $ne: 'DELETED' },
+		});
 		res.status(200).json(listing);
 	} catch (error) {
 		console.log(error);
@@ -221,7 +294,7 @@ export const getUserListings = async (req, res) => {
 };
 export const getListings = async (req, res) => {
 	try {
-		const listing = await Listing.find();
+		const listing = await Listing.find().populate('userId');
 		res.status(200).json(listing);
 	} catch (error) {
 		console.log(error);

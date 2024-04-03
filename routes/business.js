@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+	getAllBusiness,
 	getBusiness,
 	registerBusiness,
 	addBusiness,
@@ -13,8 +14,9 @@ import { requireAuth, verifyPermission } from '../middlewares/requireAuth.js';
 import { upload } from '../middlewares/multer.js';
 const router = express.Router();
 
+router.get('/', requireAuth, getAllBusiness);
 router.get(
-	'/',
+	'/:id',
 	requireAuth,
 	verifyPermission(['ADMIN', 'BUSINESS']),
 	getBusiness

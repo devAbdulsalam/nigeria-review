@@ -8,6 +8,7 @@ import {
 	getUpdatePassword,
 	getAdvert,
 	getPricing,
+	getSelectPricing,
 	getAuthor,
 	getAbout,
 	getAddAdvert,
@@ -42,6 +43,7 @@ router.use('/', listingRoutes);
 router.use('/', reviewRoutes);
 router.get('/about-us', getAbout);
 router.get('/pricing', getPricing);
+router.get('/pricing/:id', getSelectPricing);
 router.get('/contact', getContact);
 router.get('/terms', getTerms);
 router.get('/career', getCareer);

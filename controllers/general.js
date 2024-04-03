@@ -3,7 +3,10 @@ import Transaction from '../models/Transaction.js';
 import Business from '../models/Business.js';
 import Review from '../models/Review.js';
 import Listing from './../models/Listing.js';
+import Site from './../models/Site.js';
 import Notification from './../models/Notification.js';
+import fs from 'fs';
+import { uploader } from '../utils/cloudinary.js';
 
 export const getUser = async (req, res) => {
 	try {
@@ -66,6 +69,46 @@ export const getAdminDashboard = async (req, res) => {
 			newUsers,
 			transactions,
 		});
+	} catch (error) {
+		res.status(404).json({ message: error.message });
+	}
+};
+export const updateSite = async (req, res) => {
+	try {
+		const userId = req.user._id;
+		let siteInfo = await Site.findOneAndUpdate({ userId }, { ...req.body });
+		if (!siteInfo) {
+			siteInfo = await Site.create({ ...req.body });
+		}
+		res.status(200).json(siteInfo);
+	} catch (error) {
+		res.status(404).json({ error, message: error?.message });
+	}
+};
+export const updateSiteLogo = async (req, res) => {
+	try {
+		if (!req.file) {
+			return res.status(400).json({ error: 'Business logo is required' });
+		}
+
+		const logo = await uploader(req.file.path, 'logo');
+		const siteInfo = await Site.findOneAndUpdate(
+			{ userId: req.user._id },
+			{ logo }
+		);
+		await fs.promises.unlink(req.file.path);
+		res.status(200).json(siteInfo);
+	} catch (error) {
+		if (req.file) {
+			await fs.promises.unlink(req.file.path);
+		}
+		res.status(404).json({ message: error.message });
+	}
+};
+export const getSite = async (req, res) => {
+	try {
+		const siteInfo = await Site.findOne();
+		res.status(200).json(siteInfo);
 	} catch (error) {
 		res.status(404).json({ message: error.message });
 	}

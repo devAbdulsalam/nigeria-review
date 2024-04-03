@@ -13,7 +13,7 @@ import {
 	listingsSearchConditions,
 } from '../utils/getPaginatedPayload.js';
 import Notification from '../models/Notification.js';
-export const getBusinesss = async (req, res) => {
+export const getAllBusiness = async (req, res) => {
 	const page = +(req.query.page || 1);
 	const limit = +(req.query.limit || 10);
 	const query = req.query.query?.toLowerCase(); // search query
@@ -53,7 +53,7 @@ export const addBusiness = async (req, res) => {
 	const userId = req.user._id;
 	const { name, description, email, phone } = req.body;
 	try {
-		if (!id || !mongoose.isValidObjectId(id)) {
+		if (!userId || !mongoose.isValidObjectId(userId)) {
 			return res.status(404).json({ error: 'Enter a valid user' });
 		}
 		if (!req.file) {
@@ -84,6 +84,35 @@ export const addBusiness = async (req, res) => {
 		}
 		await fs.promises.unlink(req.file.path);
 		res.status(200).json({ business, message: 'Business added successfully' });
+	} catch (error) {
+		console.log(error);
+		if (req.file) {
+			await fs.promises.unlink(req.file.path);
+		}
+		throw new ApiError(401, error?.message || 'Server error');
+	}
+};
+export const addListing = async (req, res) => {
+	const userId = req.user._id;
+	const { name, description, email, phone } = req.body;
+	try {
+		if (!userId || !mongoose.isValidObjectId(id)) {
+			return res.status(404).json({ error: 'Enter a valid user' });
+		}
+		if (!req.file) {
+			throw new ApiError(400, 'Listing Image is required');
+		}
+		const logo = await uploader(req.file.path, 'logo');
+		let listing = await Listing.create({
+			name,
+			description,
+			logo,
+			phone,
+			email,
+			userId,
+		});
+		await fs.promises.unlink(req.file.path);
+		res.status(200).json({ listing, message: 'Listing added successfully' });
 	} catch (error) {
 		console.log(error);
 		if (req.file) {
@@ -214,7 +243,7 @@ export const registerAdvertizer = async (req, res) => {
 export const getBusiness = async (req, res) => {
 	const { id } = req.params;
 	try {
-		const business = await Business.findById(id);
+		const business = await Business.findById(id).populate('userId');
 		res.status(200).json(business);
 	} catch (error) {
 		console.log(error);

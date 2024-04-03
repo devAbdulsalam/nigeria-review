@@ -14,6 +14,7 @@ const BusinessSchema = new mongoose.Schema(
 		phone: String,
 		description: String,
 		address: String,
+		category: String,
 		totalReviews: {
 			type: Number,
 			default: 0,

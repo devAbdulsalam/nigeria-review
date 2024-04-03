@@ -6,9 +6,9 @@ import Review from '../models/Review.js';
 
 export const getIndexPageInfo = async () => {
 	try {
-		const listings = await Listing.find().limit(8);
+		const listings = await Listing.find({ status: 'ACTIVE' }).limit(8);
 		// aggregate and return the unique categories and number of listing, unique cities
-		const topCategories  = await Listing.aggregate([
+		const topCategories = await Listing.aggregate([
 			{
 				$group: {
 					_id: '$category',
