@@ -1,5 +1,6 @@
 import User from '../../models/User.js';
 import Business from '../../models/Business.js';
+import Site from '../../models/Site.js';
 
 export const getAddBusiness = async (req, res, next) => {
 	try {
@@ -13,12 +14,14 @@ export const getAddBusiness = async (req, res, next) => {
 			primary = false;
 		} else {
 			primary = true;
-		}
+		}		
+		const site = await Site.findOne();
 		res.render('addBusiness', {
 			path: '/business',
 			pageTitle: 'Business',
 			user,
 			primary,
+			site,
 		});
 	} catch (err) {
 		const error = new Error(err);
@@ -31,13 +34,15 @@ export const getBusinessProfile = async (req, res, next) => {
 	try {
 		const { id } = req.params;
 		const user = req.session.user;
-		const business = await Business.findOne({ id });
+		const business = await Business.findOne({ id });		
+		const site = await Site.findOne();
 		res.render('businessProfile', {
 			business,
 			user,
 			totalRating: 0,
 			path: '/business',
 			isAuthenticated: true,
+			site,
 		});
 	} catch (err) {
 		const error = new Error(err);
@@ -49,6 +54,7 @@ export const getBusiness = async (req, res, next) => {
 	try {
 		const user = req.session.user;
 		const business = await Business.find();
+		const site = await Site.findOne();
 		res.render('business', {
 			business,
 			user,
@@ -56,6 +62,7 @@ export const getBusiness = async (req, res, next) => {
 			totalReviews: 0,
 			path: '/business',
 			isAuthenticated: true,
+			site,
 		});
 	} catch (err) {
 		const error = new Error(err);

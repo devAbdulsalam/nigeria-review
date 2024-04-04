@@ -4,6 +4,7 @@ import {
 	getBusiness,
 	registerBusiness,
 	addBusiness,
+	updateBusiness,
 	addReview,
 	getReviews,
 	getReview,
@@ -21,15 +22,6 @@ router.get(
 	verifyPermission(['ADMIN', 'BUSINESS']),
 	getBusiness
 );
-router.post(
-	'/',
-	upload.single('file'),
-	requireAuth,
-	verifyPermission(['ADMIN', 'BUSINESS']),
-	addBusiness
-);
-router.post('/register', upload.single('logo'), registerBusiness);
-router.post('/register/advertizer', upload.single('logo'), registerAdvertizer);
 router.get(
 	'/reviews',
 	requireAuth,
@@ -43,6 +35,17 @@ router.get(
 	getReview
 );
 router.post(
+	'/',
+	upload.single('file'),
+	requireAuth,
+	verifyPermission(['ADMIN', 'BUSINESS']),
+	addBusiness
+);
+
+router.post('/register', upload.single('logo'), registerBusiness);
+router.post('/register/advertizer', upload.single('logo'), registerAdvertizer);
+
+router.post(
 	'/reviews/:id',
 	requireAuth,
 	verifyPermission(['ADMIN', 'BUSINESS']),
@@ -53,6 +56,12 @@ router.patch(
 	requireAuth,
 	verifyPermission(['ADMIN', 'BUSINESS']),
 	addReview
+);
+router.patch(
+	'/:id',
+	requireAuth,
+	verifyPermission(['ADMIN', 'BUSINESS']),
+	updateBusiness
 );
 router.delete(
 	'/reviews',

@@ -3,19 +3,22 @@ import { validationResult } from 'express-validator';
 import transporter from '../../utils/transporter.js';
 import createTokens, { generateToken } from '../../utils/createTokens.js';
 import User from '../../models/User.js';
+import Site from '../../models/Site.js';
 import { hash } from '../../utils/hash.js';
 const { compare } = bcryptjs;
 
-export function getLogin(req, res, next) {
+export const getLogin = async (req, res, next) => {
 	let message = req.flash('error');
 	if (message.length > 0) {
 		message = message[0];
 	} else {
 		message = null;
 	}
+	const site = await Site.findOne();
 	res.render('login', {
 		path: '/login',
 		pageTitle: 'Login',
+		site,
 		errorMessage: message,
 		successMessage: null,
 		oldInput: {
@@ -24,20 +27,22 @@ export function getLogin(req, res, next) {
 		},
 		validationErrors: [],
 	});
-}
+};
 
-export function getSignup(req, res, next) {
+export const getSignup = async (req, res, next) => {
 	let message = req.flash('error');
 	if (message.length > 0) {
 		message = message[0];
 	} else {
 		message = null;
 	}
+	const site = await Site.findOne();
 	res.render('signup', {
 		path: 'signup',
 		pageTitle: 'Signup',
 		errorMessage: message,
 		successMessage: null,
+		site,
 		oldInput: {
 			firstName: '',
 			lastName: '',
@@ -46,7 +51,7 @@ export function getSignup(req, res, next) {
 		},
 		validationErrors: [],
 	});
-}
+};
 
 export const postLogin = async (req, res, next) => {
 	const email = req.body.email;

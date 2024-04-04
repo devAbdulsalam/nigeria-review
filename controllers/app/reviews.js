@@ -1,14 +1,17 @@
 import Review from '../../models/Review.js';
 import Listing from '../../models/Listing.js';
+import Site from '../../models/Site.js';
 export const getMyReview = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
 		const review = await Review.find({ userId: user._id });
+		const site = await Site.findOne();
 		res.render('reviews', {
 			path: '/my-reviews',
 			pageTitle: 'Reviews',
 			review,
 			user,
+			site,
 		});
 	} catch (err) {
 		const error = new Error(err);
@@ -21,6 +24,7 @@ export const getReviews = async (req, res, next) => {
 		const user = await req.session.user;
 		const listing = await Listing.findOne({ _id: req.params.id });
 		const reviews = await Review.find({ id: req.params.id });
+		const site = await Site.findOne();
 		res.render('reviews', {
 			path: '/review',
 			pageTitle: 'Reviews',
@@ -29,6 +33,7 @@ export const getReviews = async (req, res, next) => {
 			listingId: req.params.id,
 			userId: user?._id,
 			user,
+			site,
 		});
 	} catch (err) {
 		const error = new Error(err);
@@ -43,6 +48,7 @@ export const postReview = async (req, res, next) => {
 		const listing = await Listing.find({ id });
 		const newReview = await Review.create({ ...req.body, userId: user?._id });
 		const reviews = await Review.find({ id });
+		const site = await Site.findOne();
 		res.render('reviews', {
 			path: '/my-reviews',
 			pageTitle: 'Reviews',
@@ -52,6 +58,7 @@ export const postReview = async (req, res, next) => {
 			listingId: req.params.id,
 			userId: user?._id,
 			user,
+			site,
 		});
 	} catch (err) {
 		const error = new Error(err);

@@ -2,12 +2,14 @@ import User from '../../models/User.js';
 import Listing from '../../models/Listing.js';
 import SavedListing from '../../models/SavedListing.js';
 import Review from '../../models/Review.js';
+import Site from '../../models/Site.js';
 import { getDashboardInfo } from '../../middlewares/apphelpers.js';
 
 export const getListing = async (req, res, next) => {
 	const user = await req.session.user;
 	const id = req.params.id;
 	const listing = await Listing.findOne({ id });
+		const site = await Site.findOne();
 	if (!listing) {
 		return res.redirect('/listings');
 	}
@@ -28,7 +30,7 @@ export const getListing = async (req, res, next) => {
 		recentListing,
 		followers,
 		following,
-		user,
+		user,site,
 		path: '/listing',
 		pageTitle: 'Listing',
 	});
@@ -73,8 +75,8 @@ export const getListings = async (req, res, next) => {
 	// Pass limit per page for pagination UI
 	// Other data for the listings template
 	const user = await req?.session?.user;
-	const dasboardInfo = await getDashboardInfo(user?._id);
-	console.log(listings);
+	const dasboardInfo = await getDashboardInfo(user?._id);	
+		const site = await Site.findOne();
 
 	res.render('listings', {
 		listings,
@@ -83,7 +85,7 @@ export const getListings = async (req, res, next) => {
 		sort, // Pass back the applied sort for UI state
 		page, // Pass current page for pagination UI
 		limit,
-		user,
+		user,site,
 		...dasboardInfo,
 		path: '/listing',
 		pageTitle: 'Listing',
@@ -128,6 +130,7 @@ export const getSearchListings = async (req, res, next) => {
 	// Other data for the listings template
 	const user = await req?.session?.user;
 	const dasboardInfo = await getDashboardInfo(user?._id);
+		const site = await Site.findOne();
 
 	res.render('search', {
 		listings,
@@ -136,7 +139,7 @@ export const getSearchListings = async (req, res, next) => {
 		sort, // Pass back the applied sort for UI state
 		page, // Pass current page for pagination UI
 		limit,
-		user,
+		user,site,
 		...dasboardInfo,
 		path: '/search',
 		pageTitle: 'Listing',
@@ -147,9 +150,10 @@ export const getMyListing = async (req, res, next) => {
 	const user = await req.session.user;
 	const listings = await Listing.find({ userId: user._id }).sort('createdAt');
 	const dasboardInfo = await getDashboardInfo(user._id);
+		const site = await Site.findOne();
 	res.render('myListing', {
 		listings,
-		user,
+		user,site,
 		...dasboardInfo,
 		path: '/my-listings',
 		pageTitle: 'Listing',
@@ -158,10 +162,11 @@ export const getMyListing = async (req, res, next) => {
 export const getAddListing = async (req, res, next) => {
 	const user = await req.session.user;
 	const dasboardInfo = await getDashboardInfo(user._id);
+		const site = await Site.findOne();
 	res.render('addListing', {
 		path: '/add-listing',
 		pageTitle: 'Listing',
-		user,
+		user,site,
 		...dasboardInfo,
 	});
 };
@@ -170,10 +175,11 @@ export const getEditListing = async (req, res) => {
 	const user = await req.session.user;
 	const listing = await Listing.findOne({ id });
 	const dasboardInfo = await getDashboardInfo(user._id);
+		const site = await Site.findOne();
 	res.render('addListing', {
 		path: '/add-listing',
 		pageTitle: 'Listing',
-		user,
+		user,site,
 		...dasboardInfo,
 		listing,
 	});
@@ -184,12 +190,14 @@ export const getSavedListings = async (req, res) => {
 		'listingId'
 	);
 	const dasboardInfo = await getDashboardInfo(user._id);
+		const site = await Site.findOne();
 	res.render('savedListing', {
 		path: '/saved-listings',
 		pageTitle: 'Listing',
 		listings,
 		...dasboardInfo,
 		user,
+		site,
 	});
 };
 export const getSavedListing = async (req, res) => {
@@ -209,6 +217,7 @@ export const getSavedListing = async (req, res) => {
 		'listingId'
 	);
 	const dasboardInfo = await getDashboardInfo(user._id);
+		const site = await Site.findOne();
 	res.render('savedListing', {
 		path: '/saved-listings',
 		pageTitle: 'Listing',
@@ -216,5 +225,6 @@ export const getSavedListing = async (req, res) => {
 		listing,
 		...dasboardInfo,
 		user,
+		site,
 	});
 };

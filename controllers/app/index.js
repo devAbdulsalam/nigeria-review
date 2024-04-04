@@ -85,20 +85,24 @@ export const getDashboard = async (req, res, next) => {
 export const getProfile = async (req, res) => {
 	const user = req.session.user;
 	const getIndexInfo = await getDashboardInfo(user._id);
+	const site = await Site.findOne();
 	res.render('profile', {
 		path: '/profile',
 		pageTitle: 'User profile',
 		user,
+		site,
 		...getIndexInfo,
 	});
 };
 export const getUpdatePassword = async (req, res) => {
 	const user = req.session.user;
 	const getIndexInfo = await getDashboardInfo(user._id);
+	const site = await Site.findOne();
 	res.render('changePassword', {
 		path: '/change-password',
 		pageTitle: 'User profile',
 		user,
+		site,
 		...getIndexInfo,
 	});
 };
@@ -106,10 +110,12 @@ export const getUpdatePassword = async (req, res) => {
 export const getListing = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const site = await Site.findOne();
 		res.render('listing', {
 			path: '/listing',
 			pageTitle: 'listing',
 			user,
+			site,
 			isAuthenticated: req.session.isAuthenticated,
 		});
 	} catch (err) {
@@ -121,9 +127,11 @@ export const getListing = async (req, res, next) => {
 export const getAdvert = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const site = await Site.findOne();
 		res.render('advertise', {
 			user,
 			path: '/advert',
+			site,
 			isAuthenticated: req.session.isAuthenticated,
 			// isNew: user.verified,
 		});
@@ -137,10 +145,12 @@ export const getPricing = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
 		const prices = await User.find({ role: 'USER' });
+		const site = await Site.findOne();
 		res.render('pricing', {
 			path: '/pricing',
 			pageTitle: 'pricing',
 			user,
+			site,
 			prices,
 			isAuthenticated: req.session.isAuthenticated,
 			// isNew: user.verified,
@@ -154,12 +164,14 @@ export const getPricing = async (req, res, next) => {
 export const getSelectPricing = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const site = await Site.findOne();
 		const prices = await Price.find({ businessId: req.params.id });
 		res.render('pricing', {
 			path: '/pricing',
 			pageTitle: 'pricing',
 			user,
 			prices,
+			site,
 			isAuthenticated: req.session.isAuthenticated,
 			// isNew: user.verified,
 		});
@@ -179,11 +191,13 @@ export const getAuthor = async (req, res, next) => {
 		const totalListings = await Listing.count({ userId: req.params.id });
 		const followers = await User.countDocuments({ _id: req.params.id });
 		const following = await User.countDocuments({ _id: req.params.id });
+		const site = await Site.findOne();
 		res.render('author', {
 			path: '/author',
 			pageTitle: 'Author',
 			user,
 			listings,
+			site,
 			totalListings,
 			author,
 			followers,
@@ -202,10 +216,12 @@ export const getAddAdvert = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
 		const dasboardInfo = await getDashboardInfo(user?._id);
+		const site = await Site.findOne();
 		res.render('advertise', {
 			path: '/add-advert',
 			pageTitle: 'Add advert',
 			user,
+			site,
 			...dasboardInfo,
 			isAuthenticated: req.session.isAuthenticated,
 			// isNew: user.verified,
@@ -219,10 +235,12 @@ export const getAddAdvert = async (req, res, next) => {
 export const getAbout = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const site = await Site.findOne();
 		res.render('about', {
 			path: '/about',
 			pageTitle: 'About',
 			user,
+			site,
 			isAuthenticated: req.session.isAuthenticated,
 		});
 	} catch (err) {
@@ -234,10 +252,12 @@ export const getAbout = async (req, res, next) => {
 export const getTerms = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const site = await Site.findOne();
 		res.render('terms', {
 			path: '/terms',
 			pageTitle: 'Terms',
 			user,
+			site,
 			isAuthenticated: req.session.isAuthenticated,
 		});
 	} catch (err) {
@@ -249,10 +269,12 @@ export const getTerms = async (req, res, next) => {
 export const getCareer = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const site = await Site.findOne();
 		res.render('career', {
 			path: '/career',
 			pageTitle: 'Career',
 			user,
+			site,
 			isAuthenticated: req.session.isAuthenticated,
 		});
 	} catch (err) {
@@ -264,10 +286,29 @@ export const getCareer = async (req, res, next) => {
 export const getContact = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
+		const site = await Site.findOne();
 		res.render('contact', {
 			path: '/contact',
 			pageTitle: 'Contact',
 			user,
+			site,
+			isAuthenticated: req.session.isAuthenticated,
+		});
+	} catch (err) {
+		const error = new Error(err);
+		error.httpStatusCode = 500;
+		return next(error);
+	}
+};
+export const get404 = async (req, res, next) => {
+	try {
+		const user = await req.session.user;
+		const site = await Site.findOne();
+		res.render('404', {
+			path: '/404',
+			pageTitle: '404 error',
+			user,
+			site,
 			isAuthenticated: req.session.isAuthenticated,
 		});
 	} catch (err) {

@@ -26,6 +26,7 @@ import listingRoutes from './routes/listing.js';
 import businessRoutes from './routes/business.js';
 import errorHandler from './middlewares/errorHandler.js';
 import checkSessionUser from './middlewares/checkSession.js';
+import { get404 } from './controllers/app/index.js';
 
 dotenv.config();
 const app = express();
@@ -120,9 +121,7 @@ app.use(
 // common error handling middleware
 app.use('/api/v1/', errorHandler);
 // 404 page
-app.use((req, res) => {
-	res.render('404');
-});
+app.use(get404);
 
 /* MONGOOSE SETUP */
 mongoose
