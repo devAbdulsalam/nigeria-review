@@ -76,7 +76,6 @@ export const addListing = async (req, res) => {
 			// await fs.promises.unlink(file.path);
 			return res.status(400).json({ error: 'Business Id is required' });
 		}
-		console.log('amenities', amenities);
 
 		// Separate gallery and single uploads for efficient processing
 		const singleUploads = Object.entries(req.files)
@@ -99,10 +98,12 @@ export const addListing = async (req, res) => {
 		const business = await Business.findById(businessId);
 		if (!business) {
 		}
+		// console.log('amenities');
 		const listing = await Listing.create({
 			businessId,
 			...req.body,
 			socials: JSON.parse(socials),
+			amenities: JSON.parse(amenities),
 			...cleanedResult,
 		});
 
