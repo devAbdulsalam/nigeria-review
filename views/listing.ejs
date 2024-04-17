@@ -51,38 +51,40 @@
 			<!-- ======================= Searchbar Banner ======================== -->
 			<div class="featured-slick">
 				<div class="featured-gallery-slide">
-					<div class="dlf-flew"><a href="../assets/img/lg-1.png" class="mfp-gallery"><img src="../assets/img/lg-1.png" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="../assets/img/lg-2.png" class="mfp-gallery"><img src="../assets/img/lg-2.png" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="../assets/img/lg-3.png" class="mfp-gallery"><img src="../assets/img/lg-3.png" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="../assets/img/lg-4.png" class="mfp-gallery"><img src="../assets/img/lg-4.png" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="../assets/img/lg-5.png" class="mfp-gallery"><img src="../assets/img/lg-5.png" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="../assets/img/lg-6.png" class="mfp-gallery"><img src="../assets/img/lg-6.png" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="../assets/img/lg-7.png" class="mfp-gallery"><img src="../assets/img/lg-7.png" class="img-fluid mx-auto" alt="" /></a></div>
-					<div class="dlf-flew"><a href="../assets/img/lg-8.png" class="mfp-gallery"><img src="../assets/img/lg-8.png" class="img-fluid mx-auto" alt="" /></a></div>
+
+					<% if (listing?.gallery?.length> 0) { %> 
+						<% for (let listing of
+						listing?.gallery) { %>
+					<div class="dlf-flew"><a href="<%= listing.featuredImage?.url %>" class="mfp-gallery"><img src="<%= listing.featuredImage?.url %>" class="img-fluid mx-auto" alt="" /></a></div>
+						<% }%>
+					<% }else{ %>
+						<div class="dlf-flew"><a href="<%= listing.featuredImage?.url %>" class="mfp-gallery"><img src="<%= listing.featuredImage?.url %>" class="img-fluid mx-auto" alt="iajhsj" /></a></div>
+					<div class="dlf-flew"><a href="<%= listing.featuredImage?.url %>" class="mfp-gallery"><img src="<%= listing.featuredImage?.url %>" class="img-fluid mx-auto" alt="iajhsj" /></a></div>
+					<div class="dlf-flew"><a href="<%= listing.featuredImage?.url %>" class="mfp-gallery"><img src="<%= listing.featuredImage?.url %>" class="img-fluid mx-auto" alt="iajhsj" /></a></div>
+					<div class="dlf-flew"><a href="<%= listing.featuredImage?.url %>" class="mfp-gallery"><img src="<%= listing.featuredImage?.url %>" class="img-fluid mx-auto" alt="iajhsj" /></a></div>
+					
+					<% } %>
 				</div>
 				<div class="ftl-diope"><a href="javascript:void(0);" class="btn bg-white text-dark ft-medium rounded">See 20+ Photos</a></div>
 				<div class="Goodup-ops-bhri">
 					<div class="Goodup-lkp-flex d-flex align-items-start justify-content-start">
 						<div class="Goodup-lkp-thumb">
-							<img src="../assets/img/burger-king.png" class="img-fluid" width="90" alt="" />
+							<img src="<%= listing?.featuredImage?.url || '../assets/img/burger-king.png' %>" class="img-fluid" width="90" alt="" />
 						</div>
 						<div class="Goodup-lkp-caption ps-3">
 							<div class="Goodup-lkp-title"><h1 class="text-light mb-0 ft-bold"><%= listing?.businessName || listing?.productName %></h4></div>
 							<div class="Goodup-ft-first">
 								<div class="Goodup-rating">
 									<div class="Goodup-rates">
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
-										<i class="fas fa-star"></i>
+											<% for (let i = 0; i < listing?.totalRating; i++)
+																	{ %>
+																	<i class="fas fa-star active"></i>
+																	<% } %>
 									</div>
 								</div>
-								<div class="Goodup-price-range">
-									<span class="ft-medium text-light">34 Reviews</span>
+								<div class="Goodup-price-range">									
+									<span class="ft-medium text-light"><%= listing?.totalReviews || '0' %> Reviews</span>
 									<div class="d-inline ms-2">
-										<span class="active"><i class="fas fa-dollar-sign"></i></span>
-										<span class="active"><i class="fas fa-dollar-sign"></i></span>
 										<span class="active"><i class="fas fa-dollar-sign"></i></span>
 									</div>
 								</div>
@@ -91,14 +93,13 @@
 								<div class="list-lioe">
 									<div class="list-lioe-single"><span class="ft-medium text-info"><i class="fas fa-check-circle me-1"></i>Claimed</span></div>
 									<div class="list-lioe-single ms-2 ps-3 seperate">
-										<a href="javascript:void(0);" class="text-light ft-medium">Chicken Wings</a>,<a href="javascript:void(0);" class="text-light ft-medium ms-1">Sports Bars</a>,<a href="javascript:void(0);" class="text-light ft-medium ms-1">American (Traditional)</a>,<a href="javascript:void(0);" class="text-light ft-medium ms-1">Seafood</a>
+										<a href="javascript:void(0);" class="text-light ft-medium"><%= listing?.category %></a>
 									</div>
 								</div>
 							</div>
 							<div class="d-block mt-1">
 								<div class="list-lioe">
 									<div class="list-lioe-single"><span class="ft-medium text-danger">Closed</span><span class="text-light ft-medium ms-2">11:00 AM - 12:00 AM</span></div>
-
 								</div>
 							</div>
 						</div>
@@ -127,7 +128,7 @@
 									
 								</div>
 							</div>
-							
+							<% if (listing.category === 'food' ) { %>
 							<!-- Business Menu -->
 							<div class="bg-white rounded mb-4">
 								<div class="jbd-01 px-4 py-4">
@@ -137,92 +138,29 @@
 										<div class="d-block mt-3">
 											<div class="row g-3">
 													
-												<!-- Single Menu -->
+											<% if (listing?.menus?.length> 0) { %> 
+													<% for (let menu of	listing?.menus) { %>
 												<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
 													<div class="Goodup-sng-menu">
 														<div class="Goodup-sng-menu-thumb">
-															<img src="../assets/img/m-1.png" class="img-fluid" alt="" />
+															<img src="<%= menu?.image %>" class="img-fluid" alt="" />
 														</div>
 														<div class="Goodup-sng-menu-caption">
-															<h4 class="ft-medium fs-md">Brigue Medium Burger</h4>
-															<div class="lkji-oiyt"><span>Start From</span> <h5 class="theme-cl ft-bold">$49</h5></div>
+															<h4 class="ft-medium fs-md"><%= menu?.name %></h4>
+															<div class="lkji-oiyt"><span>Start From</span> <h5 class="theme-cl ft-bold">$<%= menu?.price %></h5></div>
 														</div>
 													</div>
 												</div>
-												
-												<!-- Single Menu -->
-												<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-													<div class="Goodup-sng-menu">
-														<div class="Goodup-sng-menu-thumb">
-															<img src="../assets/img/m-2.png" class="img-fluid" alt="" />
-														</div>
-														<div class="Goodup-sng-menu-caption">
-															<h4 class="ft-medium fs-md">Cheese Mrig Buttor</h4>
-															<div class="lkji-oiyt"><span>Start From</span> <h5 class="theme-cl ft-bold">$129</h5></div>
-														</div>
-													</div>
-												</div>
-												
-												<!-- Single Menu -->
-												<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-													<div class="Goodup-sng-menu">
-														<div class="Goodup-sng-menu-thumb">
-															<img src="../assets/img/m-3.png" class="img-fluid" alt="" />
-														</div>
-														<div class="Goodup-sng-menu-caption">
-															<h4 class="ft-medium fs-md">Potato Chips Crispy</h4>
-															<div class="lkji-oiyt"><span>Start From</span> <h5 class="theme-cl ft-bold">$79</h5></div>
-														</div>
-													</div>
-												</div>
-												
-												<!-- Single Menu -->
-												<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-													<div class="Goodup-sng-menu">
-														<div class="Goodup-sng-menu-thumb">
-															<img src="../assets/img/m-4.png" class="img-fluid" alt="" />
-														</div>
-														<div class="Goodup-sng-menu-caption">
-															<h4 class="ft-medium fs-md">Non Vegetarion Burger</h4>
-															<div class="lkji-oiyt"><span>Start From</span> <h5 class="theme-cl ft-bold">$60</h5></div>
-														</div>
-													</div>
-												</div>
-												
-												<!-- Single Menu -->
-												<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-													<div class="Goodup-sng-menu">
-														<div class="Goodup-sng-menu-thumb">
-															<img src="../assets/img/m-5.png" class="img-fluid" alt="" />
-														</div>
-														<div class="Goodup-sng-menu-caption">
-															<h4 class="ft-medium fs-md">Kadhai Paneer & Pee</h4>
-															<div class="lkji-oiyt"><span>Start From</span> <h5 class="theme-cl ft-bold">$120</h5></div>
-														</div>
-													</div>
-												</div>
-												
-												<!-- Single Menu -->
-												<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6">
-													<div class="Goodup-sng-menu">
-														<div class="Goodup-sng-menu-thumb">
-															<img src="../assets/img/m-6.png" class="img-fluid" alt="" />
-														</div>
-														<div class="Goodup-sng-menu-caption">
-															<h4 class="ft-medium fs-md">Crispy Chicken Muskio</h4>
-															<div class="lkji-oiyt"><span>Start From</span> <h5 class="theme-cl ft-bold">$99</h5></div>
-														</div>
-													</div>
-												</div>
-											
+												<% } %> <% } %>
 											</div>
 										</div>
 									</div>
 									
 								</div>
 							</div>
-							
+							<% } %>
 							<!-- Amenities and More -->
+								<% if (listing?.amenities?.length> 0) { %> 
 							<div class="bg-white rounded mb-4">
 								<div class="jbd-01 px-4 py-4">
 									<div class="jbd-details">
@@ -230,89 +168,41 @@
 										
 										<div class="Goodup-all-features-list mt-3">
 											<ul>
-												<% if (listing?.amenities?.length> 0) { %> 
-													<% for (let category of	listing?.amenities) { %>
-														<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="" alt="" /><span>Health Score 8.7 / 10</span></div></li>
-													<% } %> <% } %>
-												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Casual</span></div></li>
-												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Wheelchair Accessible</span></div></li>
-												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>TV Services</span></div></li>
-												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Outdoor Seating</span></div></li>
-												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Happy Hour</span></div></li>
-												<li><div class="Goodup-afl-pace deactive"><img src="../assets/img/verify.svg" class="img-fluid" alt="" /><span>Pets Allow</span></div></li>
-											</ul>
+											
+											<% for (let amenity of	listing?.amenities) { %>
+												<li><div class="Goodup-afl-pace"><img src="../assets/img/verify.svg" class="" alt="" /><span><%= amenity %></span></div></li>
+											<% } %>
+										</ul>
 										</div>
 									</div>
 									
 								</div>
 							</div>
-							
+							 <% } %>
 							<!-- Frequently Asked Questions -->
 							<div class="d-block mb-2">
 								<div class="jbd-01 py-2">
 									<div class="jbd-details">
-										<h5 class="ft-bold fs-lg">Frequently Asked Questions</h5>
-										
+										<h5 class="ft-bold fs-lg">Frequently Asked Questions</h5>										
 										<div class="d-block mt-3">
 											<div id="accordion2" class="accordion">
+												<% if (faqs?.length> 0) { %> 
+													<% for (let faq of	faqs) { %>
 												<div class="card">
-													<div class="card-header" id="h7">
+													<div class="card-header" id="<%= faq._id %>">
 													  <h5 class="mb-0">
-														<button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#ord7" aria-expanded="true" aria-controls="ord7">
-															Can I get GoodUP listing for free?
+														<button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#<%= faq._id %>" aria-expanded="false" aria-controls="<%= faq._id %>">
+															<%= faq.question %>
 														</button>
 													  </h5>
 													</div>
 
-													<div id="ord7" class="collapse show" aria-labelledby="h7" data-parent="#accordion2">
+													<div id="<%= faq._id %>" class="collapse" aria-labelledby="<%= faq._id %>" data-parent="#accordion2">
 													  <div class="card-body">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-													  </div>
+													<%= faq.answer %></div>
 													</div>
 												</div>
-												<div class="card">
-													<div class="card-header" id="h8">
-													  <h5 class="mb-0">
-														<button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#ord8" aria-expanded="false" aria-controls="ord8">
-															How to Permanently Delete Files From Windows?
-														</button>
-													  </h5>
-													</div>
-													<div id="ord8" class="collapse" aria-labelledby="h8" data-parent="#accordion2">
-													  <div class="card-body">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-													  </div>
-													</div>
-												</div>
-												<div class="card">
-													<div class="card-header" id="h9">
-													  <h5 class="mb-0">
-														<button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#ord9" aria-expanded="false" aria-controls="ord9">
-															Can I get GoodUP listing for free?
-														</button>
-													  </h5>
-													</div>
-													<div id="ord9" class="collapse" aria-labelledby="h9" data-parent="#accordion2">
-													  <div class="card-body">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-													  </div>
-													</div>
-												</div>
-												<div class="card">
-													<div class="card-header" id="h4">
-													  <h5 class="mb-0">
-														<button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#ord4" aria-expanded="false" aria-controls="ord4">
-															For GoodUp which lisence is better for business purpose?
-														</button>
-													  </h5>
-													</div>
-
-													<div id="ord4" class="collapse" aria-labelledby="h4" data-parent="#accordion2">
-													  <div class="card-body">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-													  </div>
-													</div>
-												</div>
+												<% } %> <% } %>
 											</div>
 										</div>
 									</div>
@@ -320,14 +210,14 @@
 								</div>
 							</div>
 							
-							
+								<% if (reviews.length> 0) { %>
 							<!-- Recommended Reviews -->
 							<div class="bg-white rounded mb-4">
 								<div class="jbd-01 px-4 py-4">
 									<div class="jbd-details mb-4">
 										<h5 class="ft-bold fs-lg">Recommended Reviews</h5>
 										<div class="reviews-comments-wrap">
-											<% if (reviews.length> 0) { %> <% for (let item of
+										 <% for (let item of
 						reviews) { %>
 											<!-- reviews-comments-item -->  
 											<div class="reviews-comments-item">
@@ -349,7 +239,7 @@
 											</div>
 												<% } %> <% } %>
 											<!--reviews-comments-item end-->  
-											
+											<% if (reviews.length > 1000) { %>
 											<ul class="pagination">
 												<li class="page-item">
 												  <a class="page-link" href="#" aria-label="Previous">
@@ -374,7 +264,7 @@
 									</div>
 								</div>
 							</div>
-							
+							<% } %>
 							<!-- Location & Hours -->
 							<div class="bg-white rounded mb-4">
 								<div class="jbd-01 px-4 py-4">
@@ -507,7 +397,7 @@
 						
 						<!-- Sidebar -->
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-							
+							<% if (listing?.category.toLowerCase() === 'restuarant' ) { %>
 							<!-- order Booking -->
 							<div class="jb-apply-form bg-white rounded py-4 px-4 mb-4">
 								<h4 class="ft-bold mb-1">Order Food</h4>
@@ -534,10 +424,9 @@
 								</form>
 								
 							</div>
-							
+							<% } %>
 							<!-- Author Box -->
-							<div class="jb-apply-form bg-white rounded py-4 px-4 mb-4">
-								
+							<div class="jb-apply-form bg-white rounded py-4 px-4 mb-4">								
 								<div class="Goodup-agent-blocks">
 									<div class="Goodup-agent-thumb"><img src="../assets/img/t-1.png" width="90" class="img-fluid circle" alt=""></div>
 									<div class="Goodup-agent-caption">
@@ -550,7 +439,7 @@
 								<div class="Goodup-iuky">
 									<ul>
 										<li><%= totalListings %>+<span>Listings</span></li>
-										<li><div class="text-success"><%= following %></div><span>Rattings</span></li>
+										<li><div class="text-success"><%= following %></div><span>Ratings</span></li>
 										<li><%= followers %>K<span>Followers</span></li>
 									</ul>
 								</div>
@@ -649,10 +538,10 @@
 										<div class="Goodup-status close me-2">Closed</div>
 									</div>
 									<div class="Goodup-grid-thumb">
-										<a href="listings/<%= item?._id %>" class="d-block text-center m-auto"><img src="<%= item?.featuredImage?.url %>" class="img-fluid" alt=""></a>
+										<a href="<%= item?._id %>" class="d-block text-center m-auto"><img src="<%= item?.featuredImage?.url %>" class="img-fluid" alt=""></a>
 									</div>
 									<div class="Goodup-rating overlay">
-										<div class="Goodup-pr-average high">4.8</div>
+										<div class="Goodup-pr-average high"><%= item?.rating || '0' %></div>
 										<div class="Goodup-aldeio">
 											<div class="Goodup-rates">
 												<i class="fas fa-star"></i>
@@ -661,7 +550,7 @@
 												<i class="fas fa-star"></i>
 												<i class="fas fa-star"></i>
 											</div>
-											<div class="Goodup-all-review"><span>46 Reviews</span></div>
+											<div class="Goodup-all-review"><span><%= item?.review || '0' %> Reviews</span></div>
 										</div>
 									</div>
 								</div>

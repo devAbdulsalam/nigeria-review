@@ -13,6 +13,7 @@ import {
 	listingsSearchConditions,
 } from '../utils/getPaginatedPayload.js';
 import Notification from '../models/Notification.js';
+import ClaimBusiness from '../models/ClaimBusiness.js';
 export const getAllBusiness = async (req, res) => {
 	const page = +(req.query.page || 1);
 	const limit = +(req.query.limit || 10);
@@ -267,12 +268,15 @@ export const claimBusiness = async (req, res) => {
 	const { id } = req.params;
 	try {
 		const user = await User.findById(id);
-		const business = await Business.findByIdAndUpdate(
-			id,
-			{ userId: user._id },
-			{ new: true }
-		);
-		res.status(200).json(business);
+		const business = await Business.findById(id);
+		if (!business) {
+			res.status(401).json({ message: 'Invalid business' });
+		}
+		const claim = await ClaimBusiness.create({
+			userId: user._id,
+			business: id,
+		});
+		res.status(200).json(claim);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({ message: error.message });

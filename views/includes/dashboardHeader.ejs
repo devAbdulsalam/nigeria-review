@@ -1,6 +1,9 @@
 <section
 	class="bg-cover position-relative"
-	style="background: red url(assets/img/banner-6.jpg) no-repeat"
+	style="
+		background: red url(<%= business?.logo?.url  || "assets/img/banner-6.jpg" %>)
+			no-repeat;
+	"
 	data-overlay="3"
 >
 	<div class="abs-list-sec">
@@ -34,9 +37,9 @@
 						<img
 							id="businessImage"
 							style="border-radius: 20px"
-							src="assets/img/t-5.png"
+							src="<%= business?.logo?.url || 'assets/img/t-5.png' %>"
 							class="img-fluid"
-							alt=""
+							alt="<%= business?.name %>"
 						/>
 					</div>
 					<div class="dashboard-head-author-caption">

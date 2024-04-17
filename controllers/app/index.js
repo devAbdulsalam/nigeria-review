@@ -15,11 +15,13 @@ export const getIndex = async (req, res, next) => {
 		// const site = await Site.findOne().select('description');
 		const getIndexInfo = await getIndexPageInfo(user?._id);
 		const site = await Site.findOne();
+		const prices = await Price.find();
 		res.render('index', {
 			user,
 			...getIndexInfo,
 			path: '/',
 			site,
+			prices,
 			isAuthenticated: req.session.isAuthenticated,
 		});
 	} catch (err) {
@@ -217,7 +219,7 @@ export const getAddAdvert = async (req, res, next) => {
 		const user = await req.session.user;
 		const dasboardInfo = await getDashboardInfo(user?._id);
 		const site = await Site.findOne();
-		res.render('advertise', {
+		res.render('addAdvert', {
 			path: '/add-advert',
 			pageTitle: 'Add advert',
 			user,

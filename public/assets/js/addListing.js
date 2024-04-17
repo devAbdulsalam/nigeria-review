@@ -53,13 +53,65 @@ const categoriesData = [
 const preloader = document.querySelector('.preloader');
 const userId = document.querySelector('#userId').value;
 const businessId = document.querySelector('#userId').value;
-const categorySelect = document.querySelector('#category'); // Assuming you have a <select> element with id="category"
+// Assuming you have a <select> element with id="category"
+const categorySelect = document.querySelector('#category');
 document.addEventListener('DOMContentLoaded', function () {
 	let displayCategory = categoriesData.map(
 		(item) => `<option value="${item.name}">${item.name}</option>`
 	);
 	displayCategory = displayCategory.join('');
 	categorySelect.innerHTML = displayCategory; // Assign to innerHTML of the select element
+});
+
+const handleCategoryChange = () => {
+	let category = document.querySelector('#category').value;
+	let menu = document.querySelector('#menu');
+	// let workingHours = document.querySelector('#workingHours');
+	// let product = document.querySelector('#product');
+	if (category.toLowerCase() === 'restaurants') {
+		menu.style.display = 'block';
+	} else {
+		menu.style.display = 'none';
+	}
+	// let subCategories = document.querySelector('#subCategories');
+	// subCategories.innerHTML = '';
+	// if (category === 'All') {
+	//     subCategories.innerHTML = categoriesData.map(
+	//         (item) => `<option value="${item.name}">${item.name}</option>`
+	//     );
+	// } else {
+	//     subCategories.innerHTML = categoriesData.filter(
+	//         (item) => item.name === category
+	//     ).map((item) => `<option value="${item.name}">${item.name}</option>`);
+	// }
+};
+document
+	.querySelector('#category')
+	.addEventListener('click', handleCategoryChange);
+
+let amenities = [];
+let listOfAmenities = document.querySelector('#amenities');
+
+listOfAmenities.addEventListener('change', function (event) {
+	// Check if the changed element is an input element of type checkbox
+	if (event.target.matches('input[type="checkbox"]')) {
+		// Get the label associated with the checkbox
+		let label = event.target.nextElementSibling;
+		// Get the text content of the label
+		let amenity = label.textContent.trim();
+
+		// Check if the checkbox is checked
+		if (event.target.checked) {
+			// If checked, add the amenity to the amenities array
+			amenities.push(amenity);
+		} else {
+			// If unchecked, remove the amenity from the amenities array
+			let index = amenities.indexOf(amenity);
+			if (index !== -1) {
+				amenities.splice(index, 1);
+			}
+		}
+	}
 });
 
 //process the login and the register
@@ -95,26 +147,9 @@ function handleSubmit(ev) {
 	// let twitter = document.querySelector('#twitter').value;
 	// let instagram = document.querySelector('#instagram').value;
 	// let linkedin = document.querySelector('#linkedin').value;
-	let listOfAmenties = document.querySelector('#amenties');
 	// images
 	let featuredImage = document.querySelector('#imageInput1');
 	let itemImage = document.querySelector('#formFileLg');
-	// Get all the <input> elements within the <ul> as a NodeList
-	let amentiesInputs = listOfAmenties.querySelectorAll(
-		'input[type="checkbox"]'
-	);
-
-	// Array to store the checked amenities
-	let amenties = [];
-
-	// Iterate over each input element
-	amentiesInputs.forEach((input) => {
-		// Check if the checkbox is checked
-		if (input.checked) {
-			// If checked, push the value of the checkbox into the amenties array
-			amenties.push(input.value);
-		}
-	});
 
 	let listOfSocials = document.querySelector('#socials');
 	let socialInputs = listOfSocials.querySelectorAll('input[type="text"]');
@@ -185,13 +220,13 @@ function handleSubmit(ev) {
 		itemPrice,
 		itemCategory,
 		ItemDescription,
-		amenties,
 		socials: JSON.stringify(socials),
 	};
 	let formData = new FormData();
 	for (let key in data) {
 		formData.append(key, data[key]);
 	}
+	formData.append('amenities', JSON.stringify(amenities));
 	formData.append('featuredImage', featuredImage.files[0]);
 	formData.append('itemImage', itemImage.files[0]);
 	let endpoint = 'listings';

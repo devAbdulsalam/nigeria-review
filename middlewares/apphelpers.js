@@ -6,7 +6,19 @@ import Review from '../models/Review.js';
 
 export const getIndexPageInfo = async () => {
 	try {
-		const listings = await Listing.find({ status: 'ACTIVE' }).limit(8);
+		const uniqueCategories = await Listing.aggregate([
+			{ $match: { status: 'ACTIVE' } },
+			{ $group: { _id: '$category' } },
+			{ $limit: 6 },
+		]);
+
+		const categoryNames = uniqueCategories.map((category) => category._id);
+
+		const listings = await Listing.find({
+			category: { $in: categoryNames },
+			status: 'ACTIVE',
+		}).limit(8);
+		
 		// aggregate and return the unique categories and number of listing, unique cities
 		const topCategories = await Listing.aggregate([
 			{
@@ -26,6 +38,7 @@ export const getIndexPageInfo = async () => {
 		]);
 		return {
 			topCategories,
+			uniqueCategories,
 			listings,
 		};
 	} catch (err) {

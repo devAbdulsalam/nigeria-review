@@ -58,6 +58,7 @@ export const postLogin = async (req, res, next) => {
 	const password = req.body.password;
 
 	const errors = validationResult(req);
+	const site = await Site.findOne();
 	if (!errors.isEmpty()) {
 		return res.status(422).render('login', {
 			path: 'login',
@@ -68,6 +69,7 @@ export const postLogin = async (req, res, next) => {
 				email: email,
 				password: password,
 			},
+			site,
 			validationErrors: errors.array(),
 		});
 	}
@@ -83,6 +85,7 @@ export const postLogin = async (req, res, next) => {
 					email: email,
 					password: password,
 				},
+				site,
 				validationErrors: [],
 			});
 		}
@@ -114,6 +117,7 @@ export const postLogin = async (req, res, next) => {
 					email: email,
 					password: password,
 				},
+				site,
 				validationErrors: [],
 			});
 		}
@@ -125,12 +129,13 @@ export const postLogin = async (req, res, next) => {
 	}
 };
 
-export function postSignup(req, res, next) {
+export const postSignup = async (req, res, next) => {
 	const firstName = req.body.firstName;
 	const lastName = req.body.lastName;
 	const email = req.body.email;
 	const password = req.body.password;
 	const errors = validationResult(req);
+	const site = await Site.findOne();
 	if (!errors.isEmpty()) {
 		console.log(errors.array());
 		return res.status(422).render('signup', {
@@ -143,6 +148,7 @@ export function postSignup(req, res, next) {
 				email,
 				password,
 			},
+			site,
 			validationErrors: errors.array(),
 		});
 	}
@@ -166,6 +172,7 @@ export function postSignup(req, res, next) {
 				oldInput: {
 					email: email,
 				},
+				site,
 				validationErrors: [],
 			});
 			// return transporter.sendMail({
@@ -180,7 +187,7 @@ export function postSignup(req, res, next) {
 			error.httpStatusCode = 500;
 			return next(error);
 		});
-}
+};
 
 export function postLogout(req, res, next) {
 	req.session.destroy((err) => {
@@ -189,13 +196,14 @@ export function postLogout(req, res, next) {
 	});
 }
 
-export function getForgotPassword(req, res, next) {
+export const getForgotPassword = async (req, res, next) => {
 	let message = req.flash('error');
 	if (message.length > 0) {
 		message = message[0];
 	} else {
 		message = null;
 	}
+	const site = await Site.findOne();
 	res.render('forgot-password', {
 		path: 'forgot-password',
 		pageTitle: 'Forget Password',
@@ -204,9 +212,10 @@ export function getForgotPassword(req, res, next) {
 		oldInput: {
 			email: null,
 		},
+		site,
 	});
-}
-export function getConfirmOtp(req, res, next) {
+};
+export const getConfirmOtp = async (req, res, next) => {
 	let message = req.flash('error');
 	if (message.length > 0) {
 		message = message[0];
@@ -219,7 +228,7 @@ export function getConfirmOtp(req, res, next) {
 		successMessage: null,
 		errorMessage: message,
 	});
-}
+};
 
 export const postForgotPassword = async (req, res, next) => {
 	try {
@@ -256,6 +265,7 @@ export const postForgotPassword = async (req, res, next) => {
 				oldInput: {
 					email: null,
 				},
+				site,
 			});
 		}
 		// console.log(token, 'success');
@@ -268,8 +278,9 @@ export const postForgotPassword = async (req, res, next) => {
 	}
 };
 
-export function getChangePassword(req, res, next) {
+export const getChangePassword = async (req, res, next) => {
 	const token = req.params.token;
+	const site = await Site.findOne();
 	User.findOne({ resetToken: token, resetTokenExpiration: { $gt: Date.now() } })
 		.then((user) => {
 			let message = req.flash('error');
@@ -292,6 +303,7 @@ export function getChangePassword(req, res, next) {
 					password: null,
 				},
 				passwordToken: token,
+				site,
 			});
 		})
 		.catch((err) => {
@@ -299,7 +311,7 @@ export function getChangePassword(req, res, next) {
 			error.httpStatusCode = 500;
 			return next(error);
 		});
-}
+};
 
 export const postChangePassword = async (req, res, next) => {
 	const newPassword = req.body?.password;
@@ -307,6 +319,7 @@ export const postChangePassword = async (req, res, next) => {
 	const userId = req.body.userId;
 	const passwordToken = req.body.passwordToken;
 	const errors = validationResult(req);
+	const site = await Site.findOne();
 	try {
 		if (!errors.isEmpty()) {
 			// req.query = passwordToken;
@@ -321,6 +334,7 @@ export const postChangePassword = async (req, res, next) => {
 				},
 				userId,
 				passwordToken,
+				site,
 				validationErrors: errors.array(),
 			});
 		}

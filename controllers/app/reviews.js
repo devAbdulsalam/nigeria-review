@@ -22,7 +22,11 @@ export const getMyReview = async (req, res, next) => {
 export const getReviews = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
-		const listing = await Listing.findOne({ _id: req.params.id });
+		let listing;
+		listing = await Listing.findOne({ _id: req.params.id });
+		if (!listing) {
+			listing = await Listing.findOne();
+		}
 		const reviews = await Review.find({ id: req.params.id });
 		const site = await Site.findOne();
 		res.render('reviews', {

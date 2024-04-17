@@ -21,9 +21,13 @@ import YAML from 'yaml';
 import appRoutes from './routes/app/index.js';
 import userRoutes from './routes/user.js';
 import generalRoutes from './routes/general.js';
+import advertRoutes from './routes/advert.js';
 import adminRoutes from './routes/admin.js';
 import listingRoutes from './routes/listing.js';
 import businessRoutes from './routes/business.js';
+import priceRoutes from './routes/price.js';
+import amenityRoutes from './routes/amenity.js';
+import faqRoutes from './routes/faq.js';
 import errorHandler from './middlewares/errorHandler.js';
 import checkSessionUser from './middlewares/checkSession.js';
 import { get404 } from './controllers/app/index.js';
@@ -92,8 +96,8 @@ app.use((req, res, next) => {
 	next();
 });
 app.use(checkSessionUser);
-// app.use(passport.initialize());
-// app.use(passport.session()); // persistent login sessions
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
 
 /* ROUTES */
 app.use('/', appRoutes);
@@ -101,8 +105,11 @@ app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/general', generalRoutes);
 app.use('/api/v1/admins', adminRoutes);
 app.use('/api/v1/business', businessRoutes);
+app.use('/api/v1/prices', priceRoutes);
+app.use('/api/v1/amenities', amenityRoutes);
+app.use('/api/v1/faqs', faqRoutes);
 app.use('/api/v1/listings', listingRoutes);
-
+app.use('/api/v1/adverts', advertRoutes);
 /* CONFIGURATION */
 
 // * API DOCS

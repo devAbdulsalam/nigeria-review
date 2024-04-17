@@ -14,13 +14,14 @@ export const getAddBusiness = async (req, res, next) => {
 			primary = false;
 		} else {
 			primary = true;
-		}		
+		}
 		const site = await Site.findOne();
 		res.render('addBusiness', {
 			path: '/business',
 			pageTitle: 'Business',
 			user,
 			primary,
+			business: hasPrimaryBusiness,
 			site,
 		});
 	} catch (err) {
@@ -34,7 +35,7 @@ export const getBusinessProfile = async (req, res, next) => {
 	try {
 		const { id } = req.params;
 		const user = req.session.user;
-		const business = await Business.findOne({ id });		
+		const business = await Business.findOne({ id });
 		const site = await Site.findOne();
 		res.render('businessProfile', {
 			business,

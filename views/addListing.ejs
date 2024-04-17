@@ -221,7 +221,7 @@
 									</div>
 
 									<!-- Listing Info -->
-									<div class="dashboard-list-wraps bg-white rounded mb-4">
+									<div id="product" class="dashboard-list-wraps bg-white rounded mb-4" >
 										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
 											<div class="dashboard-list-wraps-flx">
 												<h4 class="mb-0 ft-medium fs-md">
@@ -549,7 +549,7 @@
 									</div>
 
 									<!-- Menu Items -->
-									<div class="dashboard-list-wraps bg-white rounded mb-4">
+									<div id="menu" style="display: none;" class="dashboard-list-wraps bg-white rounded mb-4">
 										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
 											<div class="dashboard-list-wraps-flx">
 												<h4 class="mb-0 ft-medium fs-md">
@@ -632,7 +632,7 @@
 									</div>
 
 									<!-- Working hours -->
-									<div class="dashboard-list-wraps bg-white rounded mb-4">
+									<div id="workingHours" class="dashboard-list-wraps bg-white rounded mb-4">
 										<div class="dashboard-list-wraps-head br-bottom py-3 px-3">
 											<div class="dashboard-list-wraps-flx">
 												<h4 class="mb-0 ft-medium fs-md">
@@ -1149,282 +1149,20 @@
 											<div class="row">
 												<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 													<div class="Goodup-all-features-list">
-														<ul id="amenties">
+														<ul id="amenities">
+															<% if (amenities.length> 0) { %> <% for (let amenity of amenities) { %>
 															<li>
 																<input
-																	id="am1"
+																	id="<%= amenity._id %>"
 																	class="checkbox-custom"
-																	name="am1"
+																	name="<%= amenity.name %>"
 																	type="checkbox"
 																/>
-																<label for="am1" class="checkbox-custom-label"
-																	>Health Score 8.7 / 10</label
+																<label for="<%= amenity._id %>" class="checkbox-custom-label"
+																	><%= amenity.name %></label
 																>
 															</li>
-															<li>
-																<input
-																	id="am2"
-																	class="checkbox-custom"
-																	name="am2"
-																	type="checkbox"
-																/>
-																<label for="am2" class="checkbox-custom-label"
-																	>Reservations</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am3"
-																	class="checkbox-custom"
-																	name="am3"
-																	type="checkbox"
-																/>
-																<label for="am3" class="checkbox-custom-label"
-																	>Vegetarian Options</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am4"
-																	class="checkbox-custom"
-																	name="am4"
-																	type="checkbox"
-																/>
-																<label for="am4" class="checkbox-custom-label"
-																	>Moderate Noise</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am5"
-																	class="checkbox-custom"
-																	name="am5"
-																	type="checkbox"
-																/>
-																<label for="am5" class="checkbox-custom-label"
-																	>Good For Kids</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am6"
-																	class="checkbox-custom"
-																	name="am6"
-																	type="checkbox"
-																/>
-																<label for="am6" class="checkbox-custom-label"
-																	>Private Lot Parking</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am7"
-																	class="checkbox-custom"
-																	name="am7"
-																	type="checkbox"
-																/>
-																<label for="am7" class="checkbox-custom-label"
-																	>Beer & Wine</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am8"
-																	class="checkbox-custom"
-																	name="am8"
-																	type="checkbox"
-																/>
-																<label for="am8" class="checkbox-custom-label"
-																	>TV Services</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am9"
-																	class="checkbox-custom"
-																	name="am9"
-																	type="checkbox"
-																/>
-																<label for="am9" class="checkbox-custom-label"
-																	>Pets Allow</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am10"
-																	class="checkbox-custom"
-																	name="am10"
-																	type="checkbox"
-																/>
-																<label for="am10" class="checkbox-custom-label"
-																	>Offers Delivery</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am11"
-																	class="checkbox-custom"
-																	name="am11"
-																	type="checkbox"
-																/>
-																<label for="am11" class="checkbox-custom-label"
-																	>Staff wears masks</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am12"
-																	class="checkbox-custom"
-																	name="am12"
-																	type="checkbox"
-																/>
-																<label for="am12" class="checkbox-custom-label"
-																	>Accepts Credit Cards</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am13"
-																	class="checkbox-custom"
-																	name="am13"
-																	type="checkbox"
-																/>
-																<label for="am13" class="checkbox-custom-label"
-																	>Offers Catering</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am14"
-																	class="checkbox-custom"
-																	name="am14"
-																	type="checkbox"
-																/>
-																<label for="am14" class="checkbox-custom-label"
-																	>Good for Breakfast</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am15"
-																	class="checkbox-custom"
-																	name="am15"
-																	type="checkbox"
-																/>
-																<label for="am15" class="checkbox-custom-label"
-																	>Waiter Service</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am16"
-																	class="checkbox-custom"
-																	name="am16"
-																	type="checkbox"
-																/>
-																<label for="am16" class="checkbox-custom-label"
-																	>Drive-Thru</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am17"
-																	class="checkbox-custom"
-																	name="am17"
-																	type="checkbox"
-																/>
-																<label for="am17" class="checkbox-custom-label"
-																	>Outdoor Seating</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am18"
-																	class="checkbox-custom"
-																	name="am18"
-																	type="checkbox"
-																/>
-																<label for="am18" class="checkbox-custom-label"
-																	>Offers Takeout</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am19"
-																	class="checkbox-custom"
-																	name="am19"
-																	type="checkbox"
-																/>
-																<label for="am19" class="checkbox-custom-label"
-																	>Vegan Options</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am20"
-																	class="checkbox-custom"
-																	name="am20"
-																	type="checkbox"
-																/>
-																<label for="am20" class="checkbox-custom-label"
-																	>Casual</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am21"
-																	class="checkbox-custom"
-																	name="am21"
-																	type="checkbox"
-																/>
-																<label for="am21" class="checkbox-custom-label"
-																	>Good for Groups</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am22"
-																	class="checkbox-custom"
-																	name="am22"
-																	type="checkbox"
-																/>
-																<label for="am22" class="checkbox-custom-label"
-																	>Brunch, Lunch, Dinner</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am23"
-																	class="checkbox-custom"
-																	name="am23"
-																	type="checkbox"
-																/>
-																<label for="am23" class="checkbox-custom-label"
-																	>Free Wi-Fi</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am24"
-																	class="checkbox-custom"
-																	name="am24"
-																	type="checkbox"
-																/>
-																<label for="am24" class="checkbox-custom-label"
-																	>Wheelchair Accessible</label
-																>
-															</li>
-															<li>
-																<input
-																	id="am25"
-																	class="checkbox-custom"
-																	name="am25"
-																	type="checkbox"
-																/>
-																<label for="am25" class="checkbox-custom-label"
-																	>Happy Hour</label
-																>
-															</li>
+															<% } %> <% } %>															
 														</ul>
 													</div>
 												</div>
@@ -1555,7 +1293,7 @@
 		<!-- ============================================================== -->
         <%- include('includes/end.ejs') %>
 		<input type="text" style="display: none;" id="userId" value="<%= user._id %>">
-		<input type="text" style="display: none;" id="businessId" value="<%= business._id %>">
+		<input type="text" style="display: none;" id="businessId" value="<%= business?._id %>">
 		<script src="assets/js/addListing.js"></script>
 
 		<!-- ============================================================== -->

@@ -132,8 +132,8 @@ export const schoolsSearchConditions = (query) => {
 	}
 	return conditions;
 };
-// teachersSearchConditions
-export const teachersSearchConditions = (query) => {
+// AdvertsSearchConditions
+export const AdvertsSearchConditions = (query) => {
 	const conditions = {};
 	if (query.name) {
 		conditions.name = new RegExp(query.name, 'i');

@@ -4,6 +4,7 @@ import {
 	getBusiness,
 	registerBusiness,
 	addBusiness,
+	claimBusiness,
 	updateBusiness,
 	addReview,
 	getReviews,
@@ -11,6 +12,7 @@ import {
 	deleteReview,
 	registerAdvertizer,
 } from '../controllers/business.js';
+import { addPrice, deletePrice, updatePrice } from '../controllers/price.js';
 import { requireAuth, verifyPermission } from '../middlewares/requireAuth.js';
 import { upload } from '../middlewares/multer.js';
 const router = express.Router();
@@ -41,9 +43,27 @@ router.post(
 	verifyPermission(['ADMIN', 'BUSINESS']),
 	addBusiness
 );
-
+router.post('/claim/:id', requireAuth, claimBusiness);
 router.post('/register', upload.single('logo'), registerBusiness);
 router.post('/register/advertizer', upload.single('logo'), registerAdvertizer);
+router.post(
+	'/price',
+	requireAuth,
+	verifyPermission(['ADMIN', 'BUSINESS']),
+	addPrice
+);
+router.patch(
+	'/price/:id',
+	requireAuth,
+	verifyPermission(['ADMIN']),
+	updatePrice
+);
+router.delete(
+	'/price/:id',
+	requireAuth,
+	verifyPermission(['ADMIN', 'BUSINESS']),
+	deletePrice
+);
 
 router.post(
 	'/reviews/:id',

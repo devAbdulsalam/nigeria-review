@@ -1,15 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-// Define the schema for the socials
-const SocialSchema = new mongoose.Schema({
-	name: {
-		type: String,
-		required: true,
-	},
-	value: {
-		type: String,
-		required: true,
-	},
-});
+
 const ListingSchema = new mongoose.Schema(
 	{
 		userId: {
@@ -72,12 +62,19 @@ const ListingSchema = new mongoose.Schema(
 			type: Number,
 			default: 0,
 		},
-		amenties: [
+		amenties: [String],
+		socials: [
 			{
-				type: String,
+				name: {
+					type: String,
+					required: true,
+				},
+				value: {
+					type: String,
+					required: true,
+				},
 			},
 		],
-		socials: [SocialSchema],
 		claimed: {
 			type: Boolean,
 			default: false,

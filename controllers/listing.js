@@ -63,7 +63,7 @@ export const addListing1 = async (req, res) => {
 	}
 };
 export const addListing = async (req, res) => {
-	const { businessId, socials } = req.body;
+	const { businessId, socials, amenities } = req.body;
 
 	try {
 		// Validate required field and presence of files
@@ -73,8 +73,10 @@ export const addListing = async (req, res) => {
 				.json({ error: 'Listing featuredImage is required' });
 		}
 		if (!businessId) {
+			// await fs.promises.unlink(file.path);
 			return res.status(400).json({ error: 'Business Id is required' });
 		}
+		console.log('amenities', amenities);
 
 		// Separate gallery and single uploads for efficient processing
 		const singleUploads = Object.entries(req.files)

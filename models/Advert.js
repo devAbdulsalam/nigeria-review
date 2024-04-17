@@ -13,9 +13,22 @@ const AdvertSchema = new mongoose.Schema(
 		},
 		subtitle: {
 			type: String,
-			required: true,
 		},
-		content: {
+		featuredImage: {
+			public_id: {
+				type: String,
+			},
+			url: {
+				type: String,
+			},
+		},
+		category: {
+			type: String,
+		},
+		subCategory: {
+			type: String,
+		},
+		description: {
 			type: String,
 			required: true,
 		},
