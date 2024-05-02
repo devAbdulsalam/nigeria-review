@@ -19,6 +19,7 @@ import YAML from 'yaml';
 
 // routes
 import appRoutes from './routes/app/index.js';
+import authRoutes from './routes/auth.js';
 import userRoutes from './routes/user.js';
 import generalRoutes from './routes/general.js';
 import advertRoutes from './routes/advert.js';
@@ -101,6 +102,7 @@ app.use(passport.session()); // persistent login sessions
 
 /* ROUTES */
 app.use('/', appRoutes);
+app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/general', generalRoutes);
 app.use('/api/v1/admins', adminRoutes);

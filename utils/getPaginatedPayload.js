@@ -77,16 +77,11 @@ export const resourcesSearchConditions = (query) => {
 // listingsSearchConditions
 export const listingsSearchConditions = (query) => {
 	const conditions = {};
-
-	// Define your search query conditions
-	if (query.description) {
-		conditions.description = new RegExp(query.description, 'i');
+	if (query.businessName) {
+		conditions.businessName = new RegExp(query.businessName, 'i');
 	}
-	if (query.type) {
+	if (query.category) {
 		conditions.category = new RegExp(query.category, 'i');
-	}
-	if (query.name) {
-		conditions.title = new RegExp(query.title, 'i');
 	}
 	return conditions;
 };
