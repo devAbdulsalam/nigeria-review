@@ -27,7 +27,29 @@ export const getReviews = async (req, res, next) => {
 		if (!listing) {
 			listing = await Listing.findOne();
 		}
-		const reviews = await Review.find({ id: req.params.id });
+		// check review with userId, add four more recent reviews or return five recent reviews
+		const reviews = await Review.find({
+			itemId: req.params.id,
+		}).limit(5);
+		// Fetch existing reviews for the user and item
+		// const reviews = await Review.find({
+		// 	userId: user?._id,
+		// 	itemId: req.params.id,
+		// }).limit(5);
+
+		// // Check if there are fewer than five reviews
+		// if (reviews.length < 5) {
+		// 	// Fetch additional recent reviews
+		// 	const additionalReviews = await Review.find({
+		// 		itemId: req.params.id,
+		// 		_id: { $ne: { $in: reviews.map((review) => review._id) } },
+		// 	})
+		// 		.sort({ createdAt: -1 })
+		// 		.limit(5 - reviews.length);
+
+		// 	// Concatenate the additional reviews with the existing reviews
+		// 	reviews.push(...additionalReviews);
+		// }
 		const site = await Site.findOne();
 		res.render('reviews', {
 			path: '/review',

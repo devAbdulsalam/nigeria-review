@@ -68,7 +68,8 @@
 						</div>
 						<div class="nav-menus-wrapper" style="transition-property: none">
 							<ul class="nav-menu">
-								<li class="active"><a href="index">Home</a></li>
+								<li class=""><a href="index">Home</a></li>
+								<% if (!user) { %>
 
 								<li>
 									<a href="javascript:void(0);">For Business</a>
@@ -124,9 +125,12 @@
 										</li>
 									</ul>
 								</li>
+								<%}%> <% if (user) { %>
+								<li><a href="dashboard">Dashboard</a></li>
+								<%}%> <% if (user.role === 'REVIEWER') { %>
 								<li><a href="login">Write Reviews</a></li>
+								<%}%>
 							</ul>
-
 							<ul class="nav-menu nav-menu-social align-to-right">
 								<% if (!user) { %>
 								<li>
@@ -134,7 +138,7 @@
 										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
 									</a>
 								</li>
-								<%} %> <% if (user) { %>
+								<%} %> <% if (user.role === 'Business') { %>
 								<li class="add-listing">
 									<a href="add-listing">
 										<i class="fas fa-plus me-2"></i>Add Listing

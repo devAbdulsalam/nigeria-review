@@ -27,7 +27,10 @@ export const getListing = async (req, res, next) => {
 		'firstName lastName email avatar address phone'
 	);
 	const reviews = await Review.find({ itemId: id }).populate('itemId');
-	const recentListing = await Listing.find().limit(4).sort({ createdAt: -1 });
+	// get listing that _id != id
+	const recentListing = await Listing.find({ _id: { $ne: id } })
+		.limit(4)
+		.sort({ createdAt: -1 });
 	const totalListings = await Listing.count({ userId: author?._id });
 	const followers = await User.countDocuments({ _id: author?._id });
 	const following = await User.countDocuments({ _id: author?._id });
