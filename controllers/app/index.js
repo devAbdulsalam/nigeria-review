@@ -30,18 +30,22 @@ export const getIndex = async (req, res, next) => {
 		return next(error);
 	}
 };
-export function getRegister(req, res) {
+export const getRegister = async (req, res) => {
+	const site = await Site.findOne();
 	res.render('register', {
 		path: '/register',
 		pageTitle: 'Register business',
+		site,
 	});
-}
-export function getRegisterAdvertizer(req, res, next) {
+};
+export const getRegisterAdvertizer = async (req, res, next) => {
+	const site = await Site.findOne();
 	res.render('registerAdvertizer', {
 		path: '/register',
 		pageTitle: 'Register As Advertizer',
+		site,
 	});
-}
+};
 export const getDashboard = async (req, res, next) => {
 	try {
 		const user = await req.session.user;
