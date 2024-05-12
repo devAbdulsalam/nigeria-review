@@ -3,7 +3,6 @@ import {
 	getListing,
 	getAddListing,
 	getMyListing,
-	getListings,
 	getSearchListings,
 	getSavedListing,
 	getSavedListings,

@@ -68,8 +68,8 @@ app.use(express.json());
 // app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(morgan('common'));
 app.use(bodyParser.json());
-app.use(express.static('public')); // configure static file to save images locally
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public')); // configure static file to save images locally
 app.use(cors());
 app.set('view engine', 'ejs');
 // setups

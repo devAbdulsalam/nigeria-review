@@ -58,9 +58,9 @@ function doReg(ev) {
 		return (errorText.innerText = 'Business logo is required');
 	}
 	let data = {
-		firstName,
-		lastName,
-		businessName,
+		firstName: firstName.toLowerCase(),
+		lastName: lastName.toLowerCase(),
+		businessName: businessName.toLowerCase(),
 		email,
 		phone,
 		password,

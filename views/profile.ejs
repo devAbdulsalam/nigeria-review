@@ -101,11 +101,11 @@
 									/>
 								</div>
 								<div class="dashboard-head-author-caption">
-									<div class="dashploio"><h4>Sablak Hotel</h4></div>
+									<div class="dashploio"><h4><%- user.firstName %></h4></div>
 									<div class="dashploio">
 										<span class="agd-location"
-											><i class="lni lni-map-marker me-1"></i>Challenge Ibadan,
-											Oyo Nigeria</span
+											><i class="lni lni-map-marker me-1"></i><%- user.address
+											%></span
 										>
 									</div>
 									<div class="listing-rating high">
@@ -231,7 +231,7 @@
 															id="firstName"
 															type="text"
 															class="form-control rounded"
-															placeholder="Adeagbo"
+															placeholder="<%- user.firstName %>"
 														/>
 													</div>
 												</div>
@@ -242,7 +242,7 @@
 															id="lastName"
 															type="text"
 															class="form-control rounded"
-															placeholder="Josiah"
+															placeholder="<%- user.lastName %>"
 														/>
 													</div>
 												</div>
@@ -253,7 +253,7 @@
 															id="email"
 															type="text"
 															class="form-control rounded"
-															placeholder="adeagbojosiah1@gmail.com"
+															placeholder="<%- user.email %>"
 														/>
 													</div>
 												</div>
@@ -272,7 +272,7 @@
 													<div class="form-group">
 														<label class="mb-1">State</label>
 														<select id="state" class="form-control">
-															<option>Lagos</option>
+															<option><%- user.state %></option>
 															<option>Oyo</option>
 															<option>Ondo</option>
 															<option>Anambra</option>
@@ -287,7 +287,7 @@
 													<div class="form-group">
 														<label class="mb-1">City</label>
 														<select id="city" class="form-control">
-															<option>Ibadan</option>
+															<option><%- user.city %></option>
 															<option>Akure</option>
 															<option>Ikeja</option>
 															<option>Awka</option>
@@ -305,7 +305,7 @@
 															id="address"
 															type="text"
 															class="form-control rounded"
-															placeholder="Ikeja Mainland Market NG"
+															placeholder="<%- user.address %>"
 														/>
 													</div>
 												</div>

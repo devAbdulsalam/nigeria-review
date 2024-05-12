@@ -116,10 +116,10 @@ function handleSubmit(ev) {
 	let data = {
 		businessId,
 		userId,
-		title,
-		subtitle,
-		category,
-		subCategory,
+		title: title.toLowerCase(),
+		subtitle: subtitle.toLowerCase(),
+		category: category.toLowerCase(),
+		subCategory: subCategory.toLowerCase(),
 		description,
 	};
 	let formData = new FormData();

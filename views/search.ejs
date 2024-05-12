@@ -1,353 +1,1017 @@
 <!DOCTYPE html>
 <html lang="en">
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/search by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:33 GMT -->
+	<head>
+		<!-- Meta Data -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Reviews Nigeria - Search</title>
 
-	
-<!-- Mirrored from themezhub.net/goodup-live/goodup/search by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 30 Jan 2024 17:06:33 GMT -->
-<head>
-	 	<%- include('includes/head.ejs') %>
-		
-		
-    </head>
-	
-    <body>
-	
-		 <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
-       <div class="preloader"></div>
-		
-        <!-- ============================================================== -->
-        <!-- Main wrapper - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <div id="main-wrapper">
-		
-            <!-- ============================================================== -->
-            <!-- Top header  -->
-            <!-- ============================================================== -->
-            <!-- Start Navigation -->
-				<%- include('includes/header.ejs') %>
-		
+		<!-- Favicon -->
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="assets/img/favicon.png"
+		/>
+
+		<!-- Custom CSS -->
+		<link href="assets/css/styles.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+		<div class="preloader"></div>
+
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+		<div id="main-wrapper">
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			<!-- Start Navigation -->
+			<div class="header header-light dark-text head-border">
+				<div class="container">
+					<nav id="navigation" class="navigation navigation-landscape">
+						<div class="nav-header">
+							<a class="nav-brand" href="#">
+								<img src="assets/img/logo.png" class="logo" alt="" />
+							</a>
+							<div class="nav-toggle"></div>
+							<div class="mobile_nav">
+								<ul>
+									<li>
+										<a
+											href="#"
+											data-bs-toggle="modal"
+											data-bs-target="#login"
+											class="theme-cl fs-lg"
+										>
+											<i class="lni lni-user"></i>
+										</a>
+									</li>
+									<li>
+										<a
+											href="add-listing"
+											class="crs_yuo12 w-auto text-white theme-bg"
+										>
+											<span class="embos_45"
+												><i class="fas fa-plus me-2"></i>Add Listing</span
+											>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="nav-menus-wrapper" style="transition-property: none">
+							<ul class="nav-menu">
+								<li class="active"><a href="index">Home</a></li>
+
+								<li>
+									<a href="javascript:void(0);">For Business</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li>
+											<a href="login"
+												><i class="lni lni-briefcase me-2"></i>Submit
+												Business</a
+											>
+										</li>
+										<li>
+											<a href="/login"
+												><i class="lni lni-handshake me-2"></i>Claim Business</a
+											>
+										</li>
+										<li>
+											<a href="register"
+												><i class="lni lni-user me-2"></i>Log in to Business</a
+											>
+										</li>
+									</ul>
+								</li>
+
+								<li>
+									<a href="javascript:void(0);">Reviewers</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li>
+											<a href="login"
+												><i class="lni lni-user me-2"></i>Sign in
+											</a>
+										</li>
+										<li>
+											<a href="signup"
+												><i class="lni lni-lock-alt me-2"></i>Register as a
+												Reviewer</a
+											>
+										</li>
+									</ul>
+								</li>
+
+								<li>
+									<a href="javascript:void(0);">Advertisers</a>
+									<ul class="nav-dropdown nav-submenu">
+										<li>
+											<a href="signup"
+												><i class="lni lni-user me-2"></i>Sign In</a
+											>
+										</li>
+										<li>
+											<a href="login"
+												><i class="lni lni-link me-2"></i>Advertise with us</a
+											>
+										</li>
+									</ul>
+								</li>
+								<li><a href="login">Write Reviews</a></li>
+							</ul>
+
+							<ul class="nav-menu nav-menu-social align-to-right">
+								<% if (!user) { %>
+								<li>
+									<a href="login" class="ft-bold">
+										<i class="fas fa-sign-in-alt me-1 theme-cl"></i>Sign In
+									</a>
+								</li>
+								<%} %> <% if (user) { %>
+								<li class="add-listing">
+									<a href="add-listing">
+										<i class="fas fa-plus me-2"></i>Add Listing
+									</a>
+								</li>
+								<%}%>
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
 			<!-- End Navigation -->
 			<div class="clearfix"></div>
 			<!-- ============================================================== -->
 			<!-- Top header  -->
 			<!-- ============================================================== -->
-			
+
 			<!-- ============================ Search Tag & Filter Start ================================== -->
 			<section class="cats-filters py-3">
 				<div class="container">
 					<div class="row justify-content-between align-items-center">
-						
 						<div class="col-xl-12 col-lg-12 col-md-12 col-12">
 							<div class="Goodup-all-drp">
-								
 								<div class="Goodup-single-drp small">
 									<div class="btn-group">
-										<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Restaurants</button>
+										<button
+											type="button"
+											class="btn btn-secondary dropdown-toggle"
+											data-bs-toggle="dropdown"
+											aria-expanded="false"
+										>
+											Restaurants
+										</button>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/fast-delivery.png" class="img-fluid" width="20" alt="" />Delivery</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/burger.png" class="img-fluid" width="20" alt="" />Burgers</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/booking.png" class="img-fluid" width="20" alt="" />Reservations</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/house.png" class="img-fluid" width="20" alt="" />Japanese</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/chinese-food.png" class="img-fluid" width="20" alt="" />Chinese</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/mexican-hat.png" class="img-fluid" width="20" alt="" />Mekician</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/dish.png" class="img-fluid" width="20" alt="" />Italian</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/tom-yum.png" class="img-fluid" width="20" alt="" />Thai</a></li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/fast-delivery.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Delivery</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/burger.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Burgers</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/booking.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Reservations</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/house.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Japanese</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/chinese-food.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Chinese</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/mexican-hat.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Mekician</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/dish.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Italian</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/tom-yum.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Thai</a
+												>
+											</li>
 										</ul>
 									</div>
 								</div>
-								
+
 								<div class="Goodup-single-drp small">
 									<div class="btn-group">
-										<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Home Services</button>
+										<button
+											type="button"
+											class="btn btn-secondary dropdown-toggle"
+											data-bs-toggle="dropdown"
+											aria-expanded="false"
+										>
+											Home Services
+										</button>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/hammer.png" class="img-fluid" width="20" alt="" />Contractors</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/coconut-tree.png" class="img-fluid" width="20" alt="" />Landscaping</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/broken-cable.png" class="img-fluid" width="20" alt="" />Electricians</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/padlock.png" class="img-fluid" width="20" alt="" />Locksmiths</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/basket.png" class="img-fluid" width="20" alt="" />Home Cleaning</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/delivery-truck.png" class="img-fluid" width="20" alt="" />Movers</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/home.png" class="img-fluid" width="20" alt="" />HVAC</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/plumbering.png" class="img-fluid" width="20" alt="" />Plumbers</a></li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/hammer.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Contractors</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/coconut-tree.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Landscaping</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/broken-cable.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Electricians</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/padlock.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Locksmiths</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/basket.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Home Cleaning</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/delivery-truck.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Movers</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/home.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>HVAC</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/plumbering.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Plumbers</a
+												>
+											</li>
 										</ul>
 									</div>
 								</div>
-								
+
 								<div class="Goodup-single-drp small">
 									<div class="btn-group">
-										<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Auto Services</button>
+										<button
+											type="button"
+											class="btn btn-secondary dropdown-toggle"
+											data-bs-toggle="dropdown"
+											aria-expanded="false"
+										>
+											Auto Services
+										</button>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/wrench.png" class="img-fluid" width="20" alt="" />Auto Repairs</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/rental-car.png" class="img-fluid" width="20" alt="" />Car Dealers</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/sketch.png" class="img-fluid" width="20" alt="" />Auto Detailing</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/oil.png" class="img-fluid" width="20" alt="" />Oil Change</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/shopping-bag.png" class="img-fluid" width="20" alt="" />Body Shops</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/parking.png" class="img-fluid" width="20" alt="" />Parking</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/car-wash.png" class="img-fluid" width="20" alt="" />Car Wash</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/tow-truck.png" class="img-fluid" width="20" alt="" />Towing</a></li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/wrench.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Auto Repairs</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/rental-car.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Car Dealers</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/sketch.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Auto Detailing</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/oil.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Oil Change</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/shopping-bag.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Body Shops</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/parking.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Parking</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/car-wash.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Car Wash</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/tow-truck.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Towing</a
+												>
+											</li>
 										</ul>
 									</div>
 								</div>
-								
+
 								<div class="Goodup-single-drp small">
 									<div class="btn-group">
-										<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">More</button>
+										<button
+											type="button"
+											class="btn btn-secondary dropdown-toggle"
+											data-bs-toggle="dropdown"
+											aria-expanded="false"
+										>
+											More
+										</button>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/towel-hanger.png" class="img-fluid" width="20" alt="" />Dry Cleaning</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/salon.png" class="img-fluid" width="20" alt="" />Hair salons</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/smartphone.png" class="img-fluid" width="20" alt="" />Phone Repair</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/weights.png" class="img-fluid" width="20" alt="" />Gyms</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/cocktail.png" class="img-fluid" width="20" alt="" />Bars & cafe</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/spa.png" class="img-fluid" width="20" alt="" />Massage</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/poinsettia.png" class="img-fluid" width="20" alt="" />Nightlife</a></li>
-											<li><a class="dropdown-item" href="#"><img src="assets/img/icons/online-shopping.png" class="img-fluid" width="20" alt="" />Shopping</a></li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/towel-hanger.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Dry Cleaning</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/salon.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Hair salons</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/smartphone.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Phone Repair</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/weights.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Gyms</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/cocktail.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Bars & cafe</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/spa.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Massage</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/poinsettia.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Nightlife</a
+												>
+											</li>
+											<li>
+												<a class="dropdown-item" href="#"
+													><img
+														src="assets/img/icons/online-shopping.png"
+														class="img-fluid"
+														width="20"
+														alt=""
+													/>Shopping</a
+												>
+											</li>
 										</ul>
 									</div>
 								</div>
-								
+
 								<div class="Goodup-single-drp small">
 									<div class="btn-group">
-										<button type="button" class="btn bg-dark text-light">Update</button>
+										<button type="button" class="btn bg-dark text-light">
+											Update
+										</button>
 									</div>
 								</div>
-							
 							</div>
 						</div>
-						
 					</div>
 				</div>
 			</section>
 			<div class="clearfix"></div>
 			<!-- ============================ Search Tag & Filter End ================================== -->
-			
-			
+
 			<!-- ============================ Main Section Start ================================== -->
 			<section class="gray py-5">
 				<div class="container">
 					<div class="row">
-						
 						<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-							<div class="bg-white rounded mb-4">							
-							
-								<div class="sidebar_header d-flex align-items-center justify-content-between px-4 py-3 br-bottom">
+							<div class="bg-white rounded mb-4">
+								<div
+									class="sidebar_header d-flex align-items-center justify-content-between px-4 py-3 br-bottom"
+								>
 									<h4 class="ft-medium fs-lg mb-0">Search Filter</h4>
 									<div class="ssh-header">
-										<a href="javascript:void(0);" class="clear_all ft-medium text-muted">Clear All</a>
-										<a href="#search_open" data-bs-toggle="collapse" aria-expanded="false" role="button" class="collapsed _filter-ico ml-2"><i class="lni lni-text-align-right"></i></a>
+										<a
+											href="javascript:void(0);"
+											class="clear_all ft-medium text-muted"
+											>Clear All</a
+										>
+										<a
+											href="#search_open"
+											data-bs-toggle="collapse"
+											aria-expanded="false"
+											role="button"
+											class="collapsed _filter-ico ml-2"
+											><i class="lni lni-text-align-right"></i
+										></a>
 									</div>
 								</div>
-								
+
 								<!-- Find New Property -->
-								<div class="sidebar-widgets collapse miz_show" id="search_open" data-bs-parent="#search_open">
-									<form class="search-inner" action="/listings" method="GET">
+								<div
+									class="sidebar-widgets collapse miz_show"
+									id="search_open"
+									data-bs-parent="#search_open"
+								>
+									<div class="search-inner">
 										<div class="side-filter-box">
 											<div class="side-filter-box-body">
-                        <div>
-                          <label for="search">Search:</label>
-                          <input type="text" id="search" name="q" placeholder="Search listings">
-                        </div>
-
 												<!-- Price Range -->
 												<div class="inner_widget_link">
-													  <div class="btn-group d-flex justify-content-around price-btn-457">
+													<div
+														class="btn-group d-flex justify-content-around price-btn-457"
+													>
 														<button type="button" class="btn">$</button>
 														<button type="button" class="btn">$$</button>
-														<button type="button" class="btn active d14ixh">$$$</button>
+														<button type="button" class="btn active d14ixh">
+															$$$
+														</button>
 														<button type="button" class="btn">$$$$</button>
-													  </div>
-												</div>   
+													</div>
+												</div>
 
 												<!-- Suggested -->
 												<div class="inner_widget_link">
 													<h6 class="ft-medium">Suggested</h6>
-                          <fieldset>
 													<ul class="no-ul-list filter-list">
 														<li>
-															<input type="checkbox" id="category-all" name="category" value="" checked>
-															<label for="category-all" class="checkbox-custom-label">All</label>
+															<input
+																id="a1"
+																class="checkbox-custom"
+																name="open"
+																type="checkbox"
+															/>
+															<label for="a1" class="checkbox-custom-label"
+																>Open Now</label
+															>
 														</li>
 														<li>
-                              <input type="checkbox" id="category-restaurants" name="category" value="restaurants">
-                              <label for="category-restaurants" class="checkbox-custom-label">Restaurants</label>
+															<input
+																id="a2"
+																class="checkbox-custom"
+																name="reservations"
+																type="checkbox"
+															/>
+															<label for="a2" class="checkbox-custom-label"
+																>Reservations</label
+															>
 														</li>
 														<li>
-															<input id="a1" class="checkbox-custom" name="open" type="checkbox">
-															<label for="a1" class="checkbox-custom-label">Open Now</label>
+															<input
+																id="a3"
+																class="checkbox-custom"
+																name="Mexican"
+																type="checkbox"
+															/>
+															<label for="a3" class="checkbox-custom-label"
+																>Mexican</label
+															>
 														</li>
 														<li>
-															<input id="a2" class="checkbox-custom" name="reservations" type="checkbox">
-															<label for="a2" class="checkbox-custom-label">Reservations</label>
+															<input
+																id="a4"
+																class="checkbox-custom"
+																name="Seafood"
+																type="checkbox"
+															/>
+															<label for="a4" class="checkbox-custom-label"
+																>Seafood</label
+															>
 														</li>
 														<li>
-															<input id="a3" class="checkbox-custom" name="Mexican" type="checkbox">
-															<label for="a3" class="checkbox-custom-label">Mexican</label>
+															<input
+																id="a5"
+																class="checkbox-custom"
+																name="Takeout"
+																type="checkbox"
+															/>
+															<label for="a5" class="checkbox-custom-label"
+																>Takeout</label
+															>
 														</li>
-														<li>
-															<input id="a4" class="checkbox-custom" name="Seafood" type="checkbox">
-															<label for="a4" class="checkbox-custom-label">Seafood</label>
-														</li>
-														<li>
-															<input id="a5" class="checkbox-custom" name="Takeout" type="checkbox">
-															<label for="a5" class="checkbox-custom-label">Takeout</label>
-														</li>
-														
 													</ul>
-                          </fieldset>
 												</div>
-												
+
 												<!-- Features -->
 												<div class="inner_widget_link">
 													<h6 class="ft-medium">Features</h6>
 													<ul class="no-ul-list filter-list">
 														<li>
-															<input id="a6" class="checkbox-custom" name="Kids" type="checkbox" checked="">
-															<label for="a6" class="checkbox-custom-label">Good for Kids</label>
+															<input
+																id="a6"
+																class="checkbox-custom"
+																name="Kids"
+																type="checkbox"
+																checked=""
+															/>
+															<label for="a6" class="checkbox-custom-label"
+																>Good for Kids</label
+															>
 														</li>
 														<li>
-															<input id="a7" class="checkbox-custom" name="Service" type="checkbox">
-															<label for="a7" class="checkbox-custom-label">Waiter Service</label>
+															<input
+																id="a7"
+																class="checkbox-custom"
+																name="Service"
+																type="checkbox"
+															/>
+															<label for="a7" class="checkbox-custom-label"
+																>Waiter Service</label
+															>
 														</li>
 														<li>
-															<input id="a8" class="checkbox-custom" name="Open" type="checkbox">
-															<label for="a8" class="checkbox-custom-label">Open to All</label>
+															<input
+																id="a8"
+																class="checkbox-custom"
+																name="Open"
+																type="checkbox"
+															/>
+															<label for="a8" class="checkbox-custom-label"
+																>Open to All</label
+															>
 														</li>
 														<li>
-															<input id="a9" class="checkbox-custom" name="Dogs" type="checkbox">
-															<label for="a9" class="checkbox-custom-label">Dogs Allowed</label>
+															<input
+																id="a9"
+																class="checkbox-custom"
+																name="Dogs"
+																type="checkbox"
+															/>
+															<label for="a9" class="checkbox-custom-label"
+																>Dogs Allowed</label
+															>
 														</li>
 														<li>
-															<input id="a10" class="checkbox-custom" name="Outdoor" type="checkbox">
-															<label for="a10" class="checkbox-custom-label">Outdoor Seating</label>
+															<input
+																id="a10"
+																class="checkbox-custom"
+																name="Outdoor"
+																type="checkbox"
+															/>
+															<label for="a10" class="checkbox-custom-label"
+																>Outdoor Seating</label
+															>
 														</li>
 														<li>
-															<input id="a11" class="checkbox-custom" name="Hot" type="checkbox">
-															<label for="a11" class="checkbox-custom-label">Hot and New</label>
+															<input
+																id="a11"
+																class="checkbox-custom"
+																name="Hot"
+																type="checkbox"
+															/>
+															<label for="a11" class="checkbox-custom-label"
+																>Hot and New</label
+															>
 														</li>
 														<li>
-															<input id="a12" class="checkbox-custom" name="Breakfast" type="checkbox">
-															<label for="a12" class="checkbox-custom-label">Breakfast</label>
+															<input
+																id="a12"
+																class="checkbox-custom"
+																name="Breakfast"
+																type="checkbox"
+															/>
+															<label for="a12" class="checkbox-custom-label"
+																>Breakfast</label
+															>
 														</li>
 														<li>
-															<a class="ft-bold d14ixh" href="javascript:void(0);">See More</a>
+															<a
+																class="ft-bold d14ixh"
+																href="javascript:void(0);"
+																>See More</a
+															>
 														</li>
 													</ul>
 												</div>
-												
+
 												<!-- Neighborhoods -->
 												<div class="inner_widget_link">
 													<h6 class="ft-medium">Neighborhoods</h6>
 													<ul class="no-ul-list filter-list">
 														<li>
-															<input id="b1" class="checkbox-custom" name="Alta" type="checkbox" checked="">
-															<label for="b1" class="checkbox-custom-label">Alta Vista</label>
+															<input
+																id="b1"
+																class="checkbox-custom"
+																name="Alta"
+																type="checkbox"
+																checked=""
+															/>
+															<label for="b1" class="checkbox-custom-label"
+																>Alta Vista</label
+															>
 														</li>
 														<li>
-															<input id="b2" class="checkbox-custom" name="Monticello" type="checkbox">
-															<label for="b2" class="checkbox-custom-label">Monticello Park</label>
+															<input
+																id="b2"
+																class="checkbox-custom"
+																name="Monticello"
+																type="checkbox"
+															/>
+															<label for="b2" class="checkbox-custom-label"
+																>Monticello Park</label
+															>
 														</li>
 														<li>
-															<input id="b3" class="checkbox-custom" name="Beacon" type="checkbox">
-															<label for="b3" class="checkbox-custom-label">Beacon Hill</label>
+															<input
+																id="b3"
+																class="checkbox-custom"
+																name="Beacon"
+																type="checkbox"
+															/>
+															<label for="b3" class="checkbox-custom-label"
+																>Beacon Hill</label
+															>
 														</li>
 														<li>
-															<input id="b4" class="checkbox-custom" name="Near" type="checkbox">
-															<label for="b4" class="checkbox-custom-label">Near Northwest</label>
+															<input
+																id="b4"
+																class="checkbox-custom"
+																name="Near"
+																type="checkbox"
+															/>
+															<label for="b4" class="checkbox-custom-label"
+																>Near Northwest</label
+															>
 														</li>
 														<li>
-															<input id="b5" class="checkbox-custom" name="North" type="checkbox">
-															<label for="b5" class="checkbox-custom-label">North Central</label>
+															<input
+																id="b5"
+																class="checkbox-custom"
+																name="North"
+																type="checkbox"
+															/>
+															<label for="b5" class="checkbox-custom-label"
+																>North Central</label
+															>
 														</li>
 														<li>
-															<input id="b6" class="checkbox-custom" name="Northwest1" type="checkbox">
-															<label for="b6" class="checkbox-custom-label">Northwest</label>
+															<input
+																id="b6"
+																class="checkbox-custom"
+																name="Northwest1"
+																type="checkbox"
+															/>
+															<label for="b6" class="checkbox-custom-label"
+																>Northwest</label
+															>
 														</li>
 														<li>
-															<input id="b7" class="checkbox-custom" name="Pecan" type="checkbox">
-															<label for="b7" class="checkbox-custom-label">Pecan Valley</label>
+															<input
+																id="b7"
+																class="checkbox-custom"
+																name="Pecan"
+																type="checkbox"
+															/>
+															<label for="b7" class="checkbox-custom-label"
+																>Pecan Valley</label
+															>
 														</li>
 														<li>
-															<input id="b8" class="checkbox-custom" name="Prospect" type="checkbox">
-															<label for="b8" class="checkbox-custom-label">Prospect Hill</label>
+															<input
+																id="b8"
+																class="checkbox-custom"
+																name="Prospect"
+																type="checkbox"
+															/>
+															<label for="b8" class="checkbox-custom-label"
+																>Prospect Hill</label
+															>
 														</li>
 														<li>
-															<input id="b9" class="checkbox-custom" name="South" type="checkbox">
-															<label for="b9" class="checkbox-custom-label">South Central</label>
+															<input
+																id="b9"
+																class="checkbox-custom"
+																name="South"
+																type="checkbox"
+															/>
+															<label for="b9" class="checkbox-custom-label"
+																>South Central</label
+															>
 														</li>
 														<li>
-															<a class="ft-bold d14ixh" href="javascript:void(0);">See More</a>
+															<a
+																class="ft-bold d14ixh"
+																href="javascript:void(0);"
+																>See More</a
+															>
 														</li>
 													</ul>
 												</div>
-												
+
 												<!-- Bird's-eye View -->
 												<div class="inner_widget_link">
 													<h6 class="ft-medium">Bird's-eye View</h6>
 													<ul class="no-ul-list filter-list">
 														<li>
-															<input id="c1" class="checkbox-custom" name="blc" type="checkbox" checked="">
-															<label for="c1" class="checkbox-custom-label">Within 4 blocks</label>
+															<input
+																id="c1"
+																class="checkbox-custom"
+																name="blc"
+																type="checkbox"
+																checked=""
+															/>
+															<label for="c1" class="checkbox-custom-label"
+																>Within 4 blocks</label
+															>
 														</li>
 														<li>
-															<input id="c2" class="checkbox-custom" name="1km" type="checkbox">
-															<label for="c2" class="checkbox-custom-label">Walking (1 mi.)</label>
+															<input
+																id="c2"
+																class="checkbox-custom"
+																name="1km"
+																type="checkbox"
+															/>
+															<label for="c2" class="checkbox-custom-label"
+																>Walking (1 mi.)</label
+															>
 														</li>
 														<li>
-															<input id="c3" class="checkbox-custom" name="2km" type="checkbox">
-															<label for="c3" class="checkbox-custom-label">Biking (2 mi.)</label>
+															<input
+																id="c3"
+																class="checkbox-custom"
+																name="2km"
+																type="checkbox"
+															/>
+															<label for="c3" class="checkbox-custom-label"
+																>Biking (2 mi.)</label
+															>
 														</li>
 														<li>
-															<input id="c4" class="checkbox-custom" name="5km" type="checkbox">
-															<label for="c4" class="checkbox-custom-label">Driving (5 mi.)</label>
+															<input
+																id="c4"
+																class="checkbox-custom"
+																name="5km"
+																type="checkbox"
+															/>
+															<label for="c4" class="checkbox-custom-label"
+																>Driving (5 mi.)</label
+															>
 														</li>
 														<li>
-															<input id="c5" class="checkbox-custom" name="10km" type="checkbox">
-															<label for="c5" class="checkbox-custom-label">Driving (10 mi.)</label>
+															<input
+																id="c5"
+																class="checkbox-custom"
+																name="10km"
+																type="checkbox"
+															/>
+															<label for="c5" class="checkbox-custom-label"
+																>Driving (10 mi.)</label
+															>
 														</li>
 													</ul>
 												</div>
-												
+
 												<div class="form-group filter_button">
-													<button type="submit" class="btn theme-bg text-light rounded full-width">22 Results Show</button>
-                        </div>
-												
+													<button
+														type="submit"
+														class="btn theme-bg text-light rounded full-width"
+													>
+														22 Results Show
+													</button>
+												</div>
 											</div>
 										</div>
-										
-									</form>							
+									</div>
 								</div>
 							</div>
 							<!-- Sidebar End -->
-						
 						</div>
-						
+
 						<!-- Item Wrap Start -->
 						<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
-							
 							<!-- row -->
 							<div class="row justify-content-center gx-3" id="listings">
-								<% if (listings.length> 0) { %> <% for (let item of
-										listings) { %>
+								<% if (listings.length> 0) { %> <% for (let item of listings) {
+								%>
 								<!-- Single -->
 								<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
 									<div class="Goodup-grid-wrap">
 										<div class="Goodup-grid-upper">
-											<div class="Goodup-bookmark-btn"><button type="button"><i class="lni lni-heart-filled position-absolute"></i></button></div>
+											<div class="Goodup-bookmark-btn">
+												<button type="button">
+													<i class="lni lni-heart-filled position-absolute"></i>
+												</button>
+											</div>
 											<div class="Goodup-pos ab-left">
 												<div class="Goodup-status open me-2">Open</div>
 												<div class="Goodup-featured-tag">Featured</div>
 											</div>
 											<div class="Goodup-grid-thumb">
-												<a href="listings/<%= item?._id %>" class="d-block text-center m-auto"><img src="<%= item?.featuredImage?.url %>" class="img-fluid" alt="" /></a>
+												<a
+													href="listings/<%= item?._id %>"
+													class="d-block text-center m-auto"
+													><img
+														src="<%= item?.featuredImage?.url %>"
+														class="img-fluid"
+														alt=""
+												/></a>
 											</div>
 										</div>
 										<div class="Goodup-grid-fl-wrap">
 											<div class="Goodup-caption px-3 py-2">
-												<div class="Goodup-author"><a href="author/<%= item?.userId %>"><img src="assets/img/t-1.png" class="img-fluid circle" alt="" /></a></div>
-												<div class="Goodup-cates"><a href="search?q=<%= item?.category %>"><%= item?.category%></a></div>
-												<h4 class="mb-0 ft-medium medium"><a href="listings/<%= item?._id %>" class="text-dark fs-md"><%= item?.businessName || item?.productName %><span class="verified-badge"><i class="fas fa-check-circle"></i></span></a></h4>
+												<div class="Goodup-author">
+													<a href="author/<%= item?.userId %>"
+														><img
+															src="assets/img/t-1.png"
+															class="img-fluid circle"
+															alt=""
+													/></a>
+												</div>
+												<div class="Goodup-cates">
+													<a href="search?q=<%= item?.category %>"
+														><%= item?.category%></a
+													>
+												</div>
+												<h4 class="mb-0 ft-medium medium">
+													<a
+														href="listings/<%= item?._id %>"
+														class="text-dark fs-md"
+														><%= item?.businessName || item?.productName %><span
+															class="verified-badge"
+															><i class="fas fa-check-circle"></i></span
+													></a>
+												</h4>
 												<div class="Goodup-middle-caption mt-3">
-													<div class="Goodup-location"><i class="fas fa-map-marker-alt"></i>Liverpool, London UK</div>
-													<div class="Goodup-call"><i class="fas fa-phone-alt"></i>+91 365 795 4526</div>
+													<div class="Goodup-location">
+														<i class="fas fa-map-marker-alt"></i>Liverpool,
+														London UK
+													</div>
+													<div class="Goodup-call">
+														<i class="fas fa-phone-alt"></i>+91 365 795 4526
+													</div>
 												</div>
 											</div>
 											<div class="Goodup-grid-footer py-3 px-3">
@@ -363,10 +1027,18 @@
 														</div>
 													</div>
 													<div class="Goodup-price-range">
-														<span class="active"><i class="fas fa-dollar-sign"></i></span>
-														<span class="active"><i class="fas fa-dollar-sign"></i></span>
-														<span class="active"><i class="fas fa-dollar-sign"></i></span>
-														<span class="active"><i class="fas fa-dollar-sign"></i></span>
+														<span class="active"
+															><i class="fas fa-dollar-sign"></i
+														></span>
+														<span class="active"
+															><i class="fas fa-dollar-sign"></i
+														></span>
+														<span class="active"
+															><i class="fas fa-dollar-sign"></i
+														></span>
+														<span class="active"
+															><i class="fas fa-dollar-sign"></i
+														></span>
 													</div>
 												</div>
 												<div class="Goodup-ft-last">
@@ -377,107 +1049,152 @@
 									</div>
 								</div>
 								<% } %> <% } %>
-								
 							</div>
 							<!-- /row -->
-							
+							<% if (listings.length > 20) { %>
+
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12">
-									<ul class="pagination" id="pagination">
+									<ul class="pagination">
 										<li class="page-item">
-										  <a class="page-link" href="#" aria-label="Previous">
-											<span class="fas fa-arrow-circle-right"></span>
-											<span class="sr-only">Previous</span>
-										  </a>
+											<a class="page-link" href="#" aria-label="Previous">
+												<span class="fas fa-arrow-circle-right"></span>
+												<span class="sr-only">Previous</span>
+											</a>
 										</li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item"><a class="page-link" href="#">2</a></li>
-										<li class="page-item active"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#">...</a></li>
-										<li class="page-item"><a class="page-link" href="#">18</a></li>
 										<li class="page-item">
-										  <a class="page-link" href="#" aria-label="Next">
-											<span class="fas fa-arrow-circle-right"></span>
-											<span class="sr-only">Next</span>
-										  </a>
+											<a class="page-link" href="#">1</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="#">2</a>
+										</li>
+										<li class="page-item active">
+											<a class="page-link" href="#">3</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="#">...</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="#">18</a>
+										</li>
+										<li class="page-item">
+											<a class="page-link" href="#" aria-label="Next">
+												<span class="fas fa-arrow-circle-right"></span>
+												<span class="sr-only">Next</span>
+											</a>
 										</li>
 									</ul>
 								</div>
 							</div>
-							
+							<%}%>
 						</div>
-						
 					</div>
 				</div>
 			</section>
 			<!-- ============================ Main Section End ================================== -->
-			
+
 			<!-- ======================= Newsletter Start ============================ -->
-			<section class="space bg-cover" style="background:#03343b url(assets/img/landing-bg.png) no-repeat;">
+			<section
+				class="space bg-cover"
+				style="background: #03343b url(assets/img/landing-bg.png) no-repeat"
+			>
 				<div class="container py-5">
-					
 					<div class="row justify-content-center">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 							<div class="sec_title position-relative text-center mb-5">
 								<h6 class="text-light mb-0">Subscribe Now</h6>
-								<h2 class="ft-bold text-light">Get All Updates & Advance Offers</h2>
+								<h2 class="ft-bold text-light">
+									Get All Updates & Advance Offers
+								</h2>
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row align-items-center justify-content-center">
 						<div class="col-xl-7 col-lg-10 col-md-12 col-sm-12 col-12">
 							<form class="bg-white rounded p-1">
 								<div class="row no-gutters">
 									<div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-8">
 										<div class="form-group mb-0 position-relative">
-											<input type="text" class="form-control b-0" placeholder="Enter Your Email Address">
+											<input
+												type="text"
+												class="form-control b-0"
+												placeholder="Enter Your Email Address"
+											/>
 										</div>
 									</div>
 									<div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
 										<div class="form-group mb-0 position-relative">
-											<button class="btn full-width btn-height theme-bg text-light fs-md" type="button">Subscribe</button>
+											<button
+												class="btn full-width btn-height theme-bg text-light fs-md"
+												type="button"
+											>
+												Subscribe
+											</button>
 										</div>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
-					
 				</div>
 			</section>
 			<!-- ======================= Newsletter Start ============================ -->
-			
+
 			<!-- ============================ Footer Start ================================== -->
 			<footer class="light-footer skin-light-footer style-2">
 				<div class="footer-middle">
 					<div class="container">
 						<div class="row">
-							
 							<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
 								<div class="footer_widget">
-									<img src="assets/img/logo.png" class="img-footer small mb-2" alt="" />
-									
+									<img
+										src="assets/img/logo.png"
+										class="img-footer small mb-2"
+										alt=""
+									/>
+
 									<div class="address mt-2">
-										61-65 Egbe- Isolo Road, Iyana Ejigbo Shopping Arcade, <br>Block A, Suite 19, 
-										Iyana Ejigbo Bus Stop, <br>
+										61-65 Egbe- Isolo Road, Iyana Ejigbo Shopping Arcade,
+										<br />Block A, Suite 19, Iyana Ejigbo Bus Stop, <br />
 										Ejigbo, Lagos State, Nigeria.
 									</div>
 									<div class="address mt-3">
-										+234-80-337-82-777 | +234-1-29 52 413 <br>hello@reviewnigeria.ng
+										+234-80-337-82-777 | +234-1-29 52 413
+										<br />hello@reviewnigeria.ng
 									</div>
 									<div class="address mt-2">
 										<ul class="list-inline">
-											<li class="list-inline-item"><a href="#" class="theme-cl"><i class="lni lni-facebook-filled"></i></a></li>
-											<li class="list-inline-item"><a href="#" class="theme-cl"><i class="lni lni-twitter-filled"></i></a></li>
-											<li class="list-inline-item"><a href="#" class="theme-cl"><i class="lni lni-youtube"></i></a></li>
-											<li class="list-inline-item"><a href="#" class="theme-cl"><i class="lni lni-instagram-filled"></i></a></li>
-											<li class="list-inline-item"><a href="#" class="theme-cl"><i class="lni lni-linkedin-original"></i></a></li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-facebook-filled"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-twitter-filled"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-youtube"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-instagram-filled"></i
+												></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#" class="theme-cl"
+													><i class="lni lni-linkedin-original"></i
+												></a>
+											</li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
 								<div class="footer_widget">
 									<h4 class="widget_title">Company</h4>
@@ -487,22 +1204,32 @@
 										<li><a href="contact">Contact Us</a></li>
 										<li><a href="terms">Terms of Services</a></li>
 										<li><a href="how-it-works">How it works</a></li>
-										<li><a href="disclaimer">Disclaimer and  Phishing Claims</a></li>
+										<li>
+											<a href="disclaimer">Disclaimer and Phishing Claims</a>
+										</li>
 										<li><a href="cookie">Cookie Policy</a></li>
-										<li><a href="slaverry-statement">Modern Slavery Statement</a></li>
+										<li>
+											<a href="slaverry-statement">Modern Slavery Statement</a>
+										</li>
 										<li><a href="GDPR">GDPR Policy</a></li>
-										<li><a href="do-not-share-my-info">Do Not Sell or Share My Personal  Information</a></li>
+										<li>
+											<a href="do-not-share-my-info"
+												>Do Not Sell or Share My Personal Information</a
+											>
+										</li>
 										<li><a href="privacy">Privacy Policy</a></li>
 									</ul>
 								</div>
 							</div>
-									
+
 							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
 								<div class="footer_widget">
 									<h4 class="widget_title">For Business</h4>
 									<ul class="footer-menu">
 										<li><a href="#">Advertise With Us</a></li>
-										<li><a href="/claim-business/index">Claim  Your Business</a></li>
+										<li>
+											<a href="/claim-business/index">Claim Your Business</a>
+										</li>
 										<li><a href="#">Build A Marketing List</a></li>
 										<li><a href="#">Send E-mail, SMS & Invite</a></li>
 										<li><a href="#">Polls</a></li>
@@ -511,18 +1238,20 @@
 									</ul>
 								</div>
 							</div>
-					
+
 							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
 								<div class="footer_widget">
-									<h4 class="widget_title">Resource  Center</h4>
+									<h4 class="widget_title">Resource Center</h4>
 									<ul class="footer-menu">
-										<li><a href="blog">Blog,  Questtion and Answers</a></li>
+										<li><a href="blog">Blog, Questtion and Answers</a></li>
 										<li><a href="#">Newsletter Subscription</a></li>
-										<li><a href="faq">Frequently Asked Questions (FAQ)</a></li>
+										<li>
+											<a href="faq">Frequently Asked Questions (FAQ)</a>
+										</li>
 									</ul>
 								</div>
 							</div>
-							
+
 							<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
 								<div class="footer_widget">
 									<h4 class="widget_title">For Reviewers</h4>
@@ -533,26 +1262,30 @@
 									</ul>
 								</div>
 							</div>
-								
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="footer-bottom br-top">
 					<div class="container">
 						<div class="row align-items-center">
 							<div class="col-lg-12 col-md-12 text-center">
-								<p class="mb-0"><a style="color: blue;" href="https://foramfera.com/">© 2024  Foraminifera Market Research LTD.</a> All rights reserved.</p>
+								<p class="mb-0">
+									<a style="color: blue" href="https://foramfera.com/"
+										>© 2024 Foraminifera Market Research LTD.</a
+									>
+									All rights reserved.
+								</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</footer>
 			<!-- ============================ Footer End ================================== -->
-			
-			<a id="tops-button" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
-			
 
+			<a id="tops-button" class="top-scroll" title="Back to top" href="#"
+				><i class="ti-arrow-up"></i
+			></a>
 		</div>
 		<!-- ============================================================== -->
 		<!-- End Wrapper -->
@@ -561,16 +1294,25 @@
 		<!-- ============================================================== -->
 		<!-- All Jquery -->
 		<!-- ============================================================== -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/popper.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/slick.js"></script>
+		<script src="assets/js/jquery.magnific-popup.min.js"></script>
+		<script src="assets/js/dropzone.js"></script>
+		<script src="assets/js/counterup.js"></script>
+		<script src="assets/js/lightbox.js"></script>
+		<script src="assets/js/moment.min.js"></script>
+		<script src="assets/js/daterangepicker.js"></script>
+		<script src="assets/js/lightbox.js"></script>
+		<script src="assets/js/jQuery.style.switcher.js"></script>
+		<script src="assets/js/custom.js"></script>
 		<%- include('includes/end.ejs') %>
 		<script src="assets/js/listings.js"></script>
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
-		<!-- ============================================================== -->		
-
+		<!-- ============================================================== -->
 	</body>
 
-<!-- Mirrored from themezhub.net/goodup-live/goodup/home-5 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Feb 2024 20:42:59 GMT -->
-</html>
- 
-</body>
+	<!-- Mirrored from themezhub.net/goodup-live/goodup/home-5 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Feb 2024 20:42:59 GMT -->
 </html>

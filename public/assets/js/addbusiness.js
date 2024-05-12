@@ -32,7 +32,7 @@ function handleSubmit(ev) {
 	if (logo.files.length === 0) {
 		return (errorText.innerText = 'Business logo is required');
 	}
-	let data = { name, email, phone, password, location, description };
+	let data = { name: name.toLowerCase(), email, phone, password, location, description };
 	let formData = new FormData();
 	for (let key in data) {
 		formData.append(key, data[key]);

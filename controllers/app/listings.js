@@ -164,13 +164,14 @@ export const getSearchListings = async (req, res, next) => {
 		};
 
 		// Send the response
-		console.log(response);
+		// console.log(response);
 		const user = await req?.session?.user;
 		const dasboardInfo = await getDashboardInfo(user?._id);
 		const site = await Site.findOne();
 
-		res.render('searchh', {
-			listings,
+		res.render('search', {
+			// listings,
+			...response,
 			totalCount, // Pass total count for pagination UI
 			// filter, // Pass back the applied filter for UI state
 			page, // Pass current page for pagination UI
